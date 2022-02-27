@@ -6,17 +6,40 @@ require 'controller.php';
 $router = new Router;
 $Controller = new Controller;
 
+//$router->setBase('/base');
+/*echo $_SERVER['QUERY_STRING'].'<br>';//dla url http://simplyrouter.test/?r=9 ,print r=9
+
+echo  $_SERVER['REQUEST_METHOD'].'<br>';//zwroci metode przesyly get lub post dla zwyklej strony bez formlarza zawsze get
+
+echo $_SERVER['PATH_INFO']. '<br>';//error gdy jest  sam url bez uri , dla http://simplyrouter.test/example/test/?r=9 zwroci /example/test/
+
+echo $_SERVER['SCRIPT_NAME'].'<br>';///index.php
+
+echo $_SERVER['PHP_SELF'].'<br>';///index.php*/
+
+/**
+ * ustalenie bazowego uri przy zlozonych uri
+ *
+ *  w tym przypadku zadzilaja tylko  uri np /base/my/route ,base/hello/world
+ *
+ *
+ */
 $router->setBase('/base');
+/**
+ * my route
+ */
+
+$router->get('/base/base', array(
+    'func' => 'Controller::baseroute'
+));//error nie zadzila
+
+$router->get('/my/route', array(
+    'func' => 'Controller::myroute'
+));
 
 $router->get('/hello/world', array(
 	'func' => 'Controller::helloworld'
 ));
-
-$router->get('/example/test/world', array(
-    'func' => 'Controller::hellotest'
-));
-
-
 
 $router->get('/text', array(
 	'func' => array($Controller, 'text'),

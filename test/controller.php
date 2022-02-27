@@ -3,12 +3,16 @@ Class Controller{
 	public static function helloworld(){
 		echo 'Hello World';
 	}
-
-    public static function hellotest(){
-        echo 'Hello Test';
+	//error nie zadzila
+    public static function baseroute(){
+        echo 'base route';
     }
 
-	public function text($t1, $t2, $t3){
+    public static function myroute(){
+        echo 'my route';
+    }
+
+    public function text($t1, $t2, $t3){
 		echo 'Text: ' . $t1.$t2.$t3;
 	}
 	public function path($path, $path2){
