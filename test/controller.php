@@ -3,6 +3,11 @@ Class Controller{
 	public static function helloworld(){
 		echo 'Hello World';
 	}
+
+    public static function hellotest(){
+        echo 'Hello Test';
+    }
+
 	public function text($t1, $t2, $t3){
 		echo 'Text: ' . $t1.$t2.$t3;
 	}

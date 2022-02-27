@@ -6,11 +6,17 @@ require 'controller.php';
 $router = new Router;
 $Controller = new Controller;
 
-//$router->setBase('/base');
+$router->setBase('/base');
 
 $router->get('/hello/world', array(
 	'func' => 'Controller::helloworld'
 ));
+
+$router->get('/example/test/world', array(
+    'func' => 'Controller::hellotest'
+));
+
+
 
 $router->get('/text', array(
 	'func' => array($Controller, 'text'),
