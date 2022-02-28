@@ -19,13 +19,7 @@ class Controller extends MainController
         //  if (empty($_SESSION))
         //  session_start();
 
-
-        $this->oModel = new BlogModel();
-
-        /** Get the Post ID in the constructor in order to avoid the duplication of the same code **/
-        $this->_iId = (int)(!empty($_GET['id']) ? $_GET['id'] : 0);
-
-
+        $this->oModel = new BlogModel();//todo: wprowadzic DI
     }
 
 
@@ -40,14 +34,9 @@ class Controller extends MainController
 
 
     public function getSinglePost($post_id)
-    {    echo 'Current post id: ' . $post_id;
-        // var_dump(  $router->get_URL_parameter('var1'));
-          $this->oPost = $this->oModel->getById($post_id);
-
+    {
+        $this->oPost = $this->oModel->getById($post_id);
         $this->getView('single-post');
-
-
-
     }
 
     /*******************  End Test Zone *****************************/

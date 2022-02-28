@@ -137,8 +137,8 @@ class Router
     {
         if (!$parameters) {
             return $this->base . $this->url;//gdy nie ma parametrow zworc sceizke url bez parametrow
-        } elseif (isset($_GET['post'])) {
-            return (($_GET['post'] != null) ? (int)$_GET['post'] : '');
+        } elseif (isset($_GET['id'])) {
+            return (($_GET['id'] != null) ? (int)$_GET['id'] : '');
         }
     }
 

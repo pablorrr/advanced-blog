@@ -28,7 +28,7 @@
                 <?php foreach ($this->oPosts as $oPost): ?>
 
                     <h1>
-                        <a href="<?= ROOT_URL ?>single-post?post=<?= $oPost->id ?>"><?= htmlspecialchars($oPost->title) ?></a>
+                        <a href="<?= ROOT_URL ?>single-post?id=<?= $oPost->id ?>"><?= htmlspecialchars($oPost->title) ?></a>
                     </h1>
 
                     <p><?= nl2br(htmlspecialchars(mb_strimwidth($oPost->body, 0, 100, '...'))) ?></p>
