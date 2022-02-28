@@ -2,13 +2,14 @@
 
 require 'MainController.php';
 require  'BlogModel.php';
+
 class Controller extends MainController
 {
     /**
      * @var array
      */
     protected $oPosts;
-
+    protected $oPost;
     protected $oModel;
 
     public function __construct()
@@ -27,30 +28,28 @@ class Controller extends MainController
 
     }
 
-    public static function helloworld()
-    {
-        echo 'Hello World';
-    }
 
-    //error nie zadzila
-    public static function baseroute()
-    {
-        echo 'base route';
-    }
-
-    public static function myroute()
-    {
-        echo 'my route';
-    }
-
+/******************* Test Zone *****************************/
 //uwaga!!! nie mozna nzwac metody i route index jest to njprwd nazwa zastrzezona!!!!
-    public  function test()
+    public  function getMainPage()
     {
-
         $this->oPosts = $this->oModel->getAll();
         $this->getView('index');
     }
 
+
+
+
+    public  function getSinglePost()
+    {
+
+
+        //$this->oPosts = $this->oModel->getAll();
+        $this->oPost = $this->oModel->getById($this->_iId); // Get the data of the post
+
+        $this->getView('single-post');
+    }
+/*******************  End Test Zone *****************************/
 
     public function text($t1, $t2, $t3)
     {
@@ -74,19 +73,7 @@ class Controller extends MainController
     }
 
 
-  /*  private static function _get($sFileName, $sType)
-    {
-        $sFullPath = ROOT_PATH . $sType . '/' . $sFileName . '.php';
-        if (is_file($sFullPath))
-            require $sFullPath;
-        else
-            exit('The "' . $sFullPath . '" file doesn\'t exist');
-    }
 
-    public static function getView($sViewName)
-    {
-        self::_get($sViewName, 'View');
-    }*/
 
 
 }

@@ -18,16 +18,17 @@ $Controller = new Controller;
 
 /****************** TEST ZONE***************************/
 
-/*$router->get('/test', array(
-    'func' => 'Controller::test'
-));*/
-
-
 
 $router->get('/main-page', array(
-    'func' => array($Controller, 'test'),
+    'func' => array($Controller, 'getMainPage'),
     'parameters' => array()
 ));
+
+
+/*$router->get('/single-post', array(
+    'func' => array($Controller, 'getSinglePost'),
+    'parameters' => array()
+));*/
 
 /****************** END  TEST ZONE***************************/
 

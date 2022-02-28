@@ -7,10 +7,7 @@
  */
 class MainController
 {
-    /**
-     * @var array
-     */
-    protected $oPosts;
+
     /**
      * @var array
      */
