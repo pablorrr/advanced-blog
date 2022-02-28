@@ -6,7 +6,7 @@
  * @link             http://hizup.uk
  */
 
-
+namespace Model;
 require 'MainModel.php';
 
 class BlogModel extends MainModel

@@ -1,4 +1,8 @@
 <?php
+
+use Controller\BlogController;
+use Libs\Router;
+
 error_reporting(E_ALL);
 define('PROT', (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? 'https://' : 'http://');
 define('ROOT_PATH', __DIR__ . '/');

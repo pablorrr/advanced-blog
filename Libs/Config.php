@@ -5,7 +5,7 @@
  * @license          Lesser General Public License <http://www.gnu.org/copyleft/lesser.html>
  * @link             http://hizup.uk
  */
-
+namespace Libs;
 /**
  * klasa konfigujacji  wykorzytywana przy otwarciu polacxzeniaz DB
  * Class Config
