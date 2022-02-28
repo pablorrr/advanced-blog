@@ -1,8 +1,8 @@
 <?php
 
 require 'MainController.php';
-//require 'MainModel.php';
-require 'BlogModel.php';
+
+require ROOT_PATH .'Model/BlogModel.php';
 
 class BlogController extends MainController
 {

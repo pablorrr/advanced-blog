@@ -7,7 +7,7 @@
  */
 
 
-require 'Config.php';
+require ROOT_PATH .'Libs/Config.php';
 
 /**
  * Class MainModel

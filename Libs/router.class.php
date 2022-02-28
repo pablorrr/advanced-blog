@@ -246,33 +246,7 @@ class Router
      * @param $exec
      * @return array|callable|string|string[]
      *
-     * $exec - to najprwd metoda , akcja ktora ma sie wykonac
-     *
-     *  validate_config  - jest metoda ktorama sprawdzic na wejsciu (zastosowany lancyuch url uri)
-     * string , gdy zostanie rozpoznany to spr czy dane metody funkcje istnieja
-     *
-     * zroznicowano typu func(zgodnie z wywolanie get post w indesxie)
-     *
-     *
-     *
-     * closure - e.g -$router->get('/ec+h(o)', function(){
-     * echo $_GET['t'];
-     * });
-     *
-     * static -$router->get('/hello/world', array(
-     * 'func' => 'Controller::helloworld'
-     * ));
-     *
-     * class - $router->get('/text', array(
-     * 'func' => array($Controller, 'text'),
-     * 'parameters' => array(1, 2, 3)
-     * ));
-     *
-     *
-     * function - $router->get('/phpinfo', 'phpinfo');
-     *
-     * string - njprwd scisle powiazany z typem function
-     *
+
      *
      */
     private function validate_config($exec)
@@ -293,17 +267,7 @@ class Router
         } elseif (is_string($exec)) {//gdy exec jest stringiem
             $temp = $exec;
             $exec = array('func' => $temp, 'type' => 'string');
-        } /**
-         *$router->get('/hello/world', array(
-         * 'func' => 'Controller::helloworld'
-         * ));
-         *
-         *ponizszy zapis obsluguje wywolania get post podobne jak powyzej
-         *
-         *jesli napotaka takie wywolanie zacznie sptrawdzac czy w kontolerze istnije taka metoda
-         * ,etoda msi byc oczywiscie stattyczna
-         *
-         */
+        }
         elseif (is_string($exec['func']) && strpos($exec['func'], '::')) { //Static method
             if (!method_exists(explode('::', $exec['func'])[0], explode('::', $exec['func'])[1])) {
                 //trigger_error php - printuje bledy
@@ -311,17 +275,7 @@ class Router
             }
             $exec['type'] = 'static';//jesli znajdzie taka metode oznacz ja jako statayczna
 
-        } /**
-         * $router->get('/text', array(
-         * 'func' => array($Controller, 'text'),
-         * 'parameters' => array(1, 2, 3)
-         * ));
-         *
-         * ponizszy zapis obsluguje wywolania get post podobne jak powyzej
-         *
-         *
-         *
-         */
+        }
 
         elseif (is_array($exec['func']) && count($exec['func']) == 2) { // jesli func posaida np - ($Controller, 'text'),
             if (!is_object($exec['func'][0])) {//pirewszy eleemnt  klucza func powinien byc kontrolerrem
