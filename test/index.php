@@ -1,15 +1,38 @@
 <?php
 error_reporting(E_ALL);
+
+define('ROOT_PATH', __DIR__ . '/');
+
 require '../router.class.php';
 require 'controller.php';
+
 
 $router = new Router;
 $Controller = new Controller;
 
 
-
 //$router->get('/phpinfo', 'phpinfo');
 //$router->setBase('/base');
+
+
+/****************** TEST ZONE***************************/
+
+$router->get('/test', array(
+    'func' => 'Controller::test'
+));
+
+/****************** END  TEST ZONE***************************/
+
+
+
+
+
+
+
+
+
+
+
 
 
 $router->get('/my/route', array(
@@ -23,28 +46,6 @@ $router->get('/form', array(
 $router->post('/form', array(
     'func' => array($Controller, 'form_post')
 ));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 $router->get('/para/{var1}/{var2}/{var3}/{var4}', function ($var1, $var2, $var3, $var4) {
