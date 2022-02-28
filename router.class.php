@@ -122,7 +122,23 @@ class Router
         if (!$parameters) {
             return $this->base . $this->url;//gdy nie ma parametrow zworc sceizke url bez parametrow
         } else {// w przeciwnym razie zwroc scezke z parametrami(mimo wszytsko  istnieni paramtrow i tak jest sprwdxzane)
-            return $this->base . $this->url . (($_SERVER['QUERY_STRING'] != null) ? '?' . $_SERVER['QUERY_STRING'] : '');
+            // return $this->base . $this->url . (($_SERVER['QUERY_STRING'] != null) ? '?' . $_SERVER['QUERY_STRING'] : '');
+            return (($_SERVER['QUERY_STRING'] != null) ? '?' . $_SERVER['QUERY_STRING'] : '');
+        }
+    }
+
+    /**
+     * @param bool $parameters
+     * @return int|string
+     *
+     * my individual modif to simply get post id toprint in single post page view
+     */
+    public function getPostId($parameters = false)
+    {
+        if (!$parameters) {
+            return $this->base . $this->url;//gdy nie ma parametrow zworc sceizke url bez parametrow
+        } elseif (isset($_GET['post'])) {
+            return (($_GET['post'] != null) ? (int)$_GET['post'] : '');
         }
     }
 
@@ -240,17 +256,17 @@ class Router
      *
      *
      * closure - e.g -$router->get('/ec+h(o)', function(){
-    echo $_GET['t'];
-    });
+     * echo $_GET['t'];
+     * });
      *
      * static -$router->get('/hello/world', array(
-    'func' => 'Controller::helloworld'
-    ));
+     * 'func' => 'Controller::helloworld'
+     * ));
      *
      * class - $router->get('/text', array(
-    'func' => array($Controller, 'text'),
-    'parameters' => array(1, 2, 3)
-    ));
+     * 'func' => array($Controller, 'text'),
+     * 'parameters' => array(1, 2, 3)
+     * ));
      *
      *
      * function - $router->get('/phpinfo', 'phpinfo');
@@ -264,8 +280,8 @@ class Router
 
         /**
          * $router->get('/ec+h(o)', function(){
-        echo $_GET['t'];
-        });
+         * echo $_GET['t'];
+         * });
          * njnwprd ponizssyzy zapis sprawdza wywolania i obsluguje je jak powyzej
          *
          *
@@ -277,11 +293,10 @@ class Router
         } elseif (is_string($exec)) {//gdy exec jest stringiem
             $temp = $exec;
             $exec = array('func' => $temp, 'type' => 'string');
-        }
-        /**
+        } /**
          *$router->get('/hello/world', array(
-        'func' => 'Controller::helloworld'
-        ));
+         * 'func' => 'Controller::helloworld'
+         * ));
          *
          *ponizszy zapis obsluguje wywolania get post podobne jak powyzej
          *
@@ -296,12 +311,11 @@ class Router
             }
             $exec['type'] = 'static';//jesli znajdzie taka metode oznacz ja jako statayczna
 
-        }
-        /**
+        } /**
          * $router->get('/text', array(
-        'func' => array($Controller, 'text'),
-        'parameters' => array(1, 2, 3)
-        ));
+         * 'func' => array($Controller, 'text'),
+         * 'parameters' => array(1, 2, 3)
+         * ));
          *
          * ponizszy zapis obsluguje wywolania get post podobne jak powyzej
          *
@@ -317,8 +331,7 @@ class Router
                 trigger_error('The method specified does not exist', E_USER_ERROR);
             }
             $exec['type'] = 'class';//jesli warunki sa spelrnione to nastaw  akcje na typ class
-        }
-        /**
+        } /**
          *
          * $router->get('/phpinfo', 'phpinfo');
          *

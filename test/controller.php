@@ -1,7 +1,8 @@
 <?php
 
 require 'MainController.php';
-require  'BlogModel.php';
+//require 'MainModel.php';
+require 'BlogModel.php';
 
 class Controller extends MainController
 {
@@ -15,41 +16,42 @@ class Controller extends MainController
     public function __construct()
     {
         // Enable PHP Session
-      //  if (empty($_SESSION))
-          //  session_start();
-
+        //  if (empty($_SESSION))
+        //  session_start();
 
 
         $this->oModel = new BlogModel();
 
         /** Get the Post ID in the constructor in order to avoid the duplication of the same code **/
-      //  $this->_iId = (int)(!empty($_GET['id']) ? $_GET['id'] : 0);
+        $this->_iId = (int)(!empty($_GET['id']) ? $_GET['id'] : 0);
 
 
     }
 
 
-/******************* Test Zone *****************************/
+    /******************* Test Zone *****************************/
 //uwaga!!! nie mozna nzwac metody i route index jest to njprwd nazwa zastrzezona!!!!
-    public  function getMainPage()
+    public function getMainPage()
     {
         $this->oPosts = $this->oModel->getAll();
+
         $this->getView('index');
     }
 
 
-
-
-    public  function getSinglePost()
-    {
-
-
-        //$this->oPosts = $this->oModel->getAll();
-        $this->oPost = $this->oModel->getById($this->_iId); // Get the data of the post
+    public function getSinglePost($post_id)
+    {    echo 'Current post id: ' . $post_id;
+        // var_dump(  $router->get_URL_parameter('var1'));
+          $this->oPost = $this->oModel->getById($post_id);
 
         $this->getView('single-post');
+
+
+
     }
-/*******************  End Test Zone *****************************/
+
+    /*******************  End Test Zone *****************************/
+
 
     public function text($t1, $t2, $t3)
     {
@@ -71,9 +73,6 @@ class Controller extends MainController
     {
         var_dump($_POST);
     }
-
-
-
 
 
 }

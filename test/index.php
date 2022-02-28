@@ -25,10 +25,14 @@ $router->get('/main-page', array(
 ));
 
 
-/*$router->get('/single-post', array(
+$router->get('/single-post', array(
     'func' => array($Controller, 'getSinglePost'),
-    'parameters' => array()
-));*/
+    'parameters' => array($router->getPostId(true))
+
+));
+
+
+
 
 /****************** END  TEST ZONE***************************/
 
