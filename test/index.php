@@ -2,6 +2,8 @@
 error_reporting(E_ALL);
 
 define('ROOT_PATH', __DIR__ . '/');
+define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))) . '/');
+
 
 require '../router.class.php';
 require 'controller.php';

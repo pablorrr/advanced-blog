@@ -2,6 +2,11 @@
 
 class Controller
 {
+    /**
+     * @var array
+     */
+    protected $oPosts;
+
     public static function helloworld()
     {
         echo 'Hello World';
