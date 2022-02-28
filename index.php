@@ -2,6 +2,7 @@
 
 use Controller\BlogController;
 use Libs\Router;
+use Controller\TestController;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -11,12 +12,13 @@ define('ROOT_PATH', __DIR__ . '/');
 define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))) . '/');
 
 
-//require 'Libs/Router.php';
-//require 'Controller/BlogController.php';
+
 
 
 $router = new Router;
 $Controller = new BlogController();
+
+TestController::test();
 
 
 /****************** TEST ZONE***************************/
