@@ -24,7 +24,7 @@ $Controller = new Controller;
 
 
 
-$router->get('/test', array(
+$router->get('/main-page', array(
     'func' => array($Controller, 'test'),
     'parameters' => array()
 ));
@@ -43,9 +43,6 @@ $router->get('/test', array(
 
 
 
-$router->get('/my/route', array(
-    'func' => 'Controller::myroute'
-));
 
 $router->get('/form', array(
     'func' => array($Controller, 'form_get')
@@ -71,9 +68,7 @@ $router->get('/para/{var1}/{var2}/{var3}/{var4}', function ($var1, $var2, $var3,
     echo "<br>var4:" . $var4;
 });
 
-$router->get('/^\/\d+$/', function () {
-    echo 'number';
-});
+
 
 $router->get('/pa\*th', array(
     'func' => array($Controller, 'path'),
