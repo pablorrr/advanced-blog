@@ -6,14 +6,11 @@ define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(
 
 
 require '../router.class.php';
-require 'controller.php';
+require 'BlogController.php';
 
 
 $router = new Router;
-$Controller = new Controller;
-
-//$router->get('/phpinfo', 'phpinfo');
-//$router->setBase('/base');
+$Controller = new BlogController();
 
 
 /****************** TEST ZONE***************************/

@@ -4,7 +4,7 @@ require 'MainController.php';
 //require 'MainModel.php';
 require 'BlogModel.php';
 
-class Controller extends MainController
+class BlogController extends MainController
 {
     /**
      * @var array
