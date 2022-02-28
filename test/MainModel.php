@@ -6,10 +6,8 @@
  * @link             http://hizup.uk
  */
 
-namespace PhpMVC\Model;
 
-use PDO;
-use PhpMVC\Libs\Config;
+require 'Config.php';
 
 /**
  * Class MainModel

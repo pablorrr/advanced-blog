@@ -6,7 +6,6 @@
  * @link             http://hizup.uk
  */
 
-namespace PhpMVC\Libs;
 /**
  * klasa konfigujacji  wykorzytywana przy otwarciu polacxzeniaz DB
  * Class Config

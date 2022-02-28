@@ -6,7 +6,9 @@
  * @link             http://hizup.uk
  */
 
-namespace PhpMVC\Model;
+
+
+require 'MainModel.php';
 
 class BlogModel extends MainModel
 {
@@ -17,7 +19,7 @@ class BlogModel extends MainModel
     public function __construct()
     {
         $this->oDb = MainModel::getInstance()->getConnection();
-        $this->CommnetModel = new Comment();
+        //$this->CommnetModel = new Comment();
 
 
     }
@@ -61,17 +63,22 @@ class BlogModel extends MainModel
      */
     public function getAll()
     {
-        if ($this->CommnetModel->get() == false) {
-            $oStmt = $this->oDb->query('SELECT * FROM Posts ORDER BY createdDate DESC');
-            return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-        }
-        if ($this->CommnetModel->get() == true) {
+   //     if ($this->CommnetModel->get() == false) {
+        //    $oStmt = $this->oDb->query('SELECT * FROM Posts ORDER BY createdDate DESC');
+          //  return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+      //  }
+      //  if ($this->CommnetModel->get() == true) {
 
-            $oStmt = $this->oDb->query('SELECT posts.id, posts.title, posts.body,posts.createdDate, comments.comment
-       FROM comments
-       RIGHT JOIN posts ON comments.post_id = posts.id  ORDER BY createdDate');
-            return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-        }
+        //    $oStmt = $this->oDb->query('SELECT posts.id, posts.title, posts.body,posts.createdDate, comments.comment
+    //   FROM comments
+    //   RIGHT JOIN posts ON comments.post_id = posts.id  ORDER BY createdDate');
+       //     return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+      //  }
+
+        $oStmt = $this->oDb->query('SELECT * FROM Posts ORDER BY createdDate DESC');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+
+
 
     }
 

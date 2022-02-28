@@ -1,11 +1,31 @@
 <?php
 
-class Controller
+require 'MainController.php';
+require  'BlogModel.php';
+class Controller extends MainController
 {
     /**
      * @var array
      */
     protected $oPosts;
+
+    protected $oModel;
+
+    public function __construct()
+    {
+        // Enable PHP Session
+      //  if (empty($_SESSION))
+          //  session_start();
+
+
+
+        $this->oModel = new BlogModel();
+
+        /** Get the Post ID in the constructor in order to avoid the duplication of the same code **/
+      //  $this->_iId = (int)(!empty($_GET['id']) ? $_GET['id'] : 0);
+
+
+    }
 
     public static function helloworld()
     {
@@ -24,10 +44,11 @@ class Controller
     }
 
 //uwaga!!! nie mozna nzwac metody i route index jest to njprwd nazwa zastrzezona!!!!
-    public static function test()
+    public  function test()
     {
-echo 'test';
-        self::getView('index');
+
+        $this->oPosts = $this->oModel->getAll();
+        $this->getView('index');
     }
 
 
@@ -53,7 +74,7 @@ echo 'test';
     }
 
 
-    private static function _get($sFileName, $sType)
+  /*  private static function _get($sFileName, $sType)
     {
         $sFullPath = ROOT_PATH . $sType . '/' . $sFileName . '.php';
         if (is_file($sFullPath))
@@ -65,7 +86,7 @@ echo 'test';
     public static function getView($sViewName)
     {
         self::_get($sViewName, 'View');
-    }
+    }*/
 
 
 }

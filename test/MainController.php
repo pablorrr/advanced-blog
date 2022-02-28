@@ -6,12 +6,7 @@
  * @link             http://hizup.uk
  */
 
-namespace PhpMVC\Controller;
 /**
- *
- * -pobiera widoki
- * -pobbiera modele
- * - ustwia wartrosmiziennych przesylanych do  widkow- njpwrd nie wykjorzytsywane
  *
  * Class MainController
  * @package TestProject\Libs
@@ -38,13 +33,13 @@ class MainController
 
     public function getView($sViewName)
     {
-        $this->_get($sViewName, 'View');
+        $this->_get($sViewName);
     }
 
-    public function getModel($sModelName)
-    {
-        $this->_get($sModelName, 'Model');
-    }
+   // public function getModel($sModelName)
+  //  {
+     //   $this->_get($sModelName);
+  //  }
 
     /**
      * This method is useful in order to avoid the duplication of code (create almost the same method for "getView" and "getModel"
@@ -55,13 +50,22 @@ class MainController
      * jest to uzupenienie getview wykorzytywanego w kontrolerze - ustala sciezki dostepowe do widokow
      *
      */
-    private function _get($sFileName, $sType)
+    private function _get($sFileName)
     {
-        $sFullPath = ROOT_PATH . $sType . '/' . $sFileName . '.php';
+        $sFullPath = ROOT_PATH . '/View/' . $sFileName . '.php';
+
+
         if (is_file($sFullPath))
             require $sFullPath;
-        else
+        else {
+            echo ROOT_PATH . '<br>';
+
+            echo $sFullPath . '<br>';
+            echo $sFileName;
+
             exit('The "' . $sFullPath . '" file doesn\'t exist');
+        }
+
     }
 
     /**
@@ -94,8 +98,6 @@ class MainController
 
         if ($is_page_refreshed) :
 
-
-
             if (!empty ($_SESSION['PostSuccessMsg'])) {
                 unset($_SESSION['PostSuccessMsg']);
             }
@@ -116,7 +118,7 @@ class MainController
     }
 
 
-   public static function manageNotif()
+    public static function manageNotif()
     {
         if (!empty($_SESSION['CommentSuccessMsg'])) {
             unset($_SESSION['CommentSuccessMsg']);
@@ -132,7 +134,6 @@ class MainController
         }
         endif;
     }
-
 
 
 }

@@ -18,8 +18,15 @@ $Controller = new Controller;
 
 /****************** TEST ZONE***************************/
 
-$router->get('/test', array(
+/*$router->get('/test', array(
     'func' => 'Controller::test'
+));*/
+
+
+
+$router->get('/test', array(
+    'func' => array($Controller, 'test'),
+    'parameters' => array()
 ));
 
 /****************** END  TEST ZONE***************************/
