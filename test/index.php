@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-
+define('PROT', (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? 'https://' : 'http://');
 define('ROOT_PATH', __DIR__ . '/');
 define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))) . '/');
 
@@ -11,7 +11,6 @@ require 'controller.php';
 
 $router = new Router;
 $Controller = new Controller;
-
 
 //$router->get('/phpinfo', 'phpinfo');
 //$router->setBase('/base');
