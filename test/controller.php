@@ -18,10 +18,10 @@ class Controller
         echo 'my route';
     }
 
-
+//uwaga!!! nie mozna nzwac metody i route index jest to njprwd nazwa zastrzezona!!!!
     public static function test()
     {
-        echo 'test';
+
         self::getView('index');
     }
 
