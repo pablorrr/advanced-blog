@@ -24,7 +24,7 @@ echo $_SERVER['PHP_SELF'].'<br>';///index.php*/
  *
  *
  */
-$router->setBase('/base');
+//$router->setBase('/base');
 /**
  * my route
  */
@@ -52,15 +52,28 @@ $router->get('/ec+h(o)', function(){
 	echo $_GET['t'];
 });
 
+//zwraca sciezke z parametrami - przykladowe zasyosowanie - http://simplyrouter.test/patextth
+//zwoci -Current Path:/patextth
+//Current Path with parameters:/patextth
+//http://simplyrouter.test/pa_nazwa_sciezki_th
+
+//jest  to helper
+
 $router->get('/pa\*th', array(
 	'func' => array($Controller, 'path'),
 	'parameters' => array($router->get_URL(), $router->get_URL(true))
 ));
+
+//to ssmo co wyzej ,sposob uzycia nieznany
+//jest to helper
 $router->get('/path(opt)', array(
 	'func' => array($Controller, 'path'),
 	'parameters' => array($router->get_URL(), $router->get_URL(true))
 ));
 
+
+//zwaca informacje ze wprowadzony param jest cyfra
+//uzycie http://simplyrouter.test/3 - zwroci number
 $router->get('/^\/\d+$/', function(){
 	echo 'number';
 });
@@ -72,7 +85,23 @@ $router->get('/form', array(
 $router->post('/form', array(
 	'func' => array($Controller, 'form_post')
 ));
-
+//pokazanie w jaki spsosb przekazywac parametry do url uri
+// sposb uzycia http://simplyrouter.test/para/1/3/56/6
+/**
+ *
+ * via get_URL_parameter():
+var1:1
+var2:3
+var3:56
+var4:6
+via closure parameters:
+var1:1
+var2:3
+var3:56
+var4:6
+ *
+ *
+ */
 $router->get('/para/{var1}/{var2}/{var3}/{var4}', function($var1, $var2, $var3, $var4){
     global $router;
     echo 'via get_URL_parameter():';
