@@ -1,10 +1,9 @@
 <?php
+
 namespace Controller;
+
 use Model\BlogModel;
 
-require 'MainController.php';
-
-require ROOT_PATH .'Model/BlogModel.php';
 
 class BlogController extends MainController
 {

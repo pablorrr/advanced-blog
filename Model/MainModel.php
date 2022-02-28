@@ -10,7 +10,7 @@ namespace Model;
 use Libs\Config;
 use PDO;
 
-require ROOT_PATH .'Libs/Config.php';
+
 
 /**
  * Class MainModel

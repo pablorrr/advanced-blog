@@ -5,6 +5,7 @@
  * @license          Lesser General Public License <http://www.gnu.org/copyleft/lesser.html>
  * @link             http://hizup.uk
  */
+
 namespace Libs;
 /**
  * klasa konfigujacji  wykorzytywana przy otwarciu polacxzeniaz DB
@@ -13,7 +14,7 @@ namespace Libs;
  */
 final class Config
 {
-    // Database info (if you want to test the script, please edit the below constants with yours)
+
     const
         DB_HOST = 'localhost',
         DB_NAME = 'newmvcblog',

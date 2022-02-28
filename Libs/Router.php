@@ -1,5 +1,7 @@
 <?php
+
 namespace Libs;
+
 class Router
 {
     /**
@@ -44,13 +46,6 @@ class Router
      */
     public function get($path, $exec)
     {
-//tworzy tabluce router
-        //get jako metoda przesylu - glownie zarezerwowana za obsluge poza formularzami
-        //path jako sciezk auri
-        //exec jako akca  wywolana z metody kontroleraa lub  calback w zaleznosci od sposobu wywolania metody get
-        //exec jest walidowany i przetwrzany przezvalidate config
-        //validate config - dopsowanie wywolania metody akcji
-
         array_push($this->router, array('method' => 'GET', 'path' => $path, 'exec' => $this->validate_config($exec)));
     }
 
@@ -246,7 +241,6 @@ class Router
      * @param $exec
      * @return array|callable|string|string[]
      *
-
      *
      */
     private function validate_config($exec)
@@ -267,17 +261,14 @@ class Router
         } elseif (is_string($exec)) {//gdy exec jest stringiem
             $temp = $exec;
             $exec = array('func' => $temp, 'type' => 'string');
-        }
-        elseif (is_string($exec['func']) && strpos($exec['func'], '::')) { //Static method
+        } elseif (is_string($exec['func']) && strpos($exec['func'], '::')) { //Static method
             if (!method_exists(explode('::', $exec['func'])[0], explode('::', $exec['func'])[1])) {
                 //trigger_error php - printuje bledy
                 trigger_error('The method specified does not exist', E_USER_ERROR);
             }
             $exec['type'] = 'static';//jesli znajdzie taka metode oznacz ja jako statayczna
 
-        }
-
-        elseif (is_array($exec['func']) && count($exec['func']) == 2) { // jesli func posaida np - ($Controller, 'text'),
+        } elseif (is_array($exec['func']) && count($exec['func']) == 2) { // jesli func posaida np - ($Controller, 'text'),
             if (!is_object($exec['func'][0])) {//pirewszy eleemnt  klucza func powinien byc kontrolerrem
                 trigger_error('The first parameter of "func" should be an object', E_USER_ERROR);
             }

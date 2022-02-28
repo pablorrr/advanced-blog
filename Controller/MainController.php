@@ -1,4 +1,5 @@
 <?php
+
 namespace Controller;
 /**
  *
@@ -26,7 +27,6 @@ class MainController
     {
         $this->_get($sViewName);
     }
-
 
 
     /**

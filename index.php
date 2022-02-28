@@ -3,14 +3,16 @@
 use Controller\BlogController;
 use Libs\Router;
 
+require __DIR__ . '/vendor/autoload.php';
+
 error_reporting(E_ALL);
 define('PROT', (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? 'https://' : 'http://');
 define('ROOT_PATH', __DIR__ . '/');
 define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))) . '/');
 
 
-require 'Libs/router.class.php';
-require 'Controller/BlogController.php';
+//require 'Libs/Router.php';
+//require 'Controller/BlogController.php';
 
 
 $router = new Router;
@@ -33,13 +35,7 @@ $router->get('/single-post', array(
 ));
 
 
-
-
 /****************** END  TEST ZONE***************************/
-
-
-
-
 
 
 $router->get('/form', array(
@@ -65,7 +61,6 @@ $router->get('/para/{var1}/{var2}/{var3}/{var4}', function ($var1, $var2, $var3,
     echo "<br>var3:" . $var3;
     echo "<br>var4:" . $var4;
 });
-
 
 
 $router->get('/pa\*th', array(
