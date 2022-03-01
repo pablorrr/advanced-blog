@@ -26,7 +26,6 @@
                 <br>
                 <br>
                 <?php foreach ($this->oPosts as $oPost): ?>
-
                     <h1>
                         <a href="<?= ROOT_URL ?>single-post?id=<?= $oPost->id ?>"><?= htmlspecialchars($oPost->title) ?></a>
                     </h1>
@@ -55,6 +54,4 @@
 
 
 <?php endif ?>
-
-
 <?php require 'components/footer.php' ?>
