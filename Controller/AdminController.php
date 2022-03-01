@@ -28,7 +28,7 @@ class AdminController extends MainController
             session_start();
 
         /** Get the Post ID in the constructor in order to avoid the duplication of the same code **/
-       // $this->_iId = (int)(!empty($_GET['id']) ? $_GET['id'] : 0);
+        // $this->_iId = (int)(!empty($_GET['id']) ? $_GET['id'] : 0);
         $this->oEmail = $this->getAModelObject()->getEmailById($this->_iId);
 
     }
@@ -60,7 +60,13 @@ class AdminController extends MainController
     }
 
 
-    public function login()
+    public function login_get()
+    {
+        $this->getView('login');
+    }
+
+
+    public function login_post()
     {
         if (empty($_POST['submit'])) {
             if (!empty($_SESSION['AdminSuccMsg'])) {
@@ -99,8 +105,6 @@ class AdminController extends MainController
                 $_SESSION['AdminErrorMsg'] = 'Incorrect Login!';
             }
         }
-
-        $this->getView('login');
     }
 
     public function logout()
@@ -219,7 +223,7 @@ class AdminController extends MainController
 
     public function getLogoutPage()
     {
-      //  $this->oEmail = $this->getAModelObject()->getEmailById($this->_iId);
+        //  $this->oEmail = $this->getAModelObject()->getEmailById($this->_iId);
         $this->getView('logout');
     }
 
@@ -254,7 +258,7 @@ class AdminController extends MainController
 
                     //if redirect if updated yourself(logged user)todo: chek if you can doyhis in constructor
 
-                  //  $this->oEmail = $this->getAModelObject()->getEmailById($this->_iId);
+                    //  $this->oEmail = $this->getAModelObject()->getEmailById($this->_iId);
 
                     if ($_SESSION['userEmail'] === $this->oEmail->email) {
 
@@ -333,13 +337,13 @@ class AdminController extends MainController
                     $_SESSION['AdminSuccMsg'] = 'User has been deleted properly';
 
                 } else {
-                      header('Location: ' . ROOT_URL . '?p=admin&a=index');
+                    header('Location: ' . ROOT_URL . '?p=admin&a=index');
                     $_SESSION['AdminErrorMsg'] = 'Whoops! Post cannot be deleted.';
                     exit('Whoops! Post cannot be deleted.');
 
                 }
             } else {
-                  header('Location: ' . ROOT_URL . '?p=admin&a=index');
+                header('Location: ' . ROOT_URL . '?p=admin&a=index');
                 $_SESSION['AdminErrorMsg'] = 'Whoops! You cant delete all users!!';
                 exit('Whoops! You cant delete all users!! or yourself!!');
 

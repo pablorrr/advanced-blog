@@ -115,10 +115,6 @@ class AdminModel extends MainModel
         return $oStmt->fetchColumn();
     }
 
-    /**
-     * @param $id
-     * @return bool
-     */
 
     /**
      * @param $id

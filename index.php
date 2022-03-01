@@ -1,5 +1,6 @@
 <?php
 
+use Controller\AdminController;
 use Controller\BlogController;
 use Libs\Router;
 use Libs\Config;
@@ -21,11 +22,14 @@ if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
 
 $router = new Router;
 $BlogController = new BlogController();
+$AdminController = new AdminController();
 
 //TestController::test();
 
 
 /****************** TEST ZONE***************************/
+
+/************* Front End **********************/
 
 /** MAIN PAGE **/
 
@@ -40,6 +44,11 @@ $router->get('/single-post', array(
 
 ));
 
+
+/***************** Back End ********************/
+
+
+//add post
 $router->get('/add', array(
     'func' => array($BlogController, 'add_post_get')
 ));
@@ -47,6 +56,25 @@ $router->get('/add', array(
 $router->post('/add', array(
     'func' => array($BlogController, 'add_post_post')
 ));
+
+//login form
+$router->get('/login', array(
+    'func' => array($AdminController, 'login_get')
+));
+
+$router->post('/login', array(
+    'func' => array($AdminController, 'login_post')
+));
+
+$router->post('/logout', array(
+    'func' => array($AdminController, 'logout')
+));
+
+
+
+
+
+
 /****************** END  TEST ZONE***************************/
 
 
