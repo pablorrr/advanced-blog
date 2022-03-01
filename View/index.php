@@ -39,21 +39,14 @@
                     <?php if (property_exists($oPost, 'comment') == true): ?>
                         <p>Comments: <?= nl2br(htmlspecialchars(mb_strimwidth($oPost->comment, 0, 5, '...'))) ?></p>
                     <?php endif; ?>
-
-
+                    <?php require 'components/control_buttons.php' ?>
                     <hr class="clear"/><br/>
                 <?php endforeach ?>
                 <?php if (isset($_SESSION['is_logged'])) : ?>
 
-                    <button type="button" onclick="window.location='<?= ROOT_URL ?>add'" class="bold">Add
-                        New
-                        Post
-                    </button>
+                    <button type="button" onclick="window.location='<?= ROOT_URL ?>add'" class="bold">Add New Post</button>
                     <br>
                     <br>
-                    <br>
-                    <br>
-
                 <?php endif ?>
             </div>
             <div class="col-md-4"></div>
