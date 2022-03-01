@@ -18,8 +18,8 @@ class BlogController extends MainController
     public function __construct()
     {
         // Enable PHP Session
-        //  if (empty($_SESSION))
-        //  session_start();
+         if (empty($_SESSION))
+          session_start();
 
         $this->oModel = new BlogModel();//todo: wprowadzic DI
     }
@@ -54,11 +54,11 @@ class BlogController extends MainController
 
     public function add_post_post()
     {
-        // if (!$this->isLogged()) exit;
+       //  if (!$this->isLogged()) exit;
 
         //to prevent display msg  when it is unconcern
-        //  MainController::manageNotif();
-        //http://simplyblogadvanced.test/add
+          MainController::manageNotif();
+
 
         if (!empty($_POST['add_submit'])) {
 
