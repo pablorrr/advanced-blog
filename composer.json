@@ -1,5 +1,7 @@
 {
-  "require": {},
+  "require": {
+    "ext-mbstring": "*"
+  },
   "autoload": {
     "psr-4": {
 	 "Controller\\": "Controller",

@@ -53,6 +53,7 @@ class BlogController extends MainController
 
         //to prevent display msg  when it is unconcern
         //  MainController::manageNotif();
+        //http://simplyblogadvanced.test/add
 
         if (!empty($_POST['add_submit'])) {
 
@@ -68,11 +69,11 @@ class BlogController extends MainController
 
                     if ($this->oModel->add($aData)) {
 
-                        header('Location: ' . ROOT_URL);
+                        header('Location: ' . MAIN_PAGE);
                         $_SESSION['PostSuccessMsg'] = 'Hurray!! The post has been added.';
 
                     } else {
-                        header('Location: ' . ROOT_URL . '?p=blog&a=add');
+                        header('Location: ' . MAIN_PAGE . '/add');
 
                         if (!empty($_SESSION['PostSuccessMsg'])) {
                             unset($_SESSION['PostSuccessMsg']);

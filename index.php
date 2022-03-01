@@ -40,7 +40,7 @@ $router->get('/single-post', array(
 
 ));
 
-$router->get('/add', array(
+$router->any('/add', array(
     'func' => array($BlogController, 'add_post')
 ));
 
