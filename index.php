@@ -69,9 +69,12 @@ $router->get('/text', array(
     'func' => array($Controller, 'text'),
     'parameters' => array(1, 2, 3)
 ));
-$router->catch_exception(function () {
-    echo 'no suitable routing pattern';
-    header('Refresh: 3; URL=http://simplyblogadvanced.test/main-page');
+
+$router->catch_exception(function () use ($Controller) {
+
+    //echo 'no suitable routing pattern';
+    $Controller->getView('404');
+
 
 });
 /*********** Main Page ****************/
