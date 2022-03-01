@@ -15,7 +15,7 @@ define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(
 $router = new Router;
 $Controller = new BlogController();
 
-TestController::test();
+//TestController::test();
 
 
 /****************** TEST ZONE***************************/
@@ -73,10 +73,12 @@ $router->catch_exception(function () {
     echo 'no suitable routing pattern';
 
 });
-
+/*********** Main Page ****************/
+//nie zmieniac kolejnosci wywolania tej trasy!!!!
 $router->get('/main-page', array(
     'func' => array($Controller, 'getMainPage'),
     'parameters' => array()
 ));
+/********** Main Page***************/
 
 $router->match();
