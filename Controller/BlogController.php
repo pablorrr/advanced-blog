@@ -6,7 +6,6 @@ use Libs\Valid;
 use Model\BlogModel;
 
 
-
 class BlogController extends MainController
 {
     /**
@@ -28,7 +27,8 @@ class BlogController extends MainController
     use Valid;
 
     /******************* Test Zone *****************************/
-//uwaga!!! nie mozna nzwac metody i route index jest to njprwd nazwa zastrzezona!!!!
+
+
     public function getMainPage()
     {
         $this->oPosts = $this->oModel->getAll();
@@ -47,7 +47,12 @@ class BlogController extends MainController
     /**
      *  dodoanie posta
      */
-    public function add_post()
+    public function add_post_get()
+    {
+        $this->getView('add_post');
+    }
+
+    public function add_post_post()
     {
         // if (!$this->isLogged()) exit;
 
@@ -97,7 +102,7 @@ class BlogController extends MainController
                 $_SESSION['PostErrorMsg'] = 'All fields are required and the title cannot exceed 50 characters.';
             }
         }
-        $this->getView('add_post');
+
     }
 
 

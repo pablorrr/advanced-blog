@@ -99,10 +99,10 @@ class Router
     public function setBase($base)
     {
         $this->base = $base;
-//do url (uri) podstaw jako bazowa sciezke tylko wtedy gdy nie mozna z niej wyciagnc podciagu
+
         if (substr($this->url, 0, strlen($base)) == $base) {
             $this->url = substr($this->url, strlen($base));
-        } else {//w przeciwnym wypadku otraktuj go jako zwykly uri ,url
+        } else {
             $this->matched = true; //Jump to exception
         }
     }
@@ -117,9 +117,9 @@ class Router
     public function get_URL($parameters = false)
     {
         if (!$parameters) {
-            return $this->base . $this->url;//gdy nie ma parametrow zworc sceizke url bez parametrow
-        } else {// w przeciwnym razie zwroc scezke z parametrami(mimo wszytsko  istnieni paramtrow i tak jest sprwdxzane)
-            // return $this->base . $this->url . (($_SERVER['QUERY_STRING'] != null) ? '?' . $_SERVER['QUERY_STRING'] : '');
+            return $this->base . $this->url;
+        } else {
+
             return (($_SERVER['QUERY_STRING'] != null) ? '?' . $_SERVER['QUERY_STRING'] : '');
         }
     }
@@ -133,7 +133,7 @@ class Router
     public function getPostId($parameters = false)
     {
         if (!$parameters) {
-            return $this->base . $this->url;//gdy nie ma parametrow zworc sceizke url bez parametrow
+            return $this->base . $this->url;
         } elseif (isset($_GET['id'])) {
             return (($_GET['id'] != null) ? (int)$_GET['id'] : '');
         }
@@ -141,11 +141,7 @@ class Router
 
     /**
      * @return bool
-     *
-     * njprwd nawaznjesza metoda w routingu
-     * njprwd sprwdza i dopusowuje wszytskie wywolania w index.php  get potst itp do tego co zostaloodczytane z serwer url
-     * i wywoluje dopsaowana do sciezki akcje w kontolerzelub w inny sposob( przyklady sa do sprawdzeia w index.php)
-     *
+     **
      */
 
     public function match()
@@ -188,18 +184,16 @@ class Router
      */
     private function create_regex_payload($path)
     {
-        //njprwd wstepna okreslenie sceizki - wtsepne budowanie podstwowwego wyrazenia regularnego jakie ma spelniac sciezka
-
         if (substr($path, 0, 4) == "/^\/" && substr($path, -1, 1) == "/") { // regex
             return $path;
         }
-        //tablica  do wykorzytsania przy wymianie w lancuchu
+
         $strreplace = array(
             "\*" => "[\w]*",
             '/' => '\/'
         );
 
-        //tablica do wymianie w lancuchu ale zgodnie z podanycm wzrocem
+
         $pregreplace = array(
             "/(\([\w]+\))/" => "$1{0,1}",
             "/{[\w]+}/" => "(.*?)"

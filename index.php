@@ -40,11 +40,13 @@ $router->get('/single-post', array(
 
 ));
 
-$router->any('/add', array(
-    'func' => array($BlogController, 'add_post')
+$router->get('/add', array(
+    'func' => array($BlogController, 'add_post_get')
 ));
 
-
+$router->post('/add', array(
+    'func' => array($BlogController, 'add_post_post')
+));
 /****************** END  TEST ZONE***************************/
 
 
