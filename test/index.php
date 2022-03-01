@@ -51,6 +51,7 @@ $router->get('/phpinfo', 'phpinfo');
 $router->get('/ec+h(o)', function(){
 	echo $_GET['t'];
 });
+$router->any('add', function(){});
 
 //zwraca sciezke z parametrami - przykladowe zasyosowanie - http://simplyrouter.test/patextth
 //zwoci -Current Path:/patextth
