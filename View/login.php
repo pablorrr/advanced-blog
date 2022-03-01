@@ -8,7 +8,7 @@
 ?>
 <?php require 'components/header.php' ?>
 <?php require 'components/admin-msg.php' ?>
-
+<h3>Log in Form</h3>
 <form action="" method="post">
 
     <p><label for="email">Email:</label><br/>
@@ -22,4 +22,7 @@
     <p><input type="submit" value="Log In"/></p>
 </form>
 
-<?php require 'components/footer.php' ?>
+<?php
+
+
+require 'components/footer-login.php' ?>

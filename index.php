@@ -9,7 +9,10 @@ use Libs\Config;
 
 require __DIR__ . '/vendor/autoload.php';
 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
+error_reporting(error_reporting() & ~E_NOTICE);
+
+
 define('PROT', (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? 'https://' : 'http://');
 define('ROOT_PATH', __DIR__ . '/');
 define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))) . '/');
@@ -26,7 +29,7 @@ $AdminController = new AdminController();
 
 //TestController::test();
 
-
+//var_dump($_SESSION);
 /****************** TEST ZONE***************************/
 
 /************* Front End **********************/
@@ -66,7 +69,7 @@ $router->post('/login', array(
     'func' => array($AdminController, 'login_post')
 ));
 
-$router->post('/logout', array(
+$router->all('/logout', array(
     'func' => array($AdminController, 'logout')
 ));
 

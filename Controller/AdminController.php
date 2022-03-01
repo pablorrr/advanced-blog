@@ -62,6 +62,11 @@ class AdminController extends MainController
 
     public function login_get()
     {
+        if ($this->isLogged()) {
+            header('Location: ' . MAIN_PAGE);
+            exit();
+        }
+
         $this->getView('login');
     }
 
@@ -84,25 +89,30 @@ class AdminController extends MainController
             unset($_SESSION['AdminSuccMsg']);
         }
         if ($this->isLogged())
-            header('Location: ' . ROOT_URL . '?p=blog&a=all');
+            header('Location: ' . MAIN_PAGE);
 
         if (isset($_POST['email'], $_POST['password'])) {
 
             $sHashPassword = $this->getAModelObject()->login($_POST['email']);
 
             if (password_verify($_POST['password'], $sHashPassword)) {
-
+                if (!empty($_SESSION['AdminErrorMsg'])) {
+                    unset($_SESSION['AdminErrorMsg']);
+                }
                 $_SESSION['is_logged'] = true;
                 $_SESSION['userEmail'] = $_POST['email'];
-                header('Location: ' . ROOT_URL . '?p=blog&a=all');
-
+                header('Location: ' . ROOT_URL);
                 exit;
+
             } else {
                 //spr czy to jest potrebne!!!
                 if (!empty($_SESSION['AdminSuccMsg'])) {
                     unset($_SESSION['AdminSuccMsg']);
                 }
+                $_SESSION['is_logged'] = false;
                 $_SESSION['AdminErrorMsg'] = 'Incorrect Login!';
+                header('Location: ' .  ROOT_URL . '/login');
+
             }
         }
     }
@@ -120,7 +130,7 @@ class AdminController extends MainController
         }
 
         // Redirect to login page
-       header('Location: ' . ROOT_URL . '/login');
+        header('Location: ' . ROOT_URL . '/login');
         exit;
     }
 
@@ -223,7 +233,7 @@ class AdminController extends MainController
 
     public function getLogoutPage()
     {
-        //  $this->oEmail = $this->getAModelObject()->getEmailById($this->_iId);
+
         $this->getView('logout');
     }
 
