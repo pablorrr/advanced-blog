@@ -10,7 +10,13 @@ error_reporting(E_ALL);
 define('PROT', (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? 'https://' : 'http://');
 define('ROOT_PATH', __DIR__ . '/');
 define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))) . '/');
+define('MAIN_ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))));
+define('MAIN_PAGE', PROT . $_SERVER['SERVER_NAME'] . '/main-page');
 
+
+if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
+    header('Location: ' . MAIN_PAGE);
+}
 
 $router = new Router;
 $Controller = new BlogController();
@@ -20,13 +26,16 @@ $Controller = new BlogController();
 
 /****************** TEST ZONE***************************/
 
+$router->get('/main-page', array(
+    'func' => array($Controller, 'getMainPage'),
+    'parameters' => array()
+));
 
 $router->get('/single-post', array(
     'func' => array($Controller, 'getSinglePost'),
     'parameters' => array($router->getPostId(true))
 
 ));
-
 
 /****************** END  TEST ZONE***************************/
 
@@ -70,22 +79,10 @@ $router->get('/text', array(
     'parameters' => array(1, 2, 3)
 ));
 
+
 $router->catch_exception(function () use ($Controller) {
 
-    //echo 'no suitable routing pattern';
     $Controller->getView('404');
-
-
 });
-/*********** Main Page ****************/
-
-//nie zmieniac kolejnosci wywolania tej trasy!!!!
-
-$router->get('/main-page', array(
-    'func' => array($Controller, 'getMainPage'),
-    'parameters' => array()
-));
-
-/**********  End Main Page***************/
 
 $router->match();

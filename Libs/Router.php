@@ -149,33 +149,18 @@ class Router
      */
 
     public function match()
-    {//jesli nie wykryto dopsaowania sceezki url w przegldarcez wywolaniami  route
+    {
         if (!$this->matched) {
-            //iteraca wszytskich wywolania get i put (sa to tablice)
+
             foreach ($this->router as $r) {
                 if ($r['method'] == $_SERVER['REQUEST_METHOD']) {//spr. czy istnije wymagane zadanie get lub post
-                    /**
-                     * preg match all wyszukuje wszytskie dopsowania i zwraca eleemnty dopssowane
-                     * $this->create_regex_payload($r['path']) - wzorzec wg ktroego maja byc dopsowania
-                     * $this->url - przeszukiwany lancuch
-                     *$matches - zwrocone dopasowania
-                     *
-                     * preg all match -https://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_regex_preg_match_all
-                     *
-                     *create_regex_payload - przetwrzanie i sprawdzeie scezki urluri wedlug wyrazen regularnych
-                     */
 
                     if (preg_match_all($this->create_regex_payload($r['path']), $this->url, $matches)) {
 
-                        /**
-                         * jesli jest wiecej niz jedno dopsowanie i w sciezce zzostanie odnlezionuy nawias klamrowy
-                         * to sparsuj  parametry url
-                         *
-                         */
                         if (count($matches) > 1 && strpos($r['path'], "{")) {
-                            $this->parse_url_parameters($r['path'], $matches);//dopsaowanie parametrow url wg wyr regularnych
+                            $this->parse_url_parameters($r['path'], $matches);
                         }
-                        $this->execute_func($r['exec']);//wykonannie callbacka - akcji gdy uda sie przypisanie do sciezki
+                        $this->execute_func($r['exec']);
                         return true;
                     }
                 }
@@ -248,15 +233,7 @@ class Router
     private function validate_config($exec)
     {//is callable - php sprawdza czt dana zmienna  moze zostac uzyta jako closure(f anonimowa)
 
-        /**
-         * $router->get('/ec+h(o)', function(){
-         * echo $_GET['t'];
-         * });
-         * njnwprd ponizssyzy zapis sprawdza wywolania i obsluguje je jak powyzej
-         *
-         *
-         *
-         */
+
         if (is_callable($exec)) {//gdy exec jest closure
             $temp = $exec;
             $exec = array('func' => $temp, 'type' => 'closure');
@@ -278,19 +255,7 @@ class Router
                 trigger_error('The method specified does not exist', E_USER_ERROR);
             }
             $exec['type'] = 'class';//jesli warunki sa spelrnione to nastaw  akcje na typ class
-        } /**
-         *
-         * $router->get('/phpinfo', 'phpinfo');
-         *
-         * ponizszy zapis obsluguje njpwrd to co jest poodbne to tego co jest powyzej
-         * sa to wszytko metody wbudowane w php nie wystepujace w kontrolerze
-         * i nie bedace jednoczesnie wolnostojacymi poza kontrolerrem
-         * metodami
-         *
-         *
-         *
-         *
-         */
+        }
 
         elseif (is_string($exec['func'])) { //Function
             if (!function_exists($exec['func'])) {
@@ -318,24 +283,17 @@ class Router
             $exec['parameters'] = $this->parameters;
         }
 
-        //call_user_func_array - wywoluje callback z parametrami z tablicy
-        //1 par callbacj
-        //2. tablica z parametrami
-
         call_user_func_array($exec['func'], $exec['parameters']);
     }
 
-    /**
-     *  generowanie urla - jego biezacy odczyt z pasku adresu browser
-     * jest to piewrwsza czynnosc routera zaraz po uruchominu apki
-     */
+
     private function gen_url()
     {
         $url = '';//wyczyszczenie url
-        //jesli istnieje  uri to stworz url zapmoco uri
+
         if (isset($_SERVER['PATH_INFO'])) {
             $url = $_SERVER['PATH_INFO'];
-        } else {//w przeciwnym razie bazuj na php self
+        } else {
             $url = '/' . str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['PHP_SELF']);
         }
 
@@ -353,7 +311,7 @@ class Router
      */
     private function parse_url_parameters($pattern, $matches)
     {
-        //sprawdzeni paramtrow czy pasuja dopodanego wzorca i pozbeirnaie dopasowanych wynikow do tablicy
+
         preg_match_all("/{(.*?)}/", $pattern, $para);
         for ($i = 0; $i < count($para[1]); $i++) {
             $array[] = $matches[$i + 1][0];

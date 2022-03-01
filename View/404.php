@@ -15,6 +15,7 @@
         font-family: "Courier New", Courier, monospace;
         font-size: 25px;
     }
+
     .middle {
         position: absolute;
         top: 50%;
@@ -35,11 +36,29 @@
     <div class="middle">
         <h1>404 PAGE DOESN'T EXIST</h1>
         <hr>
-        <p>redirected for a while to the main page.....</p>
+        <p>redirected for a while to the main page....<span id="countdown">10</span> seconds....</p>
     </div>
 
 </div>
+<script type="text/javascript">
 
+    // Total seconds to wait
+    var seconds = 6;
+
+    function countdown() {
+        seconds = seconds - 1;
+        if (seconds > 0) {
+            // Update remaining seconds
+            document.getElementById("countdown").innerHTML = seconds;
+            // Count down using javascript
+            window.setTimeout("countdown()", 1000);
+        }
+    }
+
+    // Run countdown function
+    countdown();
+
+</script>
 </body>
 </html>
-<?php header('Refresh: 3; URL=http://simplyblogadvanced.test/main-page'); ?>
+<?php header('Refresh: 6; ' . MAIN_PAGE); ?>
