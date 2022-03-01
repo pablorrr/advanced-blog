@@ -96,6 +96,7 @@ class AdminController extends MainController
             $sHashPassword = $this->getAModelObject()->login($_POST['email']);
 
             if (password_verify($_POST['password'], $sHashPassword)) {
+
                 if (!empty($_SESSION['AdminErrorMsg'])) {
                     unset($_SESSION['AdminErrorMsg']);
                 }
@@ -109,10 +110,10 @@ class AdminController extends MainController
                 if (!empty($_SESSION['AdminSuccMsg'])) {
                     unset($_SESSION['AdminSuccMsg']);
                 }
+//todo poprawic  print  incorect login!!
+                header('Location: ' .  MAIN_ROOT_URL . '/login');
                 $_SESSION['is_logged'] = false;
                 $_SESSION['AdminErrorMsg'] = 'Incorrect Login!';
-                header('Location: ' .  ROOT_URL . '/login');
-
             }
         }
     }
