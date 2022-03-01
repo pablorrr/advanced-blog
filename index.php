@@ -2,7 +2,9 @@
 
 use Controller\BlogController;
 use Libs\Router;
-use Controller\TestController;
+use Libs\Config;
+
+//use Controller\TestController;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -11,41 +13,47 @@ define('PROT', (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'o
 define('ROOT_PATH', __DIR__ . '/');
 define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))) . '/');
 define('MAIN_ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))));
-define('MAIN_PAGE', PROT . $_SERVER['SERVER_NAME'] . '/main-page');
-
+define('MAIN_PAGE', PROT . $_SERVER['SERVER_NAME'] . Config::MAIN_PAGE_SLUG);
 
 if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
     header('Location: ' . MAIN_PAGE);
 }
 
 $router = new Router;
-$Controller = new BlogController();
+$BlogController = new BlogController();
 
 //TestController::test();
 
 
 /****************** TEST ZONE***************************/
 
-$router->get('/main-page', array(
-    'func' => array($Controller, 'getMainPage'),
+/** MAIN PAGE **/
+
+$router->get(Config::MAIN_PAGE_SLUG, array(
+    'func' => array($BlogController, 'getMainPage'),
     'parameters' => array()
 ));
 
 $router->get('/single-post', array(
-    'func' => array($Controller, 'getSinglePost'),
+    'func' => array($BlogController, 'getSinglePost'),
     'parameters' => array($router->getPostId(true))
 
 ));
+
+$router->get('/add', array(
+    'func' => array($BlogController, 'add_post')
+));
+
 
 /****************** END  TEST ZONE***************************/
 
 
 $router->get('/form', array(
-    'func' => array($Controller, 'form_get')
+    'func' => array($BlogController, 'form_get')
 ));
 
 $router->post('/form', array(
-    'func' => array($Controller, 'form_post')
+    'func' => array($BlogController, 'form_post')
 ));
 
 
@@ -66,23 +74,23 @@ $router->get('/para/{var1}/{var2}/{var3}/{var4}', function ($var1, $var2, $var3,
 
 
 $router->get('/pa\*th', array(
-    'func' => array($Controller, 'path'),
+    'func' => array($BlogController, 'path'),
     'parameters' => array($router->get_URL(), $router->get_URL(true))
 ));
 
 $router->get('/path(opt)', array(
-    'func' => array($Controller, 'path'),
+    'func' => array($BlogController, 'path'),
     'parameters' => array($router->get_URL(), $router->get_URL(true))
 ));
 $router->get('/text', array(
-    'func' => array($Controller, 'text'),
+    'func' => array($BlogController, 'text'),
     'parameters' => array(1, 2, 3)
 ));
 
 
-$router->catch_exception(function () use ($Controller) {
+$router->catch_exception(function () use ($BlogController) {
 
-    $Controller->getView('404');
+    $BlogController->getView('404');
 });
 
 $router->match();

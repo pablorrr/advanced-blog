@@ -22,5 +22,8 @@ final class Config
         DB_PWD = 'newmvcblog',
 
         // Title of the site
-        SITE_NAME = 'My Simple Blogklkl!';
+        // SITE_NAME = 'My Simple Blogklkl!';
+        //set main page slug
+        MAIN_PAGE_SLUG = '/main-page';
+
 }

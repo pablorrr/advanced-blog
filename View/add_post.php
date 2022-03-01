@@ -7,7 +7,7 @@
  */
 ?>
 <?php require 'components/header.php' ?>
-<?php require 'components/msg.php' ?>
+<?php //require 'components/msg.php' ?>
 <h3>Add post page</h3>
 <!--todo add prtoection validate in php-->
 <form id="add" action="" method="post">
