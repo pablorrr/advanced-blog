@@ -120,7 +120,7 @@ class AdminController extends MainController
         }
 
         // Redirect to login page
-        header('Location: ' . ROOT_URL . '/login');
+       header('Location: ' . ROOT_URL . '/login');
         exit;
     }
 
