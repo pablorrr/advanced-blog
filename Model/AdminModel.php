@@ -6,9 +6,9 @@
  * @link             http://hizup.uk
  */
 
-namespace PhpMVC\Model;
+namespace Model;
 
-class Admin extends MainModel
+class AdminModel extends MainModel
 {
     /**
      * @var \PDO

@@ -9,6 +9,7 @@
 namespace Controller;
 
 use Libs\Valid;
+use Model\AdminModel;
 
 class AdminController extends MainController
 {
@@ -36,7 +37,7 @@ class AdminController extends MainController
 
     public function createAModelObject()
     {
-        return new Model\Admin();
+        return new AdminModel();
     }
 
     public function getAModelObject()
@@ -115,7 +116,7 @@ class AdminController extends MainController
         }
 
         // Redirect to login page
-        header('Location: ' . ROOT_URL . '?p=admin&a=login');
+        header('Location: ' . ROOT_URL . '/login');
         exit;
     }
 
@@ -333,13 +334,15 @@ class AdminController extends MainController
 
                 } else {
                       header('Location: ' . ROOT_URL . '?p=admin&a=index');
+                    $_SESSION['AdminErrorMsg'] = 'Whoops! Post cannot be deleted.';
                     exit('Whoops! Post cannot be deleted.');
-                     $_SESSION['AdminErrorMsg'] = 'Whoops! Post cannot be deleted.';
+
                 }
             } else {
                   header('Location: ' . ROOT_URL . '?p=admin&a=index');
-                exit('Whoops! You cant delete all users!! or yourself!!');
                 $_SESSION['AdminErrorMsg'] = 'Whoops! You cant delete all users!!';
+                exit('Whoops! You cant delete all users!! or yourself!!');
+
             }
 
         }
