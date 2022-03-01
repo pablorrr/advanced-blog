@@ -43,16 +43,24 @@
 
                     <hr class="clear"/><br/>
                 <?php endforeach ?>
+                <?php if (isset($_SESSION['is_logged'])) : ?>
 
+                    <button type="button" onclick="window.location='<?= ROOT_URL ?>add'" class="bold">Add
+                        New
+                        Post
+                    </button>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                <?php endif ?>
             </div>
             <div class="col-md-4"></div>
         </div>
     </div>
 
-    <?php if (isset($_SESSION['is_logged'])) : ?>
-        <button type="button" onclick="window.location='<?= ROOT_URL ?>?p=blog&amp;a=add'" class="bold">Add New Post
-        </button>
-    <?php endif ?>
+
 <?php endif ?>
 
 
