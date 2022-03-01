@@ -71,14 +71,18 @@ $router->get('/text', array(
 ));
 $router->catch_exception(function () {
     echo 'no suitable routing pattern';
+    header('Refresh: 3; URL=http://simplyblogadvanced.test/main-page');
 
 });
 /*********** Main Page ****************/
+
 //nie zmieniac kolejnosci wywolania tej trasy!!!!
+
 $router->get('/main-page', array(
     'func' => array($Controller, 'getMainPage'),
     'parameters' => array()
 ));
-/********** Main Page***************/
+
+/**********  End Main Page***************/
 
 $router->match();
