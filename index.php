@@ -12,9 +12,6 @@ define('ROOT_PATH', __DIR__ . '/');
 define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))) . '/');
 
 
-
-
-
 $router = new Router;
 $Controller = new BlogController();
 
@@ -22,12 +19,6 @@ TestController::test();
 
 
 /****************** TEST ZONE***************************/
-
-
-$router->get('/main-page', array(
-    'func' => array($Controller, 'getMainPage'),
-    'parameters' => array()
-));
 
 
 $router->get('/single-post', array(
@@ -80,6 +71,12 @@ $router->get('/text', array(
 ));
 $router->catch_exception(function () {
     echo 'no suitable routing pattern';
+
 });
+
+$router->get('/main-page', array(
+    'func' => array($Controller, 'getMainPage'),
+    'parameters' => array()
+));
 
 $router->match();
