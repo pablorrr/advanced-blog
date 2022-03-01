@@ -1,5 +1,5 @@
 <?php require 'components/header.php' ?>
-
+<?php require 'components/msg.php' ?>
 <?php if (empty($this->oPosts)): ?>
 
     <p class="bold">There is no Blog Post.</p>
