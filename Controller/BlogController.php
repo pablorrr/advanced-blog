@@ -107,6 +107,54 @@ class BlogController extends MainController
 
     }
 
+    public function edit_post_get($post_id)
+    {
+        if (!$this->isLogged()) exit;
+
+
+        /* Get the data of the post */
+           $this->oPost = $this->oModel->getById($post_id);
+
+        $this->getView('edit_post');
+    }
+
+
+    public function edit_post_post($post_id)
+    {
+        if (!$this->isLogged()) exit;
+        $this->oPost = $this->oModel->getById($post_id);
+
+        if (!empty($_POST['edit_submit'])) {
+
+            if (isset($_POST['title'], $_POST['body'])) {
+
+                $aData = array('post_id' => $post_id, 'title' => $_POST['title'], 'body' => $_POST['body']);
+
+                if ($this->oModel->update($aData)) {
+                    header('Location: ' . MAIN_PAGE);
+                    if (!empty($_SESSION['PostErrorMsg'])) {
+                        unset($_SESSION['PostErrorMsg']);
+                    }
+                    $_SESSION['PostSuccessMsg'] = 'Hurray!! The post has been updated.';
+
+                } else {
+                    header('Location: ' . MAIN_PAGE);
+                    if (!empty($_SESSION['PostSuccessMsg'])) {
+                        unset($_SESSION['PostSuccessMsg']);
+                    }
+                    $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later';
+                }
+
+            } else {
+                header('Location: ' . MAIN_PAGE);
+                if (!empty($_SESSION['PostSuccessMsg'])) {
+                    unset($_SESSION['PostSuccessMsg']);
+                }
+                $_SESSION['PostErrorMsg']= 'All fields are required.';
+            }
+        }
+    }
+
 
     /*******************  End Test Zone *****************************/
 

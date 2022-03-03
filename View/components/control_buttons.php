@@ -9,7 +9,7 @@
 <?php if (!empty($_SESSION['is_logged'])): ?>
     <div class="row">
 
-        <button type="button" onclick="window.location='<?= ROOT_URL ?>single-post?id=<?= $oPost->id ?>'"
+        <button type="button" onclick="window.location='<?= ROOT_URL ?>edit?id=<?= $oPost->id ?>'"
                 class="bold">Edit
         </button>
 

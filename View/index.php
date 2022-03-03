@@ -25,6 +25,7 @@
                 <h1>Main posts page</h1>
                 <br>
                 <br>
+
                 <?php foreach ($this->oPosts as $oPost): ?>
                     <h1>
                         <a href="<?= ROOT_URL ?>single-post?id=<?= $oPost->id ?>"><?= htmlspecialchars($oPost->title) ?></a>
@@ -41,6 +42,7 @@
                     <?php require 'components/control_buttons.php' ?>
                     <hr class="clear"/><br/>
                 <?php endforeach ?>
+
                 <?php if (isset($_SESSION['is_logged'])) : ?>
 
                     <button type="button" onclick="window.location='<?= ROOT_URL ?>add'" class="bold">Add New Post
@@ -52,7 +54,6 @@
             <div class="col-md-4"></div>
         </div>
     </div>
-
 
 <?php endif ?>
 <?php require 'components/footer.php' ?>

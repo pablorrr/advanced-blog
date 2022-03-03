@@ -60,6 +60,20 @@ $router->post('/add', array(
     'func' => array($BlogController, 'add_post_post')
 ));
 
+//edit post
+//todo sprawdz czy parameters musi buyc ustwiony w dwowch miekscach edit!!
+
+$router->get('/edit', array(
+    'func' => array($BlogController, 'edit_post_get'),
+    'parameters' => array($router->getPostId(true))
+));
+
+$router->post('/edit', array(
+    'func' => array($BlogController, 'edit_post_post'),
+    'parameters' => array($router->getPostId(true))
+));
+
+
 //login form
 $router->get('/login', array(
     'func' => array($AdminController, 'login_get')
