@@ -30,5 +30,5 @@ use Controller\MainController;
 </div>
 </body>
 </html>
-<?php var_dump(MainController::isPageRefreshed()); ?>
+<?php MainController::isPageRefreshed(); ?>
 

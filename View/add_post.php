@@ -7,7 +7,7 @@
  */
 ?>
 <?php require 'components/header.php' ?>
-<?php require 'components/msg.php' ?>
+
 <h3>Add post page</h3>
 <!--todo add prtoection validate in php-->
 <form id="add" action="" method="post">
@@ -23,4 +23,4 @@
     <p><input type="submit" name="add_submit" value="Add"/></p>
 </form>
 
-<?php require 'components/footer.php' ?>
+<?php require 'components/footer-form.php' ?>

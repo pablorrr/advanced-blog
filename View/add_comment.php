@@ -21,4 +21,4 @@
     <p><input type="submit" name="add_comment" value="Add"/></p>
 </form>
 
-<?php require 'components/footer.php' ?>
+<?php require 'components/footer-form.php' ?>

@@ -29,4 +29,4 @@
     <p><input type="submit" name="register" value="register"/></p>
 </form>
 
-<?php require 'components/footer.php' ?>
+<?php require 'components/footer-form.php' ?>

@@ -64,8 +64,6 @@ class BlogModel extends MainModel
     {
         $oStmt = $this->oDb->query('SELECT * FROM Posts ORDER BY createdDate DESC');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-
-
     }
 
     /**

@@ -33,4 +33,4 @@
     <div class="md-col-4"></div>
 </div>
 
-<?php require 'components/footer-login.php' ?>
+<?php require 'components/footer-form.php' ?>
