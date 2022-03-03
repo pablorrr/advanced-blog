@@ -6,7 +6,7 @@
 
     <?php if (isset($_SESSION['is_logged'])) : ?>
         <p>
-            <button type="button" onclick="window.location='<?= ROOT_URL ?>?p=blog&amp;a=add'" class="bold">Add Your
+            <button type="button" onclick="window.location='<?= ROOT_URL ?>add'" class="bold">Add Your
                 First
                 Blog Post!
             </button>
@@ -43,7 +43,8 @@
                 <?php endforeach ?>
                 <?php if (isset($_SESSION['is_logged'])) : ?>
 
-                    <button type="button" onclick="window.location='<?= ROOT_URL ?>add'" class="bold">Add New Post</button>
+                    <button type="button" onclick="window.location='<?= ROOT_URL ?>add'" class="bold">Add New Post
+                    </button>
                     <br>
                     <br>
                 <?php endif ?>
