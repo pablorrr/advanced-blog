@@ -173,10 +173,22 @@ class BlogController extends MainController
         }
 
 
-        if ((!empty($_POST['delete'])) && ($this->oModel->delete($post_id)))
+        if ((!empty($_POST['delete'])) && ($this->oModel->delete($post_id))) {
+
             header('Location: ' . MAIN_PAGE);
-        else
-            exit('Whoops! Post cannot be deleted.');
+            if (!empty($_SESSION['PostErrorMsg'])) {
+                unset($_SESSION['PostErrorMsg']);
+            }
+            $_SESSION['PostSuccessMsg'] = 'Hurray!! The post has been deleted.';
+        } else {
+            header('Location: ' . MAIN_PAGE);
+            if (!empty($_SESSION['PostSuccessMsg'])) {
+                unset($_SESSION['PostSuccessMsg']);
+            }
+            $_SESSION['PostErrorMsg'] = 'The post cant be deleted.';
+        }
+
+        //  exit('Whoops! Post cannot be deleted.');
     }
 
 
