@@ -54,28 +54,34 @@ $router->get('/single-post', array(
 
 /***************** Back End ********************/
 
-
+///*** CRUD**********//
 //add post
 $router->get('/add', array(
-    'func' => array($BlogController, 'add_post_get')
+    'func' => array($BlogController, 'add_get')
 ));
 
 $router->post('/add', array(
-    'func' => array($BlogController, 'add_post_post')
+    'func' => array($BlogController, 'add_post')
 ));
 
 //edit post
 //todo sprawdz czy parameters musi buyc ustwiony w dwowch miekscach edit!!
 
 $router->get('/edit', array(
-    'func' => array($BlogController, 'edit_post_get'),
+    'func' => array($BlogController, 'edit_get'),
     'parameters' => array($router->getPostId(true))
 ));
 
 $router->post('/edit', array(
-    'func' => array($BlogController, 'edit_post_post'),
+    'func' => array($BlogController, 'edit_post'),
     'parameters' => array($router->getPostId(true))
 ));
+
+$router->all('/delete', array(
+    'func' => array($BlogController, 'delete'),
+    'parameters' => array($router->getPostId(true))
+));
+///***  END CRUD**********//
 
 
 //login form

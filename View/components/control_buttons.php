@@ -14,7 +14,7 @@
         </button>
 
 
-        <form action="<?= ROOT_URL ?>delete&amp;id=<?= $oPost->id ?>" method="post" class="inline">
+        <form action="<?= ROOT_URL ?>delete?id=<?= $oPost->id ?>" method="post" class="inline">
             <button type="submit" name="delete" value="1" class="bold">Delete</button>
         </form>
     </div>

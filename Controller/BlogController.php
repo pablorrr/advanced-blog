@@ -49,14 +49,14 @@ class BlogController extends MainController
     /**
      *  dodoanie posta
      */
-    public function add_post_get()
+    public function add_get()
     {
 
         if (!$this->isLogged()) exit;
         $this->getView('add_post');
     }
 
-    public function add_post_post()
+    public function add_post()
     {
         if (!$this->isLogged()) exit;
 
@@ -97,7 +97,7 @@ class BlogController extends MainController
 
     }
 
-    public function edit_post_get($post_id)
+    public function edit_get($post_id)
     {
         if (!$this->isLogged()) exit;
 
@@ -109,7 +109,7 @@ class BlogController extends MainController
     }
 
 
-    public function edit_post_post($post_id)
+    public function edit_post($post_id)
     {
         if (!$this->isLogged()) exit;
 
@@ -151,6 +151,32 @@ class BlogController extends MainController
                 $_SESSION['PostErrorMsg'] = 'All fields are required and only letters allowed.';
             }
         }
+    }
+
+
+    public function delete($post_id)
+    {
+        if (!$this->isLogged()) exit;
+
+        //to prevent display msg when it is unconcern
+
+        if (!empty($_SESSION['CommentSuccessMsg'])) {
+            unset($_SESSION['CommentSuccessMsg']);
+        }
+
+        if (!empty($_SESSION['PostSuccessMsg'])) {
+            unset($_SESSION['PostSuccessMsg']);
+        }
+
+        if (!empty($_SESSION['PostErrorMsg'])) {
+            unset($_SESSION['PostErrorMsg']);
+        }
+
+
+        if ((!empty($_POST['delete'])) && ($this->oModel->delete($post_id)))
+            header('Location: ' . MAIN_PAGE);
+        else
+            exit('Whoops! Post cannot be deleted.');
     }
 
 
