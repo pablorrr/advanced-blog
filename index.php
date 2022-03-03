@@ -2,6 +2,7 @@
 
 use Controller\AdminController;
 use Controller\BlogController;
+use Controller\MainController;
 use Libs\Router;
 use Libs\Config;
 
@@ -22,6 +23,8 @@ define('MAIN_PAGE', PROT . $_SERVER['SERVER_NAME'] . Config::MAIN_PAGE_SLUG);
 if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
     header('Location: ' . MAIN_PAGE);
 }
+
+
 
 $router = new Router;
 $BlogController = new BlogController();
@@ -141,3 +144,5 @@ $router->catch_exception(function () use ($BlogController) {
 });
 
 $router->match();
+
+

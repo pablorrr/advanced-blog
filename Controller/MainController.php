@@ -84,7 +84,7 @@ class MainController
     {
         $is_page_refreshed = (isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] == 'max-age=0');
 
-        if ($is_page_refreshed) :
+        if ($is_page_refreshed) {
 
             if (!empty ($_SESSION['PostSuccessMsg'])) {
                 unset($_SESSION['PostSuccessMsg']);
@@ -99,29 +99,32 @@ class MainController
 
             if (!empty($_SESSION['CommentErrorMsg'])) {
                 unset($_SESSION['CommentErrorMsg']);
-
-
             }
-        endif;
+            return true;
+        } else {
+            return false;
+        }
+
+
     }
 
 
-    public static function manageNotif()
-    {
-        if (!empty($_SESSION['CommentSuccessMsg'])) {
-            unset($_SESSION['CommentSuccessMsg']);
-        }
+    /* public static function manageNotif()
+     {
+         if (!empty($_SESSION['CommentSuccessMsg'])) {
+             unset($_SESSION['CommentSuccessMsg']);
+         }
 
-        if (empty($_POST['add_submit'])): if (!empty($_SESSION['PostSuccessMsg'])) {
-            unset($_SESSION['PostSuccessMsg']);
-        }
-        endif;
+         if (empty($_POST['add_submit'])): if (!empty($_SESSION['PostSuccessMsg'])) {
+             unset($_SESSION['PostSuccessMsg']);
+         }
+         endif;
 
-        if (empty($_POST['add_submit'])): if (!empty($_SESSION['PostErrorMsg'])) {
-            unset($_SESSION['PostErrorMsg']);
-        }
-        endif;
-    }
+         if (empty($_POST['add_submit'])): if (!empty($_SESSION['PostErrorMsg'])) {
+             unset($_SESSION['PostErrorMsg']);
+         }
+         endif;
+     }*/
 
 
 }

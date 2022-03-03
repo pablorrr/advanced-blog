@@ -31,6 +31,10 @@ class BlogController extends MainController
 
     public function getMainPage()
     {
+        //to prevent display msg  when it is unconcern
+      //  MainController::manageNotif();
+       // MainController::isPageRefreshed();
+
         $this->oPosts = $this->oModel->getAll();
 
         $this->getView('index');
@@ -49,17 +53,15 @@ class BlogController extends MainController
      */
     public function add_post_get()
     {
+
         if (!$this->isLogged()) exit;
         $this->getView('add_post');
     }
 
     public function add_post_post()
     {
-
         if (!$this->isLogged()) exit;
 
-        //to prevent display msg  when it is unconcern
-        MainController::manageNotif();
 
 
         if (!empty($_POST['add_submit'])) {
@@ -113,7 +115,7 @@ class BlogController extends MainController
 
 
         /* Get the data of the post */
-           $this->oPost = $this->oModel->getById($post_id);
+        $this->oPost = $this->oModel->getById($post_id);
 
         $this->getView('edit_post');
     }
@@ -122,6 +124,7 @@ class BlogController extends MainController
     public function edit_post_post($post_id)
     {
         if (!$this->isLogged()) exit;
+
         $this->oPost = $this->oModel->getById($post_id);
 
         if (!empty($_POST['edit_submit'])) {
@@ -131,6 +134,7 @@ class BlogController extends MainController
                 $aData = array('post_id' => $post_id, 'title' => $_POST['title'], 'body' => $_POST['body']);
 
                 if ($this->oModel->update($aData)) {
+
                     header('Location: ' . MAIN_PAGE);
                     if (!empty($_SESSION['PostErrorMsg'])) {
                         unset($_SESSION['PostErrorMsg']);
@@ -138,6 +142,7 @@ class BlogController extends MainController
                     $_SESSION['PostSuccessMsg'] = 'Hurray!! The post has been updated.';
 
                 } else {
+
                     header('Location: ' . MAIN_PAGE);
                     if (!empty($_SESSION['PostSuccessMsg'])) {
                         unset($_SESSION['PostSuccessMsg']);
@@ -146,11 +151,12 @@ class BlogController extends MainController
                 }
 
             } else {
+
                 header('Location: ' . MAIN_PAGE);
                 if (!empty($_SESSION['PostSuccessMsg'])) {
                     unset($_SESSION['PostSuccessMsg']);
                 }
-                $_SESSION['PostErrorMsg']= 'All fields are required.';
+                $_SESSION['PostErrorMsg'] = 'All fields are required.';
             }
         }
     }

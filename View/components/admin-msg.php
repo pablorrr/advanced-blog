@@ -5,7 +5,11 @@
  * @license          Lesser General Public License <http://www.gnu.org/copyleft/lesser.html>
  * @link             http://hizup.uk
  */
+
+use Controller\MainController;
+
 ?>
+
 
 <?php if (!empty($_SESSION['AdminSuccMsg'])): ?>
 
@@ -19,6 +23,8 @@
     </div>
 
 <?php endif ?>
+
+
 
 
 

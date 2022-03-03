@@ -5,6 +5,9 @@
  * @license          Lesser General Public License <http://www.gnu.org/copyleft/lesser.html>
  * @link             http://hizup.uk
  */
+
+use Controller\MainController;
+
 ?>
 <footer>
 
@@ -22,11 +25,10 @@
 
     <?php endif ?>
     </p>
-    <script>$('.alert').alert()</script>
 
 </footer>
 </div>
 </body>
 </html>
-
+<?php var_dump(MainController::isPageRefreshed()); ?>
 
