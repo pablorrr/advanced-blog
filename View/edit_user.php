@@ -13,7 +13,7 @@
 <h3>Edit User Page</h3>
 <form action="" method="post">
     <p><label for="email">email:</label><br/>
-        <input type=email name="email" id="email" value="<?= htmlspecialchars($this->oAdmin->email) ?>"
+        <input type=email name="email" id="email" value="<?= trim(htmlspecialchars($this->oAdmin->email)) ?>"
                required="required"/>
     </p>
     <p>
