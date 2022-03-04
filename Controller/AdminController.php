@@ -15,6 +15,7 @@ class AdminController extends MainController
 {
 
     private $_iId;//update usage
+    private $AdminModel;//update usage
 
     /**
      * @var
@@ -26,35 +27,25 @@ class AdminController extends MainController
         // Enable PHP Session
         if (empty($_SESSION))
             session_start();
-
-        /** Get the Post ID in the constructor in order to avoid the duplication of the same code **/
-        // $this->_iId = (int)(!empty($_GET['id']) ? $_GET['id'] : 0);
-        $this->oEmail = $this->getAModelObject()->getEmailById($this->_iId);
+//todo: di implemtation
+        $this->AdminModel = new AdminModel();
+        $this->oEmail = $this->AdminModel->getEmailById($this->_iId);
 
     }
 
     use Valid;
-
-    public function createAModelObject()
-    {
-        return new AdminModel();
-    }
-
-    public function getAModelObject()
-    {
-        return $this->createAModelObject();
-    }
 
 
     public function index()
     {
         //todo function below doesnt work  fix that
         // self::isRefreshedAdminPage();
+
         if (!empty($_SESSION['AdminErrorMsg'])) {
             unset($_SESSION['AdminErrorMsg']);
         }
 
-        $this->oAdmins = $this->getAModelObject()->getAll();
+        $this->oAdmins = $this->AdminModel->getAll();
 
         $this->getView('index_admin');
     }
@@ -93,7 +84,7 @@ class AdminController extends MainController
 
         if (isset($_POST['email'], $_POST['password'])) {
 
-            $sHashPassword = $this->getAModelObject()->login($_POST['email']);
+            $sHashPassword = $this->AdminModel->login($_POST['email']);
 
             if (password_verify($_POST['password'], $sHashPassword)) {
 
@@ -102,7 +93,7 @@ class AdminController extends MainController
                 }
                 $_SESSION['is_logged'] = true;
                 $_SESSION['userEmail'] = $_POST['email'];
-                header('Location: ' . ROOT_URL);
+                header('Location: ' . MAIN_PAGE);
                 exit;
 
             } else {
@@ -111,7 +102,7 @@ class AdminController extends MainController
                     unset($_SESSION['AdminSuccMsg']);
                 }
 //todo poprawic  print  incorect login!!
-                header('Location: ' .  MAIN_ROOT_URL . '/login');
+                header('Location: ' . MAIN_ROOT_URL . '/login');
                 $_SESSION['is_logged'] = false;
                 $_SESSION['AdminErrorMsg'] = 'Incorrect Login!';
             }
@@ -135,7 +126,7 @@ class AdminController extends MainController
         exit;
     }
 
-    public function register()
+    public function register_post()
     {
         //todo: dodoac klase walidator
         if (!$this->isLogged())
@@ -176,7 +167,8 @@ class AdminController extends MainController
                     && !empty($_POST['email'])) {
 
                     $flag = false;
-                    foreach ($this->getAModelObject()->getAllEmails() as $email) {
+                    //check if given already email exists
+                    foreach ($this->AdminModel->getAllEmails() as $email) {
 
                         if (strcmp($email->email, $_POST['email']) == 0) {
                             $flag = true;
@@ -188,6 +180,8 @@ class AdminController extends MainController
                         if (!empty($_SESSION['AdminSuccMsg'])) {
                             unset($_SESSION['AdminSuccMsg']);
                         }
+
+                        header('Location: ' . ROOT_URL . '/register');
                         $_SESSION['AdminErrorMsg'] = 'Whoops! Email is already in use  ,please try  another one';
 
                     } else {
@@ -198,19 +192,20 @@ class AdminController extends MainController
                             'password' => password_hash($_POST['password'], PASSWORD_BCRYPT, array('cost' => 14))
                         );
 
-                        if ($this->getAModelObject()->register($aData)) {
+                        if ($this->AdminModel->register($aData)) {
 
                             if (!empty($_SESSION['AdminErrorMsg'])) {
                                 unset($_SESSION['AdminErrorMsg']);
                             }
 
-                            header('Location: ' . ROOT_URL . '?p=admin&a=index');
+                            header('Location: ' . ROOT_URL );
                             $_SESSION['AdminSuccMsg'] = 'Hurray!! The new user has been added.';
 
                         } else {
                             if (!empty($_SESSION['AdminSuccMsg'])) {
                                 unset($_SESSION['AdminSuccMsg']);
                             }
+                            header('Location: ' . ROOT_URL . '/admin/register');
 
                             $_SESSION['AdminErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
                         }
@@ -221,6 +216,8 @@ class AdminController extends MainController
                         unset($_SESSION['AdminSuccMsg']);
                     }
 
+                    header('Location: ' . ROOT_URL . '/admin/register');
+
                     $_SESSION['AdminErrorMsg'] = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
                 }
@@ -229,12 +226,17 @@ class AdminController extends MainController
 
         }//!empty register button
 
+
+    }
+
+
+    public function register_get()
+    {
         $this->getView('register_user');
     }
 
     public function getLogoutPage()
     {
-
         $this->getView('logout');
     }
 

@@ -16,8 +16,8 @@ use Controller\MainController;
         <?php if (!empty($_SESSION['is_logged'])): ?>
         You are connected as Admin -
     <h3><?= $_SESSION['userEmail']; ?></h3> <a href="<?= ROOT_URL ?>logout">Logout</a> &nbsp;
-    Register New User - <a href="<?= ROOT_URL ?>?p=admin&amp;a=register">Register</a> &nbsp;
-    View All Admin Users - <a href="<?= ROOT_URL ?>?p=admin&amp;a=index">Display</a> &nbsp;
+    Register New User - <a href="<?= ROOT_URL ?>admin/register">Register</a> &nbsp;
+    View All Admin Users - <a href="<?= ROOT_URL ?>admin">Display</a> &nbsp;
     <a href="<?= ROOT_URL ?>">View All Blog Posts</a></p>
     <?php else: ?>
         <p class="italic"><strong>You are looged off to add post please click on <a

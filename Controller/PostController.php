@@ -34,13 +34,9 @@ class PostController extends MainController
 
     public function getMainPage()
     {
-
-
         $this->oPosts = $this->oModel->getAll();
-
         $this->getView('index');
     }
-
 
     public function getSinglePost($post_id)
     {
@@ -231,21 +227,6 @@ class PostController extends MainController
             unset($_SESSION['PostErrorMsg']);
         }
 
-
-        /* if ((!empty($_POST['delete'])) && ($this->oModel->delete($post_id))) {
-
-             header('Location: ' . MAIN_PAGE);
-             if (!empty($_SESSION['PostErrorMsg'])) {
-                 unset($_SESSION['PostErrorMsg']);
-             }
-             $_SESSION['PostSuccessMsg'] = 'Hurray!! The post has been deleted.';
-         } else {
-             header('Location: ' . MAIN_PAGE);
-             if (!empty($_SESSION['PostSuccessMsg'])) {
-                 unset($_SESSION['PostSuccessMsg']);
-             }
-             $_SESSION['PostErrorMsg'] = 'The post cant be deleted.';
-         }*/
 
         //when comments exists
         if ($this->CommentModel->getByIdCheck($post_id)) {

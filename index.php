@@ -99,9 +99,7 @@ $router->post('/add-comment', array(
 //**END COMMENTS//
 
 
-
-///***  END CRUD**********//
-
+//**ADMIN**//
 
 //login form
 $router->get('/login', array(
@@ -116,9 +114,20 @@ $router->all('/logout', array(
     'func' => array($AdminController, 'logout')
 ));
 
+//index admin (show users page)
+$router->get('/admin', array(
+    'func' => array($AdminController, 'index')
+));
 
 
+//resister user -admin
+$router->get('/admin/register', array(
+    'func' => array($AdminController, 'register_get')
+));
 
+$router->post('/admin/register', array(
+    'func' => array($AdminController, 'register_post')
+));
 
 
 /****************** END  TEST ZONE***************************/
