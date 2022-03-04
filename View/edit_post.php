@@ -26,7 +26,7 @@
                           required="required"><?= htmlspecialchars($this->oPost->body) ?></textarea>
             </p>
             <?php if (!empty($this->oPost->comment)): ?>
-                <p><label for="comment">comment:</label><br/>
+                <p><label for="comment">Comment:</label><br/>
                     <textarea name="comment" id="comment" rows="5" cols="35"
                               required=""><?= htmlspecialchars($this->oPost->comment) ?></textarea>
                 </p>

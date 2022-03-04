@@ -13,12 +13,12 @@ class PostModel extends MainModel
 {
 
     protected $oDb;
-    protected $CommnetModel;
+    protected $CommentModel;
 
     public function __construct()
     {
         $this->oDb = MainModel::getInstance()->getConnection();
-        //$this->CommnetModel = new Comment();
+        $this->CommentModel = new CommentModel();
 
 
     }
@@ -33,7 +33,7 @@ class PostModel extends MainModel
      */
     public function get($iOffset, $iLimit)
     {
-        if ($this->CommnetModel->get() == false) {
+        if ($this->CommentModel->get() == false) {
 
             $oStmt = $this->oDb->prepare('SELECT * FROM Posts ORDER BY createdDate DESC LIMIT :offset, :limit');
             $oStmt->bindParam(':offset', $iOffset, \PDO::PARAM_INT);
@@ -42,7 +42,7 @@ class PostModel extends MainModel
             return $oStmt->fetchAll(\PDO::FETCH_OBJ);
 
         }
-        if ($this->CommnetModel->get() == true) {
+        if ($this->CommentModel->get() == true) {
 
             $oStmt = $this->oDb->prepare('SELECT posts.id, posts.title, posts.body,posts.createdDate, comments.comment
       FROM comments
@@ -89,10 +89,28 @@ class PostModel extends MainModel
      */
     public function getById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM Posts WHERE id = :postId LIMIT 1');
+        /*$oStmt = $this->oDb->prepare('SELECT * FROM Posts WHERE id = :postId LIMIT 1');
         $oStmt->bindParam(':postId', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
-        return $oStmt->fetch(\PDO::FETCH_OBJ);
+        return $oStmt->fetch(\PDO::FETCH_OBJ);*/
+
+
+        if ($this->CommentModel->getById($iId) == false) {
+
+            $oStmt = $this->oDb->prepare('SELECT * FROM Posts WHERE id = :postId LIMIT 1');
+            $oStmt->bindParam(':postId', $iId, \PDO::PARAM_INT);
+            $oStmt->execute();
+            return $oStmt->fetch(\PDO::FETCH_OBJ);
+
+        } elseif ($this->CommentModel->get() == true) {
+            $oStmt = $this->oDb->prepare('SELECT posts.id, posts.title, posts.body,posts.createdDate, comments.comment FROM posts,comments
+WHERE posts.id= :postId AND comments.post_id= :postId');
+            $oStmt->bindParam(':postId', $iId, \PDO::PARAM_INT);
+            $oStmt->execute();
+            return $oStmt->fetch(\PDO::FETCH_OBJ);
+        }
+
+
     }
 
     /**
