@@ -102,17 +102,7 @@ class CommentController extends MainController
 
     public function add_get()
     {
-
-        //    $this->oPost = $this->PostModel->getById($post_id);
         $this->getView('add_comment');
-
     }
 
-
-
-    //  protected
-    //   function isLogged()
-    // {
-    //       return !empty($_SESSION['is_logged']);
-    //   }
 }

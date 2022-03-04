@@ -32,6 +32,7 @@ if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
 }
 
 
+//Todo: wprowadzic klase powidomien  notyfikator w libs
 
 $router = new Router;
 $PostController = new PostController(new PostModel(),new CommentModel());
