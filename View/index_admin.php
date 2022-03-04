@@ -22,7 +22,6 @@
         </div>
 
     </div>
-
     <div class="row">
         <table class="table">
             <thead>
