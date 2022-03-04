@@ -270,7 +270,7 @@ class AdminController extends MainController
                         'email' => self::test_input($_POST['email']),
                         'password' => password_hash($_POST['password'], PASSWORD_BCRYPT, array('cost' => 14)));
 
-                var_dump($this->oAdmin->email);
+                    var_dump($this->oAdmin->email);
                     //gdy edytowany jest ten sam co edytowany wuloguj sie celem wprowdznie zmian
                     if ($_SESSION['userEmail'] === $this->oAdmin->email) {
 
@@ -338,28 +338,28 @@ class AdminController extends MainController
 
 
     //todo:dont delete admin when i same logged and leave at least one not deleted
-    public function delete()
+    public function delete($admin_id)
     {
         if (!$this->isLogged()) exit;
 
+        $this->oAdmin = $this->AdminModel->getById($admin_id);
 
         if (!empty($_POST['delete'])) {
 
+            if ($this->AdminModel->countAdmins() > 1 && $this->oAdmin->email != $_SESSION['userEmail']) {
 
-            if ($this->getAModelObject()->countAdmins() > 1 && $this->oEmail->email != $_SESSION['userEmail']) {
-
-                if ($this->getAModelObject()->delete($this->_iId)) {
-                    header('Location: ' . ROOT_URL . '?p=admin&a=index');
+                if ($this->AdminModel->delete($admin_id)) {
+                    header('Location: ' . ROOT_URL);
                     $_SESSION['AdminSuccMsg'] = 'User has been deleted properly';
 
                 } else {
-                    header('Location: ' . ROOT_URL . '?p=admin&a=index');
+                    header('Location: ' . ROOT_URL);
                     $_SESSION['AdminErrorMsg'] = 'Whoops! Post cannot be deleted.';
-                    exit('Whoops! Post cannot be deleted.');
+                    // exit('Whoops! Post cannot be deleted.');
 
                 }
             } else {
-                header('Location: ' . ROOT_URL . '?p=admin&a=index');
+                header('Location: ' . ROOT_URL);
                 $_SESSION['AdminErrorMsg'] = 'Whoops! You cant delete all users!!';
                 exit('Whoops! You cant delete all users!! or yourself!!');
 
