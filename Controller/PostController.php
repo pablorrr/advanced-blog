@@ -3,8 +3,7 @@
 namespace Controller;
 
 use Libs\Valid;
-use Model\CommentModel;
-use Model\PostModel;
+
 
 
 class PostController extends MainController
@@ -14,17 +13,19 @@ class PostController extends MainController
      */
     protected $oPosts;
     protected $oPost;
-    protected $oModel;
+    protected $PostModel;
     protected $CommentModel;
 
-    public function __construct()
+    public function __construct($PostModel, $CommentModel)
     {
         // Enable PHP Session
         if (empty($_SESSION))
             session_start();
 
-        $this->oModel = new PostModel();//todo: wprowadzic DI
-        $this->CommentModel = new CommentModel();
+        $this->PostModel = $PostModel;
+        $this->CommentModel = $CommentModel;
+
+
     }
 
     use Valid;
@@ -34,13 +35,13 @@ class PostController extends MainController
 
     public function getMainPage()
     {
-        $this->oPosts = $this->oModel->getAll();
+        $this->oPosts = $this->PostModel->getAll();
         $this->getView('index');
     }
 
     public function getSinglePost($post_id)
     {
-        $this->oPost = $this->oModel->getById($post_id);
+        $this->oPost = $this->PostModel->getById($post_id);
         $this->getView('single-post');
     }
 
@@ -70,7 +71,7 @@ class PostController extends MainController
                     'body' => self::test_input($_POST['body']),
                     'created_date' => date('Y-m-d H:i:s'));
 
-                if ($this->oModel->add($aData)) {
+                if ($this->PostModel->add($aData)) {
 
                     header('Location: ' . MAIN_PAGE);
                     $_SESSION['PostSuccessMsg'] = 'Hurray!! The post has been added.';
@@ -103,7 +104,7 @@ class PostController extends MainController
 
         /* Get the data of the post */
         //todo: sprawdz czy nie wystepuje niepotr\zbny duplikat getbyid
-        $this->oPost = $this->oModel->getById($post_id);
+        $this->oPost = $this->PostModel->getById($post_id);
 
         $this->getView('edit_post');
     }
@@ -113,7 +114,7 @@ class PostController extends MainController
     {
         if (!$this->isLogged()) exit;
 
-        $this->oPost = $this->oModel->getById($post_id);
+        $this->oPost = $this->PostModel->getById($post_id);
 
 
         //** EDIT WHEN NO COMMENTS**//
@@ -129,7 +130,7 @@ class PostController extends MainController
                     'title' => self::test_input($_POST['title']),
                     'body' => self::test_input($_POST['body']));
 
-                if ($this->oModel->update($aData)) {
+                if ($this->PostModel->update($aData)) {
 
                     header('Location: ' . MAIN_PAGE);
                     if (!empty($_SESSION['PostErrorMsg'])) {
@@ -173,7 +174,7 @@ class PostController extends MainController
                     );
 
 
-                    if (($this->oModel->update($aData)) && ($this->CommentModel->update($CommentData))) {
+                    if (($this->PostModel->update($aData)) && ($this->CommentModel->update($CommentData))) {
 
                         header('Location: ' . MAIN_PAGE);
 
@@ -232,7 +233,7 @@ class PostController extends MainController
         if ($this->CommentModel->getByIdCheck($post_id)) {
 
             if (!empty($_POST['delete'])
-                && $this->oModel->delete($post_id)
+                && $this->PostModel->delete($post_id)
                 && $this->CommentModel->delete($post_id)) {
 
                 header('Location: ' . MAIN_PAGE);
@@ -243,7 +244,7 @@ class PostController extends MainController
         }
         //when comments not exists
         if (!$this->CommentModel->getByIdCheck($post_id)) {
-            if ((!empty($_POST['delete'])) && ($this->oModel->delete($post_id))) {
+            if ((!empty($_POST['delete'])) && ($this->PostModel->delete($post_id))) {
                 header('Location: ' . MAIN_PAGE);
             } else {
                 exit('Whoops! Post cannot be deleted.');
