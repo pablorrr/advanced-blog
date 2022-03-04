@@ -13,26 +13,59 @@
 ?>
 <?php require 'components/header.php' ?>
 <?php require 'components/admin-msg.php' ?>
+<div class="container">
 
-<h1>Admin Users List</h1>
 
-<?php foreach ($this->oAdmins as $oAdmin): ?>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Admin Users List</h1>
+        </div>
 
-    <table>
-        <tr>
-            <th>id</th>
-            <th>Email</th>
-        </tr>
-        <tr>
-            <td><?= $oAdmin->id ?></td>
-            <td><?= $oAdmin->email ?></td>
-        </tr>
-    </table>
+    </div>
 
-    <?php require 'components/control_buttons_admin.php' ?>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Email</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
 
-    <hr class="clear"/><br/>
-<?php endforeach ?>
+            <?php foreach ($this->oAdmins as $oAdmin): ?>
+                <tr>
+                    <td><?= $oAdmin->id ?></td>
+                    <td><?= $oAdmin->email ?></td>
 
+                    <?php if (!empty($_SESSION['is_logged'])): ?>
+
+                        <td>
+                            <button type="button"
+                                    onclick="window.location='<?= ROOT_URL ?>?p=admin&amp;a=edit&amp;id=<?= $oAdmin->id ?>'"
+                                    class="bold">Edit
+                            </button>
+                        </td>
+                        <!--todo dzila ale do poprawy ABY USER NIE MOGLSAM SIE USUSNAC-->
+                        <?php if ($oAdmin->email != $_SESSION['userEmail']) : ?>
+
+                            <td>
+                                <form action="<?= ROOT_URL ?>?p=admin&amp;a=delete&amp;id=<?= $oAdmin->id ?>"
+                                      method="post" class="inline">
+                                    <button type="submit" name="delete" value="1" class="bold">Delete</button>
+                                </form>
+                            </td>
+
+                        <?php endif ?>
+                    <?php endif ?>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+        </table>
+
+    </div>
+</div>
 <?php require 'components/footer.php' ?>
 
