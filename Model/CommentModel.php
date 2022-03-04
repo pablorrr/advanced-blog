@@ -1,12 +1,12 @@
 <?php
 
 
-namespace PhpMVC\Model;
+namespace Model;
 
 
 use PDO;
 
-class Comment extends MainModel
+class CommentModel extends MainModel
 {
 
     protected $oDb;

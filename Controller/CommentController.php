@@ -3,8 +3,10 @@
 namespace Controller;
 
 use Libs\Valid;
+use Model\PostModel;
+use Model\CommentModel;
 
-class Comment extends MainController
+class CommentController extends MainController
 {
 
     protected $oModel;
@@ -25,14 +27,14 @@ class Comment extends MainController
 
         /** Get the Model class in all the controller class **/
 
-        $this->getModel('Comment');
-        $this->oModel = new \PhpMVC\Model\Comment;
+        // $this->getModel('CommentModel');
+        $this->oModel = new CommentController();
 
         /** Get the Comment ID in the constructor in order to avoid the duplication of the same code **/
-        $this->_iId = (int)(!empty($_GET['id']) ? $_GET['id'] : 0);
+        //  $this->_iId = (int)(!empty($_GET['id']) ? $_GET['id'] : 0);
 
-        $this->BlogModel = new \PhpMVC\Model\Blog();
-        $this->CommentModel = new \PhpMVC\Model\Comment();
+        $this->PostModel = new PostModel();
+        $this->CommentModel = new CommentModel();
 
 
     }
@@ -64,37 +66,37 @@ class Comment extends MainController
         if (!empty($_POST['add_comment'])) {
 
             if (isset($_POST['comment'], $_POST['post_id']) && mb_strlen($_POST['comment']) <= 250
-                && preg_match('/([a-zA-Z]+( [a-zA-Z]+)+)/i', $_POST['comment']) ){
+                && preg_match('/([a-zA-Z]+( [a-zA-Z]+)+)/i', $_POST['comment'])) {
 
                 $aData = array(
                     'comment' => self::test_input($_POST['comment']),
                     'post_id' => self::test_input($_POST['post_id'])
                 );
 
-            /**      if add         */
+                /**      if add         */
 
-            if ($this->oModel->add($aData)) {
+                if ($this->oModel->add($aData)) {
 
-                header('Location: ' . ROOT_URL);
+                    header('Location: ' . ROOT_URL);
 
-                if (!empty($_SESSION['CommentErrorMsg'])) {
-                    unset($_SESSION['CommentErrorMsg']);
+                    if (!empty($_SESSION['CommentErrorMsg'])) {
+                        unset($_SESSION['CommentErrorMsg']);
+                    }
+
+                    $_SESSION['CommentSuccessMsg'] = 'Hurray!! The comment has been added.';
+
+                } else {
+
+                    if (!empty($_SESSION['CommentSuccessMsg'])) {
+                        unset($_SESSION['CommentSuccessMsg']);
+                    }
+
+                    $_SESSION['CommentErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
                 }
 
-                $_SESSION['CommentSuccessMsg'] = 'Hurray!! The comment has been added.';
+                /**     end if add         */
 
             } else {
-
-                if (!empty($_SESSION['CommentSuccessMsg'])) {
-                    unset($_SESSION['CommentSuccessMsg']);
-                }
-
-                $_SESSION['CommentErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
-            }
-
-            /**     end if add         */
-
-        }else{
                 if (!empty($_SESSION['CommentSuccessMsg'])) {
                     unset($_SESSION['CommentSuccessMsg']);
                 }
@@ -106,9 +108,9 @@ class Comment extends MainController
     }
 
 
-    protected
-    function isLogged()
-    {
-        return !empty($_SESSION['is_logged']);
-    }
+    //  protected
+    //   function isLogged()
+    // {
+    //       return !empty($_SESSION['is_logged']);
+    //   }
 }
