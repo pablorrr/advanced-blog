@@ -29,7 +29,7 @@ class AdminController extends MainController
             session_start();
 //todo: di implemtation
         $this->AdminModel = new AdminModel();
-        $this->oEmail = $this->AdminModel->getEmailById($this->_iId);
+
 
     }
 
@@ -112,7 +112,7 @@ class AdminController extends MainController
     public function logout()
     {
         if (!$this->isLogged())
-            exit;
+            exit();
 
         // If there is a session, destroy it to disconnect the admin
         if (!empty($_SESSION)) {
@@ -122,7 +122,7 @@ class AdminController extends MainController
         }
 
         // Redirect to login page
-        header('Location: ' . MAIN_ROOT_URL . '/login');
+        header('Location: ' . ROOT_URL . '/login');
         exit;
     }
 
@@ -270,35 +270,37 @@ class AdminController extends MainController
                         'email' => self::test_input($_POST['email']),
                         'password' => password_hash($_POST['password'], PASSWORD_BCRYPT, array('cost' => 14)));
 
-
+                var_dump($this->oAdmin->email);
                     //gdy edytowany jest ten sam co edytowany wuloguj sie celem wprowdznie zmian
-                    if ($_SESSION['userEmail'] === $this->oEmail->email) {
+                    if ($_SESSION['userEmail'] === $this->oAdmin->email) {
 
                         if ($this->AdminModel->update($aData)) {
-                            header('Location: http://simplyblogadvanced.test' );
+                            header('Location: ' . ROOT_URL . 'logout');
                             exit();
                         } else {
-                            header('Location: http://simplyblogadvanced.test' );
+
                             if (!empty($_SESSION['AdminSuccMsg'])) {
                                 unset($_SESSION['AdminSuccMsg']);
                             }
+                            header('Location: ' . ROOT_URL . 'edit?id=' . $post_id);
                             $_SESSION['AdminErrorMsg'] = 'Ups smth wrong!!!!';
                         }
                     }
 
                     if ($this->AdminModel->update($aData)) {
 
-                        header('Location: http://simplyblogadvanced.test' );
+
                         if (!empty($_SESSION['AdminErrorMsg'])) {
                             unset($_SESSION['AdminErrorMsg']);
                         }
+                        header('Location: ' . ROOT_URL);
                         $_SESSION['AdminSuccMsg'] = 'Hurray! The User (Admin) has been updated.';
                     }
                 } else {
                     if (!empty($_SESSION['AdminSuccMsg'])) {
                         unset($_SESSION['AdminSuccMsg']);
                     }
-                    header('Location: http://simplyblogadvanced.test' );
+                    header('Location: ' . ROOT_URL . 'edit?id=' . $post_id);
 
                     $_SESSION['AdminErrorMsg'] = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
@@ -311,6 +313,8 @@ class AdminController extends MainController
     public function edit_get($post_id)
     {
         $this->oAdmin = $this->AdminModel->getById($post_id);
+
+        //var_dump($this->oAdmin->email);
         $this->getView('edit_user');
     }
 

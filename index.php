@@ -21,6 +21,8 @@ define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(
 define('MAIN_ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))));
 define('MAIN_PAGE', PROT . $_SERVER['SERVER_NAME'] . Config::MAIN_PAGE_SLUG);
 
+//todo: change ROOT URL and  MAIN ROOT URL into PROT . $_SERVER['SERVER_NAME']
+
 //to redirect to main page when is visit load page
 if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
     header('Location: ' . MAIN_PAGE);
