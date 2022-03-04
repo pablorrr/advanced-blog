@@ -123,7 +123,9 @@ class PostController extends MainController
                 //todo zaminiec na preg replace
 
 
-                $aData = array('post_id' => $post_id, 'title' => $_POST['title'], 'body' => $_POST['body']);
+                $aData = array('post_id' => $post_id,
+                    'title' => self::test_input($_POST['title']),
+                    'body' => self::test_input($_POST['body']));
 
                 if ($this->oModel->update($aData)) {
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace PhpMVC\Controller;
+namespace Controller;
 
-use PhpMVC\Libs\Valid;
+use Libs\Valid;
 
 class Comment extends MainController
 {
