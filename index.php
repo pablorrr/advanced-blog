@@ -114,6 +114,10 @@ $router->all('/logout', array(
     'func' => array($AdminController, 'logout')
 ));
 
+$router->get('/admin/logout', array(
+    'func' => array($AdminController, 'getLogoutPage')
+));
+
 //index admin (show users page)
 $router->get('/admin', array(
     'func' => array($AdminController, 'index')
@@ -127,6 +131,18 @@ $router->get('/admin/register', array(
 
 $router->post('/admin/register', array(
     'func' => array($AdminController, 'register_post')
+));
+
+//edit user
+
+$router->get('/admin/edit', array(
+    'func' => array($AdminController, 'edit_get'),
+    'parameters' => array($router->getPostId(true))
+));
+
+$router->post('/admin/edit', array(
+    'func' => array($AdminController, 'edit_post'),
+    'parameters' => array($router->getPostId(true))
 ));
 
 

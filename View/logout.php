@@ -10,7 +10,7 @@
 <h5><?= $_SESSION['userEmail']; ?></h5>
 
 <p>You are updated yourself please press log out button and log in again to see results of upgrade</p>
-<button><a href="<?= ROOT_URL ?>?p=admin&amp;a=logout">Logout</a></button>
+<button><a href="<?= ROOT_URL ?>logout">Logout</a></button>
 
 <footer></footer>
 </div>

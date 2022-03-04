@@ -122,7 +122,7 @@ class AdminController extends MainController
         }
 
         // Redirect to login page
-        header('Location: ' . ROOT_URL . '/login');
+        header('Location: ' . MAIN_ROOT_URL . '/login');
         exit;
     }
 
@@ -198,7 +198,7 @@ class AdminController extends MainController
                                 unset($_SESSION['AdminErrorMsg']);
                             }
 
-                            header('Location: ' . ROOT_URL );
+                            header('Location: ' . ROOT_URL);
                             $_SESSION['AdminSuccMsg'] = 'Hurray!! The new user has been added.';
 
                         } else {
@@ -240,20 +240,21 @@ class AdminController extends MainController
         $this->getView('logout');
     }
 
-    public function edit()
+    public function edit_post($post_id)
     {
         if (!$this->isLogged()) exit;
+        $this->oAdmin = $this->AdminModel->getById($post_id);
 
         //to prevent unnecessary  display msg
-        if (empty($_POST['edit_submit'])):if (!empty($_SESSION['AdminSuccMsg'])) {
-            unset($_SESSION['AdminSuccMsg']);
-        }
-        endif;
+        /*  if (empty($_POST['edit_submit'])):if (!empty($_SESSION['AdminSuccMsg'])) {
+              unset($_SESSION['AdminSuccMsg']);
+          }
+          endif;
 
-        if (empty($_POST['edit_submit'])):if (!empty($_SESSION['AdminErrorMsg'])) {
-            unset($_SESSION['AdminErrorMsg']);
-        }
-        endif;
+          if (empty($_POST['edit_submit'])):if (!empty($_SESSION['AdminErrorMsg'])) {
+              unset($_SESSION['AdminErrorMsg']);
+          }
+          endif;*/
 
         if (!empty($_POST['edit_submit'])) {
 
@@ -265,53 +266,51 @@ class AdminController extends MainController
                     && preg_match('/[0-9]/', $_POST['password'])) {
 
 
-                    $aData = array('id' => self::test_input($this->_iId),
+                    $aData = array('id' => self::test_input($post_id),
                         'email' => self::test_input($_POST['email']),
                         'password' => password_hash($_POST['password'], PASSWORD_BCRYPT, array('cost' => 14)));
 
-                    //if redirect if updated yourself(logged user)todo: chek if you can doyhis in constructor
 
-                    //  $this->oEmail = $this->getAModelObject()->getEmailById($this->_iId);
-
+                    //gdy edytowany jest ten sam co edytowany wuloguj sie celem wprowdznie zmian
                     if ($_SESSION['userEmail'] === $this->oEmail->email) {
 
-                        if (($this->getAModelObject()->update($aData))) {
-                            header('Location: ' . ROOT_URL . '?p=admin&a=getLogoutPage');
+                        if ($this->AdminModel->update($aData)) {
+                            header('Location: http://simplyblogadvanced.test' );
                             exit();
                         } else {
-                            header('Location: ' . ROOT_URL . '?p=admin&a=index');
-                            if (!empty($_SESSION['AdminErrorMsg'])) {
-                                unset($_SESSION['AdminErrorMsg']);
+                            header('Location: http://simplyblogadvanced.test' );
+                            if (!empty($_SESSION['AdminSuccMsg'])) {
+                                unset($_SESSION['AdminSuccMsg']);
                             }
+                            $_SESSION['AdminErrorMsg'] = 'Ups smth wrong!!!!';
                         }
-
-
                     }
 
-                    if (($this->getAModelObject()->update($aData))) {
+                    if ($this->AdminModel->update($aData)) {
 
-                        header('Location: ' . ROOT_URL . '?p=admin&a=index');
+                        header('Location: http://simplyblogadvanced.test' );
                         if (!empty($_SESSION['AdminErrorMsg'])) {
                             unset($_SESSION['AdminErrorMsg']);
                         }
-
                         $_SESSION['AdminSuccMsg'] = 'Hurray! The User (Admin) has been updated.';
                     }
                 } else {
                     if (!empty($_SESSION['AdminSuccMsg'])) {
                         unset($_SESSION['AdminSuccMsg']);
                     }
+                    header('Location: http://simplyblogadvanced.test' );
 
                     $_SESSION['AdminErrorMsg'] = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
                 }
             }
         }
+    }
 
-        /* Get the data of the post */
 
-        $this->oAdmin = $this->getAModelObject()->getById($this->_iId);
-
+    public function edit_get($post_id)
+    {
+        $this->oAdmin = $this->AdminModel->getById($post_id);
         $this->getView('edit_user');
     }
 

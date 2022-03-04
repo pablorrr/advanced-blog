@@ -14,8 +14,6 @@
 <?php require 'components/header.php' ?>
 <?php require 'components/admin-msg.php' ?>
 <div class="container">
-
-
     <div class="row">
         <div class="col-md-12">
             <h1>Admin Users List</h1>
@@ -40,23 +38,20 @@
                     <td><?= $oAdmin->email ?></td>
 
                     <?php if (!empty($_SESSION['is_logged'])): ?>
-
                         <td>
                             <button type="button"
-                                    onclick="window.location='<?= ROOT_URL ?>?p=admin&amp;a=edit&amp;id=<?= $oAdmin->id ?>'"
+                                    onclick="window.location='<?= ROOT_URL ?>admin/edit?id=<?= $oAdmin->id ?>'"
                                     class="bold">Edit
                             </button>
                         </td>
                         <!--todo dzila ale do poprawy ABY USER NIE MOGLSAM SIE USUSNAC-->
                         <?php if ($oAdmin->email != $_SESSION['userEmail']) : ?>
-
                             <td>
-                                <form action="<?= ROOT_URL ?>?p=admin&amp;a=delete&amp;id=<?= $oAdmin->id ?>"
+                                <form action="<?= ROOT_URL ?>admin/delete?id=<?= $oAdmin->id ?>"
                                       method="post" class="inline">
                                     <button type="submit" name="delete" value="1" class="bold">Delete</button>
                                 </form>
                             </td>
-
                         <?php endif ?>
                     <?php endif ?>
                 </tr>

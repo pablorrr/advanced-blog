@@ -61,4 +61,4 @@
 </script>
 </body>
 </html>
-<?php header('Refresh: 6; ' . MAIN_PAGE); ?>
+<?php// header('Refresh: 6; ' . MAIN_PAGE); ?>
