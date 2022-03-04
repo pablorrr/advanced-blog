@@ -6,6 +6,7 @@ use Controller\PostController;
 //use Controller\MainController;
 use Libs\Router;
 use Libs\Config;
+use Model\AdminModel;
 use Model\CommentModel;
 use Model\PostModel;
 
@@ -34,8 +35,8 @@ if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
 
 $router = new Router;
 $PostController = new PostController(new PostModel(),new CommentModel());
-$CommentController = new CommentController();
-$AdminController = new AdminController();
+$CommentController = new CommentController(new PostModel(),new CommentModel());
+$AdminController = new AdminController(new AdminModel());
 
 //TestController::test();
 

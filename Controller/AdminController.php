@@ -9,7 +9,7 @@
 namespace Controller;
 
 use Libs\Valid;
-use Model\AdminModel;
+
 
 class AdminController extends MainController
 {
@@ -17,20 +17,15 @@ class AdminController extends MainController
     private $_iId;//update usage
     private $AdminModel;//update usage
 
-    /**
-     * @var
-     */
-    protected $oEmail;//show current chosen from url id user email
 
-    public function __construct()
+
+    public function __construct($AdminModel)
     {
         // Enable PHP Session
         if (empty($_SESSION))
             session_start();
-//todo: di implemtation
-        $this->AdminModel = new AdminModel();
 
-
+        $this->AdminModel = $AdminModel;
     }
 
     use Valid;

@@ -3,45 +3,24 @@
 namespace Controller;
 
 use Libs\Valid;
-use Model\PostModel;
-use Model\CommentModel;
+
 
 class CommentController extends MainController
 {
-
-    protected $oModel;
+//todo : sprawdz czy ta zmienna jest potrzebna!!
     private $_iId;
-    public $oComments;
-    protected $BlogModel;
-    protected $CommentModel;
-    protected $oPost;
-    /**
-     * @var PostModel
-     */
     private $PostModel;
+    private $CommentModel;
 
-    /**
-     * Comment constructor.
-     */
-    public function __construct()
+
+    public function __construct($PostModel, $CommentModel)
     {
         // Enable PHP Session
         if (empty($_SESSION))
             @session_start();
 
-
-        /** Get the Model class in all the controller class **/
-
-        // $this->getModel('CommentModel');
-        //  $this->oModel = new CommentController();
-
-        /** Get the Comment ID in the constructor in order to avoid the duplication of the same code **/
-        //  $this->_iId = (int)(!empty($_GET['id']) ? $_GET['id'] : 0);
-
-        $this->PostModel = new PostModel();
-        $this->CommentModel = new CommentModel();
-
-
+        $this->PostModel = $PostModel;
+        $this->CommentModel = $CommentModel;
     }
 
 
