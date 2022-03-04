@@ -3,7 +3,7 @@
 namespace Controller;
 
 use Libs\Valid;
-use Model\BlogModel;
+use Model\PostModel;
 
 
 class PostController extends MainController
@@ -21,7 +21,7 @@ class PostController extends MainController
         if (empty($_SESSION))
             session_start();
 
-        $this->oModel = new BlogModel();//todo: wprowadzic DI
+        $this->oModel = new PostModel();//todo: wprowadzic DI
     }
 
     use Valid;

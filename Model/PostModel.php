@@ -9,7 +9,7 @@
 namespace Model;
 
 
-class BlogModel extends MainModel
+class PostModel extends MainModel
 {
 
     protected $oDb;
