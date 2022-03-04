@@ -240,10 +240,10 @@ class AdminController extends MainController
         $this->getView('logout');
     }
 
-    public function edit_post($post_id)
+    public function edit_post($admin_id)
     {
         if (!$this->isLogged()) exit;
-        $this->oAdmin = $this->AdminModel->getById($post_id);
+        $this->oAdmin = $this->AdminModel->getById($admin_id);
 
         //to prevent unnecessary  display msg
         /*  if (empty($_POST['edit_submit'])):if (!empty($_SESSION['AdminSuccMsg'])) {
@@ -266,7 +266,7 @@ class AdminController extends MainController
                     && preg_match('/[0-9]/', $_POST['password'])) {
 
 
-                    $aData = array('id' => self::test_input($post_id),
+                    $aData = array('id' => self::test_input($admin_id),
                         'email' => self::test_input($_POST['email']),
                         'password' => password_hash($_POST['password'], PASSWORD_BCRYPT, array('cost' => 14)));
 
@@ -282,7 +282,7 @@ class AdminController extends MainController
                             if (!empty($_SESSION['AdminSuccMsg'])) {
                                 unset($_SESSION['AdminSuccMsg']);
                             }
-                            header('Location: ' . ROOT_URL . 'edit?id=' . $post_id);
+                            header('Location: ' . ROOT_URL . 'edit?id=' . $admin_id);
                             $_SESSION['AdminErrorMsg'] = 'Ups smth wrong!!!!';
                         }
                     }
@@ -300,7 +300,7 @@ class AdminController extends MainController
                     if (!empty($_SESSION['AdminSuccMsg'])) {
                         unset($_SESSION['AdminSuccMsg']);
                     }
-                    header('Location: ' . ROOT_URL . 'edit?id=' . $post_id);
+                    header('Location: ' . ROOT_URL . 'edit?id=' . $admin_id);
 
                     $_SESSION['AdminErrorMsg'] = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
@@ -310,9 +310,9 @@ class AdminController extends MainController
     }
 
 
-    public function edit_get($post_id)
+    public function edit_get($admin_id)
     {
-        $this->oAdmin = $this->AdminModel->getById($post_id);
+        $this->oAdmin = $this->AdminModel->getById($admin_id);
 
         //var_dump($this->oAdmin->email);
         $this->getView('edit_user');

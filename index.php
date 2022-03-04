@@ -51,7 +51,7 @@ $router->get(Config::MAIN_PAGE_SLUG, array(
 
 $router->get('/single-post', array(
     'func' => array($PostController, 'getSinglePost'),
-    'parameters' => array($router->getPostId(true))
+    'parameters' => array($router->getId(true))
 
 ));
 
@@ -73,17 +73,17 @@ $router->post('/add', array(
 
 $router->get('/edit', array(
     'func' => array($PostController, 'edit_get'),
-    'parameters' => array($router->getPostId(true))
+    'parameters' => array($router->getId(true))
 ));
 
 $router->post('/edit', array(
     'func' => array($PostController, 'edit_post'),
-    'parameters' => array($router->getPostId(true))
+    'parameters' => array($router->getId(true))
 ));
 
 $router->all('/delete', array(
     'func' => array($PostController, 'delete'),
-    'parameters' => array($router->getPostId(true))
+    'parameters' => array($router->getId(true))
 ));
 
 //**COMMNENTS**//
@@ -95,7 +95,7 @@ $router->get('/add-comment', array(
 
 $router->post('/add-comment', array(
     'func' => array($CommentController, 'add_post'),
-    'parameters' => array($router->getPostId(true))
+    'parameters' => array($router->getId(true))
 ));
 
 //**END COMMENTS//
@@ -139,12 +139,12 @@ $router->post('/admin/register', array(
 
 $router->get('/admin/edit', array(
     'func' => array($AdminController, 'edit_get'),
-    'parameters' => array($router->getPostId(true))
+    'parameters' => array($router->getId(true))
 ));
 
 $router->post('/admin/edit', array(
     'func' => array($AdminController, 'edit_post'),
-    'parameters' => array($router->getPostId(true))
+    'parameters' => array($router->getId(true))
 ));
 
 

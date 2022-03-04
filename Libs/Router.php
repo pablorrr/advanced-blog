@@ -130,7 +130,7 @@ class Router
      *
      * my individual modif to simply get post id toprint in single post page view
      */
-    public function getPostId($parameters = false)
+    public function getId($parameters = false)
     {
         if (!$parameters) {
             return $this->base . $this->url;
