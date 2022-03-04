@@ -62,8 +62,20 @@ class PostModel extends MainModel
      */
     public function getAll()
     {
-        $oStmt = $this->oDb->query('SELECT * FROM Posts ORDER BY createdDate DESC');
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+     /*   $oStmt = $this->oDb->query('SELECT * FROM Posts ORDER BY createdDate DESC');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);*/
+
+        if ($this->CommentModel->get() == false) {
+            $oStmt = $this->oDb->query('SELECT * FROM Posts ORDER BY createdDate DESC');
+            return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+        }
+        if ($this->CommentModel->get() == true) {
+
+            $oStmt = $this->oDb->query('SELECT posts.id, posts.title, posts.body,posts.createdDate, comments.comment
+       FROM comments
+       RIGHT JOIN posts ON comments.post_id = posts.id  ORDER BY createdDate');
+            return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+        }
     }
 
     /**
