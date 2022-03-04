@@ -1,8 +1,9 @@
 <?php
 
 use Controller\AdminController;
+use Controller\CommentController;
 use Controller\PostController;
-use Controller\MainController;
+//use Controller\MainController;
 use Libs\Router;
 use Libs\Config;
 
@@ -28,7 +29,8 @@ if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
 
 
 $router = new Router;
-$BlogController = new PostController();
+$PostController = new PostController();
+$CommentController = new CommentController();
 $AdminController = new AdminController();
 
 //TestController::test();
@@ -41,12 +43,12 @@ $AdminController = new AdminController();
 /** MAIN PAGE **/
 
 $router->get(Config::MAIN_PAGE_SLUG, array(
-    'func' => array($BlogController, 'getMainPage'),
+    'func' => array($PostController, 'getMainPage'),
     'parameters' => array()
 ));
 
 $router->get('/single-post', array(
-    'func' => array($BlogController, 'getSinglePost'),
+    'func' => array($PostController, 'getSinglePost'),
     'parameters' => array($router->getPostId(true))
 
 ));
@@ -57,30 +59,47 @@ $router->get('/single-post', array(
 ///*** CRUD**********//
 //add post
 $router->get('/add', array(
-    'func' => array($BlogController, 'add_get')
+    'func' => array($PostController, 'add_get')
 ));
 
 $router->post('/add', array(
-    'func' => array($BlogController, 'add_post')
+    'func' => array($PostController, 'add_post')
 ));
 
 //edit post
 //todo sprawdz czy parameters musi buyc ustwiony w dwowch miekscach edit!!
 
 $router->get('/edit', array(
-    'func' => array($BlogController, 'edit_get'),
+    'func' => array($PostController, 'edit_get'),
     'parameters' => array($router->getPostId(true))
 ));
 
 $router->post('/edit', array(
-    'func' => array($BlogController, 'edit_post'),
+    'func' => array($PostController, 'edit_post'),
     'parameters' => array($router->getPostId(true))
 ));
 
 $router->all('/delete', array(
-    'func' => array($BlogController, 'delete'),
+    'func' => array($PostController, 'delete'),
     'parameters' => array($router->getPostId(true))
 ));
+
+//**COMMNENTS**//
+
+//add comment
+$router->get('/add-comment', array(
+    'func' => array($CommentController, 'add_get')
+));
+
+$router->post('/add-comment', array(
+    'func' => array($CommentController, 'add_post'),
+    'parameters' => array($router->getPostId(true))
+));
+
+//**END COMMENTS//
+
+
+
 ///***  END CRUD**********//
 
 
@@ -106,11 +125,11 @@ $router->all('/logout', array(
 
 
 $router->get('/form', array(
-    'func' => array($BlogController, 'form_get')
+    'func' => array($PostController, 'form_get')
 ));
 
 $router->post('/form', array(
-    'func' => array($BlogController, 'form_post')
+    'func' => array($PostController, 'form_post')
 ));
 
 
@@ -131,23 +150,23 @@ $router->get('/para/{var1}/{var2}/{var3}/{var4}', function ($var1, $var2, $var3,
 
 
 $router->get('/pa\*th', array(
-    'func' => array($BlogController, 'path'),
+    'func' => array($PostController, 'path'),
     'parameters' => array($router->get_URL(), $router->get_URL(true))
 ));
 
 $router->get('/path(opt)', array(
-    'func' => array($BlogController, 'path'),
+    'func' => array($PostController, 'path'),
     'parameters' => array($router->get_URL(), $router->get_URL(true))
 ));
 $router->get('/text', array(
-    'func' => array($BlogController, 'text'),
+    'func' => array($PostController, 'text'),
     'parameters' => array(1, 2, 3)
 ));
 
 
-$router->catch_exception(function () use ($BlogController) {
+$router->catch_exception(function () use ($PostController) {
 
-    $BlogController->getView('404');
+    $PostController->getView('404');
 });
 
 $router->match();

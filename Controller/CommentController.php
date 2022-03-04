@@ -14,6 +14,11 @@ class CommentController extends MainController
     public $oComments;
     protected $BlogModel;
     protected $CommentModel;
+    protected $oPost;
+    /**
+     * @var PostModel
+     */
+    private $PostModel;
 
     /**
      * Comment constructor.
@@ -28,7 +33,7 @@ class CommentController extends MainController
         /** Get the Model class in all the controller class **/
 
         // $this->getModel('CommentModel');
-        $this->oModel = new CommentController();
+        //  $this->oModel = new CommentController();
 
         /** Get the Comment ID in the constructor in order to avoid the duplication of the same code **/
         //  $this->_iId = (int)(!empty($_GET['id']) ? $_GET['id'] : 0);
@@ -47,7 +52,8 @@ class CommentController extends MainController
      */
     use Valid;
 
-    public function add()
+
+    public function add_post($post_id)
     {
         if (!empty($_SESSION['PostSuccessMsg'])) {
             unset($_SESSION['PostSuccessMsg']);
@@ -63,21 +69,24 @@ class CommentController extends MainController
         }
         endif;
 
+        // $this->oPost = $this->PostModel->getById($post_id);
+
         if (!empty($_POST['add_comment'])) {
 
-            if (isset($_POST['comment'], $_POST['post_id']) && mb_strlen($_POST['comment']) <= 250
+            if (isset($_POST['comment'])
+                && mb_strlen($_POST['comment']) <= 250
                 && preg_match('/([a-zA-Z]+( [a-zA-Z]+)+)/i', $_POST['comment'])) {
 
                 $aData = array(
                     'comment' => self::test_input($_POST['comment']),
-                    'post_id' => self::test_input($_POST['post_id'])
+                    'post_id' => $post_id,
                 );
 
                 /**      if add         */
 
-                if ($this->oModel->add($aData)) {
+                if ($this->CommentModel->add($aData)) {
 
-                    header('Location: ' . ROOT_URL);
+                    header('Location: ' . MAIN_PAGE);
 
                     if (!empty($_SESSION['CommentErrorMsg'])) {
                         unset($_SESSION['CommentErrorMsg']);
@@ -86,6 +95,8 @@ class CommentController extends MainController
                     $_SESSION['CommentSuccessMsg'] = 'Hurray!! The comment has been added.';
 
                 } else {
+
+                    header('Location: ' . MAIN_ROOT_URL . '/add-comment?id=' . $post_id);
 
                     if (!empty($_SESSION['CommentSuccessMsg'])) {
                         unset($_SESSION['CommentSuccessMsg']);
@@ -97,15 +108,27 @@ class CommentController extends MainController
                 /**     end if add         */
 
             } else {
+
+                header('Location: ' . MAIN_ROOT_URL . '/add-comment?id=' . $post_id);
+
                 if (!empty($_SESSION['CommentSuccessMsg'])) {
                     unset($_SESSION['CommentSuccessMsg']);
                 }
 
-                $_SESSION['CommentErrorMsg'] = 'All fields are required  cannot exceed 250 characters and must be leettes and contains twosingle separated words .';
+                $_SESSION['CommentErrorMsg'] = 'All fields are required  cannot exceed 250 characters and must be leettes and contains two single separated words .';
             }
         }//add comment if
-        $this->getView('add_comment');
+
     }
+
+    public function add_get()
+    {
+
+        //    $this->oPost = $this->PostModel->getById($post_id);
+        $this->getView('add_comment');
+
+    }
+
 
 
     //  protected

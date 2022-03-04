@@ -103,6 +103,7 @@ class PostController extends MainController
 
 
         /* Get the data of the post */
+        //todo: sprawdz czy nie wystepuje niepotr\zbny duplikat getbyid
         $this->oPost = $this->oModel->getById($post_id);
 
         $this->getView('edit_post');

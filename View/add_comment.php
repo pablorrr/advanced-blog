@@ -13,7 +13,6 @@
 <h1> Add comment page</h1>
 <form action="" method="POST">
 
-    <input type="hidden" name="post_id" id="post_id" value="<?= htmlspecialchars($_GET['id']) ?>" required="required"/>
     <p><label for="comment">Comment(musi skladac sie conajmniej z dwoch slow):</label><br/>
         <textarea name="comment" id="comment" rows="5" cols="35" required="required"></textarea>
     </p>
