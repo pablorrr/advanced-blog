@@ -1,7 +1,7 @@
 <?php
 
 use Controller\AdminController;
-use Controller\BlogController;
+use Controller\PostController;
 use Controller\MainController;
 use Libs\Router;
 use Libs\Config;
@@ -28,7 +28,7 @@ if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
 
 
 $router = new Router;
-$BlogController = new BlogController();
+$BlogController = new PostController();
 $AdminController = new AdminController();
 
 //TestController::test();

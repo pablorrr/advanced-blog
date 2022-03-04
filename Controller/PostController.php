@@ -6,7 +6,7 @@ use Libs\Valid;
 use Model\BlogModel;
 
 
-class BlogController extends MainController
+class PostController extends MainController
 {
     /**
      * @var array
