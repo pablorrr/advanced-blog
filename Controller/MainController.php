@@ -100,6 +100,13 @@ class MainController
             if (!empty($_SESSION['CommentErrorMsg'])) {
                 unset($_SESSION['CommentErrorMsg']);
             }
+
+            if (!empty($_SESSION['AdminErrorMsg'])) {
+                unset($_SESSION['AdminErrorMsg']);
+            }
+            if (!empty($_SESSION['AdminSuccMsg'])) {
+                unset($_SESSION['AdminSuccMsg']);
+            }
             return true;
         } else {
             return false;
