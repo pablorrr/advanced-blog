@@ -59,21 +59,21 @@ class AdminController extends MainController
 
     public function login_post()
     {
-        if (empty($_POST['submit'])) {
-            if (!empty($_SESSION['AdminSuccMsg'])) {
-                unset($_SESSION['AdminSuccMsg']);
-            }
-        }
+       // if (empty($_POST['submit'])) {
+          //  if (!empty($_SESSION['AdminSuccMsg'])) {
+              //  unset($_SESSION['AdminSuccMsg']);
+         //   }
+      //  }
 
-        if (empty($_POST['submit'])) {
-            if (!empty($_SESSION['AdminErrorMsg'])) {
-                unset($_SESSION['AdminErrorMsg']);
-            }
-        }
+      //  if (empty($_POST['submit'])) {
+          //  if (!empty($_SESSION['AdminErrorMsg'])) {
+            //    unset($_SESSION['AdminErrorMsg']);
+          //  }
+     //   }
 
-        if (!empty($_SESSION['AdminSuccMsg'])) {
-            unset($_SESSION['AdminSuccMsg']);
-        }
+       // if (!empty($_SESSION['AdminSuccMsg'])) {
+        //    unset($_SESSION['AdminSuccMsg']);
+      //  }
         if ($this->isLogged())
             header('Location: ' . MAIN_PAGE);
 
@@ -83,9 +83,9 @@ class AdminController extends MainController
 
             if (password_verify($_POST['password'], $sHashPassword)) {
 
-                if (!empty($_SESSION['AdminErrorMsg'])) {
-                    unset($_SESSION['AdminErrorMsg']);
-                }
+                //if (!empty($_SESSION['AdminErrorMsg'])) {
+                //   unset($_SESSION['AdminErrorMsg']);
+              //  }
                 $_SESSION['is_logged'] = true;
                 $_SESSION['userEmail'] = $_POST['email'];
                 header('Location: ' . MAIN_PAGE);
@@ -93,13 +93,14 @@ class AdminController extends MainController
 
             } else {
                 //spr czy to jest potrebne!!!
-                if (!empty($_SESSION['AdminSuccMsg'])) {
-                    unset($_SESSION['AdminSuccMsg']);
-                }
-//todo poprawic  print  incorect login!!
+             //   if (!empty($_SESSION['AdminSuccMsg'])) {
+                   // unset($_SESSION['AdminSuccMsg']);
+             //   }
+
                 header('Location: ' . MAIN_ROOT_URL . '/login');
                 $_SESSION['is_logged'] = false;
                 $_SESSION['AdminErrorMsg'] = 'Incorrect Login!';
+                error_log('Wrong logging try!!!');
             }
         }
     }

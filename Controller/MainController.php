@@ -1,26 +1,16 @@
 <?php
 
 namespace Controller;
+use Libs\MainInterface;
+
 /**
  *
  * Class MainController
  * @package TestProject\Libs
  */
-interface MainC
-{
 
-    public function getView($sViewName);
 
-    public function _get($sFileName);
-
-    public function __set($sKey, $mVal);
-
-    public function isLogged();
-
-    public static function isPageRefreshed();
-}
-
-abstract class MainController implements MainC
+abstract class MainController implements MainInterface
 {
     /**
      * @var array
