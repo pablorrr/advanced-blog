@@ -19,7 +19,6 @@ class AdminController extends MainController
     private $AdminModel;//update usage
 
 
-
     public function __construct(AdminModel $AdminModel)
     {
         // Enable PHP Session
@@ -122,6 +121,8 @@ class AdminController extends MainController
         exit;
     }
 
+    /**REGISTER**/
+
     public function register_post()
     {
         //todo: dodoac klase walidator
@@ -129,15 +130,15 @@ class AdminController extends MainController
             exit;
 
         //to prevent unnecessary  display msg
-        if (empty($_POST['register'])):if (!empty($_SESSION['AdminSuccMsg'])) {
-            unset($_SESSION['AdminSuccMsg']);
-        }
-        endif;
+      //  if (empty($_POST['register'])):if (!empty($_SESSION['AdminSuccMsg'])) {
+           // unset($_SESSION['AdminSuccMsg']);
+    //    }
+      //  endif;
 
-        if (empty($_POST['register'])):if (!empty($_SESSION['AdminErrorMsg'])) {
-            unset($_SESSION['AdminErrorMsg']);
-        }
-        endif;
+     //   if (empty($_POST['register'])):if (!empty($_SESSION['AdminErrorMsg'])) {
+          //  unset($_SESSION['AdminErrorMsg']);
+      //  }
+      //  endif;
 
 
         if (!empty($_POST['register'])) {
@@ -174,11 +175,12 @@ class AdminController extends MainController
 
                     if ($flag == true) {
 
-                        if (!empty($_SESSION['AdminSuccMsg'])) {
-                            unset($_SESSION['AdminSuccMsg']);
-                        }
-
                         header('Location: ' . ROOT_URL . '/register');
+
+                      //  if (!empty($_SESSION['AdminSuccMsg'])) {
+                           // unset($_SESSION['AdminSuccMsg']);
+                      //  }
+
                         $_SESSION['AdminErrorMsg'] = 'Whoops! Email is already in use  ,please try  another one';
 
                     } else {
@@ -193,18 +195,18 @@ class AdminController extends MainController
 
                             header('Location: ' . ROOT_URL);
 
-                            if (!empty($_SESSION['AdminErrorMsg'])) {
-                                unset($_SESSION['AdminErrorMsg']);
-                            }
+                          //  if (!empty($_SESSION['AdminErrorMsg'])) {
+                             //   unset($_SESSION['AdminErrorMsg']);
+                       //     }
                             $_SESSION['AdminSuccMsg'] = 'Hurray!! The new user has been added.';
 
                         } else {
 
                             header('Location: ' . ROOT_URL . '/register');
 
-                            if (!empty($_SESSION['AdminSuccMsg'])) {
-                                unset($_SESSION['AdminSuccMsg']);
-                            }
+                         //   if (!empty($_SESSION['AdminSuccMsg'])) {
+                               // unset($_SESSION['AdminSuccMsg']);
+                       //     }
 
                             $_SESSION['AdminErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
                         }
@@ -214,9 +216,9 @@ class AdminController extends MainController
 
                     header('Location: ' . ROOT_URL . '/register');
 
-                    if (!empty($_SESSION['AdminSuccMsg'])) {
-                        unset($_SESSION['AdminSuccMsg']);
-                    }
+                //    if (!empty($_SESSION['AdminSuccMsg'])) {
+                   //     unset($_SESSION['AdminSuccMsg']);
+                 //   }
 
                     $_SESSION['AdminErrorMsg'] = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
@@ -235,10 +237,12 @@ class AdminController extends MainController
         $this->getView('register_user');
     }
 
+
     public function getLogoutPage()
     {
         $this->getView('logout');
     }
+
 
     public function edit_post($admin_id)
     {
@@ -270,37 +274,45 @@ class AdminController extends MainController
                         'email' => self::test_input($_POST['email']),
                         'password' => password_hash($_POST['password'], PASSWORD_BCRYPT, array('cost' => 14)));
 
-                    var_dump($this->oAdmin->email);
+                    //var_dump($this->oAdmin->email);
                     //gdy edytowany jest ten sam co edytowany wuloguj sie celem wprowdznie zmian
+
                     if ($_SESSION['userEmail'] === $this->oAdmin->email) {
 
                         if ($this->AdminModel->update($aData)) {
+
                             header('Location: ' . ROOT_URL . 'logout');
+
                             exit();
                         } else {
 
-                            if (!empty($_SESSION['AdminSuccMsg'])) {
-                                unset($_SESSION['AdminSuccMsg']);
-                            }
                             header('Location: ' . ROOT_URL . 'edit?id=' . $admin_id);
+
+                            // if (!empty($_SESSION['AdminSuccMsg'])) {
+                            //   unset($_SESSION['AdminSuccMsg']);
+                            //   }
+
                             $_SESSION['AdminErrorMsg'] = 'Ups smth wrong!!!!';
                         }
                     }
 
                     if ($this->AdminModel->update($aData)) {
 
-
-                        if (!empty($_SESSION['AdminErrorMsg'])) {
-                            unset($_SESSION['AdminErrorMsg']);
-                        }
                         header('Location: ' . ROOT_URL);
+
+                        //    if (!empty($_SESSION['AdminErrorMsg'])) {
+                        // unset($_SESSION['AdminErrorMsg']);
+                        //    }
+
                         $_SESSION['AdminSuccMsg'] = 'Hurray! The User (Admin) has been updated.';
                     }
                 } else {
-                    if (!empty($_SESSION['AdminSuccMsg'])) {
-                        unset($_SESSION['AdminSuccMsg']);
-                    }
+
                     header('Location: ' . ROOT_URL . 'edit?id=' . $admin_id);
+
+                    //   if (!empty($_SESSION['AdminSuccMsg'])) {
+                    //   unset($_SESSION['AdminSuccMsg']);
+                    //     }
 
                     $_SESSION['AdminErrorMsg'] = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
@@ -319,22 +331,21 @@ class AdminController extends MainController
     }
 
 
-    public static function isRefreshedAdminPage()
-    {
-        $is_page_refreshed = (isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] == 'max-age=0');
+    /*   public static function isRefreshedAdminPage()
+       {
+           $is_page_refreshed = (isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] == 'max-age=0');
 
 
-        if ($is_page_refreshed) :
+           if ($is_page_refreshed) :
 
-            //echo 'This Page Is refreshed.';
+               //echo 'This Page Is refreshed.';
 
-            if (!empty ($_SESSION['AdminSuccMsg'])) {
-                unset($_SESSION['AdminSuccMsg']);
-            }
+               if (!empty ($_SESSION['AdminSuccMsg'])) {
+                   unset($_SESSION['AdminSuccMsg']);
+               }
 
-
-        endif;
-    }
+               endif;
+       }*/
 
 
     //todo:dont delete admin when i same logged and leave at least one not deleted
@@ -349,17 +360,21 @@ class AdminController extends MainController
             if ($this->AdminModel->countAdmins() > 1 && $this->oAdmin->email != $_SESSION['userEmail']) {
 
                 if ($this->AdminModel->delete($admin_id)) {
+
                     header('Location: ' . ROOT_URL);
+
                     $_SESSION['AdminSuccMsg'] = 'User has been deleted properly';
 
                 } else {
                     header('Location: ' . ROOT_URL);
+
                     $_SESSION['AdminErrorMsg'] = 'Whoops! Post cannot be deleted.';
                     // exit('Whoops! Post cannot be deleted.');
 
                 }
             } else {
                 header('Location: ' . ROOT_URL);
+
                 $_SESSION['AdminErrorMsg'] = 'Whoops! You cant delete all users!!';
                 exit('Whoops! You cant delete all users!! or yourself!!');
 

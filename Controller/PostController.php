@@ -77,17 +77,17 @@ class PostController extends MainController
                 } else {
                     header('Location: ' . MAIN_ROOT_URL . '/add');
 
-                    if (!empty($_SESSION['PostSuccessMsg'])) {
-                        unset($_SESSION['PostSuccessMsg']);
-                    }
+                  //  if (!empty($_SESSION['PostSuccessMsg'])) {
+                      //  unset($_SESSION['PostSuccessMsg']);
+               //     }
 
                     $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
                 }
 
             } else {
-                if (!empty($_SESSION['PostSuccessMsg'])) {
-                    unset($_SESSION['PostSuccessMsg']);
-                }
+              //  if (!empty($_SESSION['PostSuccessMsg'])) {
+                   // unset($_SESSION['PostSuccessMsg']);
+           //     }
                 header('Location: ' . MAIN_ROOT_URL . '/add');
                 $_SESSION['PostErrorMsg'] = 'All fields are required and the title cannot exceed 50 characters.';
             }
@@ -131,26 +131,26 @@ class PostController extends MainController
                 if ($this->PostModel->update($aData)) {
 
                     header('Location: ' . MAIN_PAGE);
-                    if (!empty($_SESSION['PostErrorMsg'])) {
-                        unset($_SESSION['PostErrorMsg']);
-                    }
+                //    if (!empty($_SESSION['PostErrorMsg'])) {
+                      //  unset($_SESSION['PostErrorMsg']);
+               //     }
                     $_SESSION['PostSuccessMsg'] = 'Hurray!! The post has been updated.';
 
                 } else {
 
                     header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
-                    if (!empty($_SESSION['PostSuccessMsg'])) {
-                        unset($_SESSION['PostSuccessMsg']);
-                    }
+                  //  if (!empty($_SESSION['PostSuccessMsg'])) {
+                     //   unset($_SESSION['PostSuccessMsg']);
+                 //   }
                     $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later';
                 }
 
             } else {
 
                 header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
-                if (!empty($_SESSION['PostSuccessMsg'])) {
-                    unset($_SESSION['PostSuccessMsg']);
-                }
+           //     if (!empty($_SESSION['PostSuccessMsg'])) {
+                 //   unset($_SESSION['PostSuccessMsg']);
+            //    }
                 $_SESSION['PostErrorMsg'] = 'All fields are required and only letters allowed.';
             }
 
@@ -176,18 +176,18 @@ class PostController extends MainController
 
                         header('Location: ' . MAIN_PAGE);
 
-                        if (!empty($_SESSION['PostErrorMsg'])) {
-                            unset($_SESSION['PostErrorMsg']);
-                        }
+                      //  if (!empty($_SESSION['PostErrorMsg'])) {
+                           // unset($_SESSION['PostErrorMsg']);
+                     //   }
                         $_SESSION['PostSuccessMsg'] = 'Hurray! The post and comment has been updated.';
 
                     } else {
 
                         header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
 
-                        if (!empty($_SESSION['PostSuccessMsg'])) {
-                            unset($_SESSION['PostSuccessMsg']);
-                        }
+                    //    if (!empty($_SESSION['PostSuccessMsg'])) {
+                           // unset($_SESSION['PostSuccessMsg']);
+                     //   }
                         $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later';
                     }
 
@@ -195,9 +195,9 @@ class PostController extends MainController
 
                     header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
 
-                    if (!empty($_SESSION['PostSuccessMsg'])) {
-                        unset($_SESSION['PostSuccessMsg']);
-                    }
+                //    if (!empty($_SESSION['PostSuccessMsg'])) {
+                        //unset($_SESSION['PostSuccessMsg']);
+                   // }
 
                     $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later';
                 }
@@ -214,7 +214,7 @@ class PostController extends MainController
 
         //to prevent display msg when it is unconcern
 
-        if (!empty($_SESSION['CommentSuccessMsg'])) {
+     /*   if (!empty($_SESSION['CommentSuccessMsg'])) {
             unset($_SESSION['CommentSuccessMsg']);
         }
 
@@ -224,7 +224,7 @@ class PostController extends MainController
 
         if (!empty($_SESSION['PostErrorMsg'])) {
             unset($_SESSION['PostErrorMsg']);
-        }
+        }*/
 
 
         //when comments exists

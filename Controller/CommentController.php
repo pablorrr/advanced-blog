@@ -36,7 +36,7 @@ class CommentController extends MainController
 
     public function add_post($post_id)
     {
-        if (!empty($_SESSION['PostSuccessMsg'])) {
+      /*  if (!empty($_SESSION['PostSuccessMsg'])) {
             unset($_SESSION['PostSuccessMsg']);
         }
 
@@ -48,7 +48,7 @@ class CommentController extends MainController
         if (empty($_POST['add_comment'])): if (!empty($_SESSION['CommentErrorMsg'])) {
             unset($_SESSION['CommentErrorMsg']);
         }
-        endif;
+        endif;*/
 
         // $this->oPost = $this->PostModel->getById($post_id);
 
@@ -69,9 +69,9 @@ class CommentController extends MainController
 
                     header('Location: ' . MAIN_PAGE);
 
-                    if (!empty($_SESSION['CommentErrorMsg'])) {
-                        unset($_SESSION['CommentErrorMsg']);
-                    }
+                 //   if (!empty($_SESSION['CommentErrorMsg'])) {
+                      //  unset($_SESSION['CommentErrorMsg']);
+                //    }
 
                     $_SESSION['CommentSuccessMsg'] = 'Hurray!! The comment has been added.';
 
@@ -79,9 +79,9 @@ class CommentController extends MainController
 
                     header('Location: ' . MAIN_ROOT_URL . '/add-comment?id=' . $post_id);
 
-                    if (!empty($_SESSION['CommentSuccessMsg'])) {
-                        unset($_SESSION['CommentSuccessMsg']);
-                    }
+                //    if (!empty($_SESSION['CommentSuccessMsg'])) {
+                      //  unset($_SESSION['CommentSuccessMsg']);
+             //       }
 
                     $_SESSION['CommentErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
                 }
@@ -92,9 +92,9 @@ class CommentController extends MainController
 
                 header('Location: ' . MAIN_ROOT_URL . '/add-comment?id=' . $post_id);
 
-                if (!empty($_SESSION['CommentSuccessMsg'])) {
-                    unset($_SESSION['CommentSuccessMsg']);
-                }
+             //   if (!empty($_SESSION['CommentSuccessMsg'])) {
+                   // unset($_SESSION['CommentSuccessMsg']);
+              //  }
 
                 $_SESSION['CommentErrorMsg'] = 'All fields are required  cannot exceed 250 characters and must be leettes and contains two single separated words .';
             }
