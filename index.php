@@ -5,6 +5,7 @@ use Controller\CommentController;
 use Controller\PostController;
 
 //use Controller\MainController;
+use Libs\Notificator;
 use Libs\Router;
 use Libs\Config;
 use Model\AdminModel;
@@ -50,7 +51,7 @@ if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
 $router = new Router;
 $PostController = new PostController(new PostModel(), new CommentModel());
 $CommentController = new CommentController(new PostModel(), new CommentModel());
-$AdminController = new AdminController(new AdminModel());
+$AdminController = new AdminController(new AdminModel(),new Notificator());
 
 //TestController::test();
 

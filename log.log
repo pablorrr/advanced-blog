@@ -10,3 +10,43 @@
                     must contain at least  one leeter and one  digit.
 [06-Mar-2022 16:16:56 UTC] Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.
+[06-Mar-2022 16:25:18 UTC] PHP Warning:  Undefined array key "AdminErrorMsg" in D:\project\simple-blog-advanced\Controller\AdminController.php on line 106
+[06-Mar-2022 16:25:18 UTC] PHP Stack trace:
+[06-Mar-2022 16:25:18 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[06-Mar-2022 16:25:18 UTC] PHP   2. Libs\Router->match() D:\project\simple-blog-advanced\index.php:178
+[06-Mar-2022 16:25:18 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'login_post'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:159
+[06-Mar-2022 16:25:18 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:280}($callback = [0 => class Controller\AdminController { private $_iId = NULL; private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected $oAdmins = NULL; private ${Controller\MainController}sSuccMsg = NULL; private ${Controller\MainController}sErrMsg = NULL }, 1 => 'login_post'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:280
+[06-Mar-2022 16:25:18 UTC] PHP   5. Controller\AdminController->login_post() D:\project\simple-blog-advanced\Libs\Router.php:280
+[06-Mar-2022 16:25:18 UTC] Incorrect Login!
+[06-Mar-2022 16:28:24 UTC] PHP Warning:  Undefined array key "AdminErrorMsg" in D:\project\simple-blog-advanced\Controller\AdminController.php on line 106
+[06-Mar-2022 16:28:24 UTC] PHP Stack trace:
+[06-Mar-2022 16:28:24 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[06-Mar-2022 16:28:24 UTC] PHP   2. Libs\Router->match() D:\project\simple-blog-advanced\index.php:178
+[06-Mar-2022 16:28:24 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'login_post'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:159
+[06-Mar-2022 16:28:24 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:280}($callback = [0 => class Controller\AdminController { private $_iId = NULL; private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected $oAdmins = NULL; private ${Controller\MainController}sSuccMsg = NULL; private ${Controller\MainController}sErrMsg = NULL }, 1 => 'login_post'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:280
+[06-Mar-2022 16:28:24 UTC] PHP   5. Controller\AdminController->login_post() D:\project\simple-blog-advanced\Libs\Router.php:280
+[06-Mar-2022 16:28:24 UTC] PHP Warning:  Undefined array key "AdminErrorMsg" in D:\project\simple-blog-advanced\Controller\AdminController.php on line 107
+[06-Mar-2022 16:28:24 UTC] PHP Stack trace:
+[06-Mar-2022 16:28:24 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[06-Mar-2022 16:28:24 UTC] PHP   2. Libs\Router->match() D:\project\simple-blog-advanced\index.php:178
+[06-Mar-2022 16:28:24 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'login_post'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:159
+[06-Mar-2022 16:28:24 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:280}($callback = [0 => class Controller\AdminController { private $_iId = NULL; private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected $oAdmins = NULL; private ${Controller\MainController}sSuccMsg = NULL; private ${Controller\MainController}sErrMsg = NULL }, 1 => 'login_post'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:280
+[06-Mar-2022 16:28:24 UTC] PHP   5. Controller\AdminController->login_post() D:\project\simple-blog-advanced\Libs\Router.php:280
+[06-Mar-2022 16:28:24 UTC] Incorrect Login!
+[06-Mar-2022 16:31:23 UTC] PHP Warning:  Undefined array key "AdminErrorMsg" in D:\project\simple-blog-advanced\Controller\AdminController.php on line 105
+[06-Mar-2022 16:31:23 UTC] PHP Stack trace:
+[06-Mar-2022 16:31:23 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[06-Mar-2022 16:31:23 UTC] PHP   2. Libs\Router->match() D:\project\simple-blog-advanced\index.php:178
+[06-Mar-2022 16:31:23 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'login_post'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:159
+[06-Mar-2022 16:31:23 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:280}($callback = [0 => class Controller\AdminController { private $_iId = NULL; private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected $oAdmins = NULL; private ${Controller\MainController}sSuccMsg = NULL; private ${Controller\MainController}sErrMsg = NULL }, 1 => 'login_post'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:280
+[06-Mar-2022 16:31:23 UTC] PHP   5. Controller\AdminController->login_post() D:\project\simple-blog-advanced\Libs\Router.php:280
+[06-Mar-2022 16:31:23 UTC] Incorrect Login!
+[06-Mar-2022 16:35:27 UTC] PHP Warning:  Undefined array key "AdminErrorMsg" in D:\project\simple-blog-advanced\Controller\AdminController.php on line 107
+[06-Mar-2022 16:35:27 UTC] PHP Stack trace:
+[06-Mar-2022 16:35:27 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[06-Mar-2022 16:35:27 UTC] PHP   2. Libs\Router->match() D:\project\simple-blog-advanced\index.php:179
+[06-Mar-2022 16:35:27 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'login_post'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:159
+[06-Mar-2022 16:35:27 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:280}($callback = [0 => class Controller\AdminController { private $_iId = NULL; private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; private Libs\Notificator $Notificator = class Libs\Notificator { ... }; public string $msg = *uninitialized*; protected $oAdmins = NULL; private ${Controller\MainController}sSuccMsg = NULL; private ${Controller\MainController}sErrMsg = NULL }, 1 => 'login_post'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:280
+[06-Mar-2022 16:35:27 UTC] PHP   5. Controller\AdminController->login_post() D:\project\simple-blog-advanced\Libs\Router.php:280
+[06-Mar-2022 16:35:27 UTC] Incorrect Login!
+[06-Mar-2022 16:37:32 UTC] Wrong logging try!!!

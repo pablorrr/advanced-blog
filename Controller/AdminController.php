@@ -8,6 +8,7 @@
 
 namespace Controller;
 
+use Libs\Notificator;
 use Libs\Valid;
 use Model\AdminModel;
 
@@ -16,17 +17,19 @@ class AdminController extends MainController
 {
 //todo: sprawdz czt ta zmioenna potrzbn id
     private $_iId;//update usage
-    private AdminModel $AdminModel;//update usage
+    private AdminModel $AdminModel;
+    private Notificator  $Notificator;//update usage
     public string $msg;
 
 
-    public function __construct(AdminModel $AdminModel)
+    public function __construct(AdminModel $AdminModel, Notificator $Notificator)
     {
         // Enable PHP Session
         if (empty($_SESSION))
             session_start();
 
         $this->AdminModel = $AdminModel;
+        $this->Notificator = $Notificator;
     }
 
     use Valid;
@@ -37,9 +40,6 @@ class AdminController extends MainController
         //todo function below doesnt work  fix that
         // self::isRefreshedAdminPage();
 
-        //  if (!empty($_SESSION['AdminErrorMsg'])) {
-        //  unset($_SESSION['AdminErrorMsg']);
-        //  }
 
         $this->oAdmins = $this->AdminModel->getAll();
         $this->getView('index_admin');
@@ -59,23 +59,6 @@ class AdminController extends MainController
 
     public function login_post()
     {
-        // if (empty($_POST['submit'])) {
-        //  if (!empty($_SESSION['AdminSuccMsg'])) {
-        //  unset($_SESSION['AdminSuccMsg']);
-        //   }
-        //  }
-
-        //  if (empty($_POST['submit'])) {
-        //  if (!empty($_SESSION['AdminErrorMsg'])) {
-        //    unset($_SESSION['AdminErrorMsg']);
-        //  }
-        //   }
-
-        // if (!empty($_SESSION['AdminSuccMsg'])) {
-        //    unset($_SESSION['AdminSuccMsg']);
-        //  }
-
-
         if ($this->isLogged())
             header('Location: ' . MAIN_PAGE);
 
@@ -85,22 +68,17 @@ class AdminController extends MainController
 
             if (password_verify($_POST['password'], $sHashPassword)) {
 
-                //if (!empty($_SESSION['AdminErrorMsg'])) {
-                //   unset($_SESSION['AdminErrorMsg']);
-                //  }
                 $_SESSION['is_logged'] = true;
                 $_SESSION['userEmail'] = $_POST['email'];
+
                 header('Location: ' . MAIN_PAGE);
                 exit;
 
             } else {
-                //spr czy to jest potrebne!!!
-                //   if (!empty($_SESSION['AdminSuccMsg'])) {
-                // unset($_SESSION['AdminSuccMsg']);
-                //   }
 
                 header('Location: ' . MAIN_ROOT_URL . '/login');
                 $_SESSION['is_logged'] = false;
+
                 $_SESSION['AdminErrorMsg'] = 'Incorrect Login!';
                 error_log('Wrong logging try!!!');
             }
@@ -131,18 +109,6 @@ class AdminController extends MainController
         //todo: dodoac klase walidator
         if (!$this->isLogged())
             exit;
-
-        //to prevent unnecessary  display msg
-        //  if (empty($_POST['register'])):if (!empty($_SESSION['AdminSuccMsg'])) {
-        // unset($_SESSION['AdminSuccMsg']);
-        //    }
-        //  endif;
-
-        //   if (empty($_POST['register'])):if (!empty($_SESSION['AdminErrorMsg'])) {
-        //  unset($_SESSION['AdminErrorMsg']);
-        //  }
-        //  endif;
-
 
         if (!empty($_POST['register'])) {
 
@@ -180,10 +146,6 @@ class AdminController extends MainController
 
                         header('Location: ' . ROOT_URL . '/register');
 
-                        //  if (!empty($_SESSION['AdminSuccMsg'])) {
-                        // unset($_SESSION['AdminSuccMsg']);
-                        //  }
-
                         $this->msg = 'Whoops! Email is already in use,please try  another one';
                         $_SESSION['AdminErrorMsg'] = $this->msg;
                         error_log($this->msg);
@@ -200,10 +162,6 @@ class AdminController extends MainController
 
                             header('Location: ' . ROOT_URL);
 
-                            //  if (!empty($_SESSION['AdminErrorMsg'])) {
-                            //   unset($_SESSION['AdminErrorMsg']);
-                            //     }
-
                             $this->msg = 'Hurray!! The new user has been added.';
                             $_SESSION['AdminSuccMsg'] = $this->msg;
 
@@ -211,9 +169,6 @@ class AdminController extends MainController
 
                             header('Location: ' . ROOT_URL . '/register');
 
-                            //   if (!empty($_SESSION['AdminSuccMsg'])) {
-                            // unset($_SESSION['AdminSuccMsg']);
-                            //     }
                             $this->msg = 'Whoops! An error has occurred! Please try again later.';
                             $_SESSION['AdminErrorMsg'] = $this->msg;
                             error_log($this->msg);
@@ -224,9 +179,7 @@ class AdminController extends MainController
 
                     header('Location: ' . ROOT_URL . '/register');
 
-                    //    if (!empty($_SESSION['AdminSuccMsg'])) {
-                    //     unset($_SESSION['AdminSuccMsg']);
-                    //   }
+
                     $this->msg = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
 
@@ -237,7 +190,6 @@ class AdminController extends MainController
             }//if isset post  ....
 
         }//!empty register button
-
 
     }
 
@@ -259,17 +211,6 @@ class AdminController extends MainController
         if (!$this->isLogged()) exit;
         $this->oAdmin = $this->AdminModel->getById($admin_id);
 
-        //to prevent unnecessary  display msg
-        /*  if (empty($_POST['edit_submit'])):if (!empty($_SESSION['AdminSuccMsg'])) {
-              unset($_SESSION['AdminSuccMsg']);
-          }
-          endif;
-
-          if (empty($_POST['edit_submit'])):if (!empty($_SESSION['AdminErrorMsg'])) {
-              unset($_SESSION['AdminErrorMsg']);
-          }
-          endif;*/
-
         if (!empty($_POST['edit_submit'])) {
 
             if (isset($_POST['email'], $_POST['password'])) {
@@ -284,8 +225,6 @@ class AdminController extends MainController
                         'email' => self::test_input($_POST['email']),
                         'password' => password_hash($_POST['password'], PASSWORD_BCRYPT, array('cost' => 14)));
 
-                    //var_dump($this->oAdmin->email);
-                    //gdy edytowany jest ten sam co edytowany wuloguj sie celem wprowdznie zmian
 
                     if ($_SESSION['userEmail'] === $this->oAdmin->email) {
 
@@ -298,9 +237,6 @@ class AdminController extends MainController
 
                             header('Location: ' . ROOT_URL . 'edit?id=' . $admin_id);
 
-                            // if (!empty($_SESSION['AdminSuccMsg'])) {
-                            //   unset($_SESSION['AdminSuccMsg']);
-                            //   }
                             $this->msg = 'Ups smth wrong!!!!';
                             $_SESSION['AdminErrorMsg'] = $this->msg;
                         }
@@ -310,9 +246,7 @@ class AdminController extends MainController
 
                         header('Location: ' . ROOT_URL);
 
-                        //    if (!empty($_SESSION['AdminErrorMsg'])) {
-                        // unset($_SESSION['AdminErrorMsg']);
-                        //    }
+
                         $this->msg = 'Hurray! The User (Admin) has been updated.';
                         $_SESSION['AdminSuccMsg'] = $this->msg;
                     }
@@ -320,9 +254,6 @@ class AdminController extends MainController
 
                     header('Location: ' . ROOT_URL . 'edit?id=' . $admin_id);
 
-                    //   if (!empty($_SESSION['AdminSuccMsg'])) {
-                    //   unset($_SESSION['AdminSuccMsg']);
-                    //     }
                     $this->msg = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
                     $_SESSION['AdminErrorMsg'] = $this->msg;
@@ -336,27 +267,8 @@ class AdminController extends MainController
     {
         $this->oAdmin = $this->AdminModel->getById($admin_id);
 
-        //var_dump($this->oAdmin->email);
         $this->getView('edit_user');
     }
-
-
-    /*   public static function isRefreshedAdminPage()
-       {
-           $is_page_refreshed = (isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] == 'max-age=0');
-
-
-           if ($is_page_refreshed) :
-
-               //echo 'This Page Is refreshed.';
-
-               if (!empty ($_SESSION['AdminSuccMsg'])) {
-                   unset($_SESSION['AdminSuccMsg']);
-               }
-
-               endif;
-       }*/
-
 
     //todo:dont delete admin when i same logged and leave at least one not deleted
     public function delete($admin_id)
