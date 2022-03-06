@@ -6,9 +6,22 @@ namespace Controller;
  * Class MainController
  * @package TestProject\Libs
  */
-class MainController
+interface MainC
 {
 
+    public function getView($sViewName);
+
+    public function _get($sFileName);
+
+    public function __set($sKey, $mVal);
+
+    public function isLogged();
+
+    public static function isPageRefreshed();
+}
+
+abstract class MainController implements MainC
+{
     /**
      * @var array
      */
@@ -28,7 +41,6 @@ class MainController
         $this->_get($sViewName);
     }
 
-
     /**
      * This method is useful in order to avoid the duplication of code (create almost the same method for "getView" and "getModel"
      *
@@ -38,7 +50,7 @@ class MainController
      * jest to uzupenienie getview wykorzytywanego w kontrolerze - ustala sciezki dostepowe do widokow
      *
      */
-    private function _get($sFileName)
+    public function _get($sFileName)
     {
         $sFullPath = ROOT_PATH . '/View/' . $sFileName . '.php';
 
@@ -70,7 +82,7 @@ class MainController
     /**
      * @return bool
      */
-    protected function isLogged()
+    public function isLogged()
     {
         return !empty($_SESSION['is_logged']);
     }

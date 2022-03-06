@@ -17,7 +17,7 @@ use PDO;
  * @package PhpMVC\Model
  */
 // Singleton to connect db.
-class MainModel
+  class MainModel
 {
     // Hold the class instance.
     private static $instance = null;
