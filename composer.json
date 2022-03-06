@@ -1,0 +1,13 @@
+{
+  "require": {
+    "ext-mbstring": "*",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "psr-4": {
+	 "Controller\\": "Controller",
+      "Libs\\": "Libs/",
+     "Model\\": "Model/"
+    }
+  }
+}
