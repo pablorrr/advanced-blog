@@ -7,7 +7,6 @@
  */
 
 use Controller\MainController;
-
 ?>
 <footer>
     <p class="italic"><strong><a href="<?= ROOT_URL ?>" title="Home page">Simple Blog</a></strong> created for a PHP

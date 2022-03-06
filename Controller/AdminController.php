@@ -14,9 +14,10 @@ use Model\AdminModel;
 
 class AdminController extends MainController
 {
-
+//todo: sprawdz czt ta zmioenna potrzbn id
     private $_iId;//update usage
-    private $AdminModel;//update usage
+    private AdminModel $AdminModel;//update usage
+    public string $msg;
 
 
     public function __construct(AdminModel $AdminModel)
@@ -36,12 +37,11 @@ class AdminController extends MainController
         //todo function below doesnt work  fix that
         // self::isRefreshedAdminPage();
 
-        if (!empty($_SESSION['AdminErrorMsg'])) {
-            unset($_SESSION['AdminErrorMsg']);
-        }
+        //  if (!empty($_SESSION['AdminErrorMsg'])) {
+        //  unset($_SESSION['AdminErrorMsg']);
+        //  }
 
         $this->oAdmins = $this->AdminModel->getAll();
-
         $this->getView('index_admin');
     }
 
@@ -59,21 +59,23 @@ class AdminController extends MainController
 
     public function login_post()
     {
-       // if (empty($_POST['submit'])) {
-          //  if (!empty($_SESSION['AdminSuccMsg'])) {
-              //  unset($_SESSION['AdminSuccMsg']);
-         //   }
-      //  }
+        // if (empty($_POST['submit'])) {
+        //  if (!empty($_SESSION['AdminSuccMsg'])) {
+        //  unset($_SESSION['AdminSuccMsg']);
+        //   }
+        //  }
 
-      //  if (empty($_POST['submit'])) {
-          //  if (!empty($_SESSION['AdminErrorMsg'])) {
-            //    unset($_SESSION['AdminErrorMsg']);
-          //  }
-     //   }
+        //  if (empty($_POST['submit'])) {
+        //  if (!empty($_SESSION['AdminErrorMsg'])) {
+        //    unset($_SESSION['AdminErrorMsg']);
+        //  }
+        //   }
 
-       // if (!empty($_SESSION['AdminSuccMsg'])) {
+        // if (!empty($_SESSION['AdminSuccMsg'])) {
         //    unset($_SESSION['AdminSuccMsg']);
-      //  }
+        //  }
+
+
         if ($this->isLogged())
             header('Location: ' . MAIN_PAGE);
 
@@ -85,7 +87,7 @@ class AdminController extends MainController
 
                 //if (!empty($_SESSION['AdminErrorMsg'])) {
                 //   unset($_SESSION['AdminErrorMsg']);
-              //  }
+                //  }
                 $_SESSION['is_logged'] = true;
                 $_SESSION['userEmail'] = $_POST['email'];
                 header('Location: ' . MAIN_PAGE);
@@ -93,9 +95,9 @@ class AdminController extends MainController
 
             } else {
                 //spr czy to jest potrebne!!!
-             //   if (!empty($_SESSION['AdminSuccMsg'])) {
-                   // unset($_SESSION['AdminSuccMsg']);
-             //   }
+                //   if (!empty($_SESSION['AdminSuccMsg'])) {
+                // unset($_SESSION['AdminSuccMsg']);
+                //   }
 
                 header('Location: ' . MAIN_ROOT_URL . '/login');
                 $_SESSION['is_logged'] = false;
@@ -131,15 +133,15 @@ class AdminController extends MainController
             exit;
 
         //to prevent unnecessary  display msg
-      //  if (empty($_POST['register'])):if (!empty($_SESSION['AdminSuccMsg'])) {
-           // unset($_SESSION['AdminSuccMsg']);
-    //    }
-      //  endif;
+        //  if (empty($_POST['register'])):if (!empty($_SESSION['AdminSuccMsg'])) {
+        // unset($_SESSION['AdminSuccMsg']);
+        //    }
+        //  endif;
 
-     //   if (empty($_POST['register'])):if (!empty($_SESSION['AdminErrorMsg'])) {
-          //  unset($_SESSION['AdminErrorMsg']);
-      //  }
-      //  endif;
+        //   if (empty($_POST['register'])):if (!empty($_SESSION['AdminErrorMsg'])) {
+        //  unset($_SESSION['AdminErrorMsg']);
+        //  }
+        //  endif;
 
 
         if (!empty($_POST['register'])) {
@@ -178,11 +180,13 @@ class AdminController extends MainController
 
                         header('Location: ' . ROOT_URL . '/register');
 
-                      //  if (!empty($_SESSION['AdminSuccMsg'])) {
-                           // unset($_SESSION['AdminSuccMsg']);
-                      //  }
+                        //  if (!empty($_SESSION['AdminSuccMsg'])) {
+                        // unset($_SESSION['AdminSuccMsg']);
+                        //  }
 
-                        $_SESSION['AdminErrorMsg'] = 'Whoops! Email is already in use  ,please try  another one';
+                        $this->msg = 'Whoops! Email is already in use,please try  another one';
+                        $_SESSION['AdminErrorMsg'] = $this->msg;
+                        error_log($this->msg);
 
                     } else {
 
@@ -196,20 +200,23 @@ class AdminController extends MainController
 
                             header('Location: ' . ROOT_URL);
 
-                          //  if (!empty($_SESSION['AdminErrorMsg'])) {
-                             //   unset($_SESSION['AdminErrorMsg']);
-                       //     }
-                            $_SESSION['AdminSuccMsg'] = 'Hurray!! The new user has been added.';
+                            //  if (!empty($_SESSION['AdminErrorMsg'])) {
+                            //   unset($_SESSION['AdminErrorMsg']);
+                            //     }
+
+                            $this->msg = 'Hurray!! The new user has been added.';
+                            $_SESSION['AdminSuccMsg'] = $this->msg;
 
                         } else {
 
                             header('Location: ' . ROOT_URL . '/register');
 
-                         //   if (!empty($_SESSION['AdminSuccMsg'])) {
-                               // unset($_SESSION['AdminSuccMsg']);
-                       //     }
-
-                            $_SESSION['AdminErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
+                            //   if (!empty($_SESSION['AdminSuccMsg'])) {
+                            // unset($_SESSION['AdminSuccMsg']);
+                            //     }
+                            $this->msg = 'Whoops! An error has occurred! Please try again later.';
+                            $_SESSION['AdminErrorMsg'] = $this->msg;
+                            error_log($this->msg);
                         }
 
                     }// else true flag
@@ -217,12 +224,14 @@ class AdminController extends MainController
 
                     header('Location: ' . ROOT_URL . '/register');
 
-                //    if (!empty($_SESSION['AdminSuccMsg'])) {
-                   //     unset($_SESSION['AdminSuccMsg']);
-                 //   }
-
-                    $_SESSION['AdminErrorMsg'] = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
+                    //    if (!empty($_SESSION['AdminSuccMsg'])) {
+                    //     unset($_SESSION['AdminSuccMsg']);
+                    //   }
+                    $this->msg = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
+
+                    $_SESSION['AdminErrorMsg'] = $this->msg;
+                    error_log($this->msg);
                 }
 
             }//if isset post  ....
@@ -292,8 +301,8 @@ class AdminController extends MainController
                             // if (!empty($_SESSION['AdminSuccMsg'])) {
                             //   unset($_SESSION['AdminSuccMsg']);
                             //   }
-
-                            $_SESSION['AdminErrorMsg'] = 'Ups smth wrong!!!!';
+                            $this->msg = 'Ups smth wrong!!!!';
+                            $_SESSION['AdminErrorMsg'] = $this->msg;
                         }
                     }
 
@@ -304,8 +313,8 @@ class AdminController extends MainController
                         //    if (!empty($_SESSION['AdminErrorMsg'])) {
                         // unset($_SESSION['AdminErrorMsg']);
                         //    }
-
-                        $_SESSION['AdminSuccMsg'] = 'Hurray! The User (Admin) has been updated.';
+                        $this->msg = 'Hurray! The User (Admin) has been updated.';
+                        $_SESSION['AdminSuccMsg'] = $this->msg;
                     }
                 } else {
 
@@ -314,9 +323,9 @@ class AdminController extends MainController
                     //   if (!empty($_SESSION['AdminSuccMsg'])) {
                     //   unset($_SESSION['AdminSuccMsg']);
                     //     }
-
-                    $_SESSION['AdminErrorMsg'] = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
+                    $this->msg = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
+                    $_SESSION['AdminErrorMsg'] = $this->msg;
                 }
             }
         }

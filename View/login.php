@@ -7,11 +7,7 @@
  */
 ?>
 <?php require 'components/header.php' ?>
-<?php require 'components/admin-msg.php' ?>
-<br>
-<br>
 
-<br>
 <br>
 <div class="row">
     <div class="md-col-4"></div>
@@ -32,5 +28,4 @@
     </div>
     <div class="md-col-4"></div>
 </div>
-
 <?php require 'components/footer-form.php' ?>
