@@ -7,7 +7,7 @@
  */
 ?>
 <?php require 'components/header.php' ?>
-<?php require 'components/admin-msg.php' ?>
+
 <!--todo add prtoection validate in php-->
 
 <h3>Info</h3>
