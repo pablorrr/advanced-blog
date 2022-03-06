@@ -16,13 +16,14 @@ final class Config
 {
 
     const
-        DB_HOST = 'localhost',
+        DB_HOST = 'localhos',
         DB_NAME = 'newmvcblog',
         DB_USR = 'newmvcblog',
         DB_PWD = 'newmvcblog',
 
         // Title of the site
         // SITE_NAME = 'My Simple Blogklkl!';
+
         //set main page slug
         MAIN_PAGE_SLUG = '/main-page';
 

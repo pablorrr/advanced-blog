@@ -42,7 +42,7 @@ $AdminController = new AdminController(new AdminModel());
 //TestController::test();
 
 //var_dump($_SESSION);
-/****************** TEST ZONE***************************/
+
 
 /************* Front End **********************/
 
@@ -156,50 +156,6 @@ $router->all('/admin/delete', array(
     'func' => array($AdminController, 'delete'),
     'parameters' => array($router->getId(true))
 ));
-
-
-/****************** END  TEST ZONE***************************/
-
-
-$router->get('/form', array(
-    'func' => array($PostController, 'form_get')
-));
-
-$router->post('/form', array(
-    'func' => array($PostController, 'form_post')
-));
-
-
-$router->get('/para/{var1}/{var2}/{var3}/{var4}', function ($var1, $var2, $var3, $var4) {
-    global $router;
-    echo 'via get_URL_parameter():';
-    echo '<br>var1:' . $router->get_URL_parameter('var1');
-    echo "<br>var2:" . $router->get_URL_parameter('var2');
-    echo "<br>var3:" . $router->get_URL_parameter('var3');
-    echo "<br>var4:" . $router->get_URL_parameter('var4');
-
-    echo '<br>via closure parameters:';
-    echo '<br>var1:' . $var1;
-    echo "<br>var2:" . $var2;
-    echo "<br>var3:" . $var3;
-    echo "<br>var4:" . $var4;
-});
-
-
-$router->get('/pa\*th', array(
-    'func' => array($PostController, 'path'),
-    'parameters' => array($router->get_URL(), $router->get_URL(true))
-));
-
-$router->get('/path(opt)', array(
-    'func' => array($PostController, 'path'),
-    'parameters' => array($router->get_URL(), $router->get_URL(true))
-));
-$router->get('/text', array(
-    'func' => array($PostController, 'text'),
-    'parameters' => array(1, 2, 3)
-));
-
 
 $router->catch_exception(function () use ($PostController) {
 

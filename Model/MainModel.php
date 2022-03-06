@@ -7,9 +7,10 @@
  */
 
 namespace Model;
+
+use Exception;
 use Libs\Config;
 use PDO;
-
 
 
 /**
@@ -17,7 +18,7 @@ use PDO;
  * @package PhpMVC\Model
  */
 // Singleton to connect db.
-  class MainModel
+class MainModel
 {
     // Hold the class instance.
     private static $instance = null;
@@ -28,13 +29,31 @@ use PDO;
     private $pass = Config::DB_PWD;
     private $name = Config::DB_NAME;
 
+
     // The db connection is established in the private constructor.
     private function __construct()
     {
-        $this->conn = new PDO("mysql:host={$this->host};
+        set_exception_handler(array($this, 'customException'));
+
+        try {
+            $this->conn = new PDO("mysql:host={$this->host};
     dbname={$this->name}", $this->user, $this->pass,
-            array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+                array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+
+        } catch (Exception $e) {
+            self::customException($e);
+
+        }
+
     }
+
+   public static function customException($exception)
+    {
+        $errorMsg = 'Error on line ' . $exception->getLine() . '<br> in ' . $exception->getFile()
+            . ': <b><br>' . $exception->getMessage() . '</br> connection error';
+        echo $errorMsg;
+    }
+
 
     public static function getInstance()
     {
