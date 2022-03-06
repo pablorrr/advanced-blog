@@ -173,6 +173,7 @@ class AdminController extends MainController
                     }
 
                     if ($flag == true) {
+
                         if (!empty($_SESSION['AdminSuccMsg'])) {
                             unset($_SESSION['AdminSuccMsg']);
                         }
@@ -199,22 +200,23 @@ class AdminController extends MainController
 
                         } else {
 
-                            header('Location: ' . ROOT_URL . '/admin/register');
+                            header('Location: ' . ROOT_URL . '/register');
+
                             if (!empty($_SESSION['AdminSuccMsg'])) {
                                 unset($_SESSION['AdminSuccMsg']);
                             }
-
 
                             $_SESSION['AdminErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
                         }
 
                     }// else true flag
                 } else {
+
+                    header('Location: ' . ROOT_URL . '/register');
+
                     if (!empty($_SESSION['AdminSuccMsg'])) {
                         unset($_SESSION['AdminSuccMsg']);
                     }
-
-                    header('Location: ' . ROOT_URL . '/admin/register');
 
                     $_SESSION['AdminErrorMsg'] = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
