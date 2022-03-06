@@ -207,5 +207,3 @@ $router->catch_exception(function () use ($PostController) {
 });
 
 $router->match();
-
-

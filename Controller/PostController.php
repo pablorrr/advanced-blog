@@ -21,11 +21,8 @@ class PostController extends MainController
         // Enable PHP Session
         if (empty($_SESSION))
             session_start();
-
         $this->PostModel = $PostModel;
         $this->CommentModel = $CommentModel;
-
-
     }
 
     use Valid;
