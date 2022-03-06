@@ -3,6 +3,7 @@
 use Controller\AdminController;
 use Controller\CommentController;
 use Controller\PostController;
+
 //use Controller\MainController;
 use Libs\Router;
 use Libs\Config;
@@ -11,10 +12,14 @@ use Model\CommentModel;
 use Model\PostModel;
 
 //use Controller\TestController;
+// php code for logging error into a given file
+
 
 require __DIR__ . '/vendor/autoload.php';
 
 //error_reporting(E_ALL);
+//disable error  warnings
+
 error_reporting(error_reporting() & ~E_NOTICE);
 
 
@@ -23,6 +28,24 @@ define('ROOT_PATH', __DIR__ . '/');
 define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))) . '/');
 define('MAIN_ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))));
 define('MAIN_PAGE', PROT . $_SERVER['SERVER_NAME'] . Config::MAIN_PAGE_SLUG);
+
+// PHP code for logging error into a given file
+
+// error message to be logged
+$error_message = "This is an error message!";
+
+// path of the log file where errors need to be logged
+$log_file = "./my-errors.log";
+
+// setting error logging to be active
+ini_set("log_errors", TRUE);
+
+// setting the logging file in php.ini
+ini_set('error_log', $log_file);
+
+// logging the error
+error_log($error_message);
+
 
 
 
@@ -35,8 +58,8 @@ if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
 //Todo: wprowadzic klase powidomien  notyfikator w libs
 
 $router = new Router;
-$PostController = new PostController(new PostModel(),new CommentModel());
-$CommentController = new CommentController(new PostModel(),new CommentModel());
+$PostController = new PostController(new PostModel(), new CommentModel());
+$CommentController = new CommentController(new PostModel(), new CommentModel());
 $AdminController = new AdminController(new AdminModel());
 
 //TestController::test();
