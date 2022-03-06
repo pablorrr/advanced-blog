@@ -29,22 +29,12 @@ define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(
 define('MAIN_ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))));
 define('MAIN_PAGE', PROT . $_SERVER['SERVER_NAME'] . Config::MAIN_PAGE_SLUG);
 
-// PHP code for logging error into a given file
 
-// error message to be logged
-$error_message = "This is an error message!";
 
-// path of the log file where errors need to be logged
-$log_file = "./my-errors.log";
-
-// setting error logging to be active
+//set up custom logging file
+$log_file = ROOT_PATH . '/log.log';
 ini_set("log_errors", TRUE);
-
-// setting the logging file in php.ini
 ini_set('error_log', $log_file);
-
-// logging the error
-error_log($error_message);
 
 
 

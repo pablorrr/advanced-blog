@@ -16,7 +16,7 @@ final class Config
 {
 
     const
-        DB_HOST = 'localhos',
+        DB_HOST = 'localhost',
         DB_NAME = 'newmvcblog',
         DB_USR = 'newmvcblog',
         DB_PWD = 'newmvcblog',

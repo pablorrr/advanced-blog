@@ -42,12 +42,13 @@ class MainModel
 
         } catch (Exception $e) {
             self::customException($e);
-
+            error_log('Error on line ' . $e->getLine() . '<br> in ' . $e->getFile()
+                . ': <b><br>' . $e->getMessage() . '</br> connection error');
         }
 
     }
 
-   public static function customException($exception)
+    public static function customException($exception)
     {
         $errorMsg = 'Error on line ' . $exception->getLine() . '<br> in ' . $exception->getFile()
             . ': <b><br>' . $exception->getMessage() . '</br> connection error';
