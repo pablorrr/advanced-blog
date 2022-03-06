@@ -190,18 +190,20 @@ class AdminController extends MainController
 
                         if ($this->AdminModel->register($aData)) {
 
+                            header('Location: ' . ROOT_URL);
+
                             if (!empty($_SESSION['AdminErrorMsg'])) {
                                 unset($_SESSION['AdminErrorMsg']);
                             }
-
-                            header('Location: ' . ROOT_URL);
                             $_SESSION['AdminSuccMsg'] = 'Hurray!! The new user has been added.';
 
                         } else {
+
+                            header('Location: ' . ROOT_URL . '/admin/register');
                             if (!empty($_SESSION['AdminSuccMsg'])) {
                                 unset($_SESSION['AdminSuccMsg']);
                             }
-                            header('Location: ' . ROOT_URL . '/admin/register');
+
 
                             $_SESSION['AdminErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
                         }
