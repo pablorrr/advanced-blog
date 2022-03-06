@@ -3,6 +3,8 @@
 namespace Controller;
 
 use Libs\Valid;
+use Model\CommentModel;
+use Model\PostModel;
 
 
 class CommentController extends MainController
@@ -13,7 +15,7 @@ class CommentController extends MainController
     private $CommentModel;
 
 
-    public function __construct($PostModel, $CommentModel)
+    public function __construct(PostModel $PostModel,CommentModel $CommentModel)
     {
         // Enable PHP Session
         if (empty($_SESSION))

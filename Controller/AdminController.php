@@ -9,6 +9,7 @@
 namespace Controller;
 
 use Libs\Valid;
+use Model\AdminModel;
 
 
 class AdminController extends MainController
@@ -19,7 +20,7 @@ class AdminController extends MainController
 
 
 
-    public function __construct($AdminModel)
+    public function __construct(AdminModel $AdminModel)
     {
         // Enable PHP Session
         if (empty($_SESSION))
