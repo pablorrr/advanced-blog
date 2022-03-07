@@ -31,13 +31,10 @@ define('MAIN_ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dir
 define('MAIN_PAGE', PROT . $_SERVER['SERVER_NAME'] . Config::MAIN_PAGE_SLUG);
 
 
-
 //set up custom logging file
 $log_file = ROOT_PATH . '/log.log';
 ini_set("log_errors", TRUE);
 ini_set('error_log', $log_file);
-
-
 
 
 //to redirect to main page when is visit load page
@@ -177,6 +174,17 @@ $router->get('/api/posts', array(
     'func' => array($PostController, 'api_posts')
 ));
 
+
+$router->get('/api/post/{post_id}', function ($post_id) use ($PostController) {
+
+    $singlePostAPI = $PostController->PostModel->getById($post_id);
+
+    if (empty($singlePostAPI)) {
+        throw new ErrorException('No such id- ' . $post_id . ' post try  another one');
+    }
+    echo json_encode($singlePostAPI);
+
+});
 
 
 $router->catch_exception(function () use ($PostController) {

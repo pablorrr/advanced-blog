@@ -14,7 +14,7 @@ class PostController extends MainController
      */
     protected $oPosts;
     protected $oPost;
-    protected $PostModel;
+    public PostModel $PostModel;
     protected $CommentModel;
 
     public function __construct(PostModel $PostModel, CommentModel $CommentModel)
@@ -199,19 +199,11 @@ class PostController extends MainController
         }
     }
 
-
     public function api_posts()
     {
         $this->oPosts = $this->PostModel->getAll();
         if (empty($this->oPosts)) exit();
         echo json_encode($this->oPosts);
     }
-
-    public function post()
-    {
-        echo json_encode($this->oPosts);
-
-    }
-
 
 }
