@@ -1,5 +1,5 @@
-<?php require 'components/header.php' ?>
-<?php require 'components/comment-msg.php' ?>
+<?php require  ROOT_PATH .'View/components/header.php' ?>
+<?php require  ROOT_PATH .'View/components/comment-msg.php' ?>
 
 <h1> Add comment page</h1>
 <form action="" method="POST">
@@ -11,4 +11,4 @@
     <p><input type="submit" name="add_comment" value="Add"/></p>
 </form>
 
-<?php require 'components/footer-form.php' ?>
+<?php require  ROOT_PATH .'View/components/footer-form.php' ?>

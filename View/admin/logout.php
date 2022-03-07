@@ -1,4 +1,4 @@
-<?php require 'components/header.php' ?>
+<?php require ROOT_PATH . 'View/components/header.php' ?>
 <br>
 <br>
 <h5><?= $_SESSION['userEmail']; ?></h5>

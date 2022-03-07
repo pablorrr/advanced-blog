@@ -1,4 +1,4 @@
-<?php require 'components/header.php' ?>
+<?php require ROOT_PATH .'View/components/header.php' ?>
 
 <br>
 <div class="row">
@@ -20,4 +20,4 @@
     </div>
     <div class="md-col-4"></div>
 </div>
-<?php require 'components/footer-form.php' ?>
+<?php require  ROOT_PATH .'View/components/footer-form.php' ?>

@@ -1,4 +1,4 @@
-<?php require 'components/header.php' ?>
+<?php require  ROOT_PATH .'View/components/header.php' ?>
 
 <?php if (empty($this->oPost)): ?>
     <p class="error">Post Data Not Found!</p>
@@ -29,6 +29,6 @@
     </div>
 <?php endif ?>
 <div class="row">
-    <?php require 'components/footer-form.php' ?>
+    <?php require  ROOT_PATH .'View/components/footer-form.php' ?>
 
 </div>

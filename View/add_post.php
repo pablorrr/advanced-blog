@@ -1,4 +1,4 @@
-<?php require 'components/header.php' ?>
+<?php require  ROOT_PATH .'View/components/header.php' ?>
 
 <h3>Add post page</h3>
 
@@ -15,4 +15,4 @@
     <p><input type="submit" name="add_submit" value="Add"/></p>
 </form>
 
-<?php require 'components/footer-form.php' ?>
+<?php require  ROOT_PATH .'View/components/footer-form.php' ?>

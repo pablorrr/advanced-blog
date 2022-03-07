@@ -48,7 +48,7 @@ class AdminController extends MainController
     public function index()
     {
         $this->oAdmins = $this->AdminModel->getAll();
-        $this->getView('index_admin');
+        $this->getView('admin/index_admin');
     }
 
 

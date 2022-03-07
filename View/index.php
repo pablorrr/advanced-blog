@@ -1,5 +1,5 @@
-<?php require 'components/header.php' ?>
-<?php require 'components/msg.php' ?>
+<?php require  ROOT_PATH .'View/components/header.php' ?>
+<?php require  ROOT_PATH .'View/components/msg.php' ?>
 
 <?php if (empty($this->oPosts)): ?>
 
@@ -57,4 +57,4 @@
     </div>
 
 <?php endif ?>
-<?php require 'components/footer.php' ?>
+<?php require  ROOT_PATH .'View/components/footer.php' ?>

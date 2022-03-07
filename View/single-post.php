@@ -1,4 +1,4 @@
-<?php require 'components/header.php' ?>
+<?php require  ROOT_PATH .'View/components/header.php' ?>
 
 <?php if (empty($this->oPost)): ?>
     <p class="error">The post can't be be found!</p>
@@ -23,4 +23,4 @@
 
 <?php endif ?>
 
-<?php require 'components/footer.php' ?>
+<?php require  ROOT_PATH .'View/components/footer.php' ?>

@@ -50,3 +50,203 @@
 [06-Mar-2022 16:35:27 UTC] PHP   5. Controller\AdminController->login_post() D:\project\simple-blog-advanced\Libs\Router.php:280
 [06-Mar-2022 16:35:27 UTC] Incorrect Login!
 [06-Mar-2022 16:37:32 UTC] Wrong logging try!!!
+[07-Mar-2022 09:52:26 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 09:52:26 UTC] PHP Stack trace:
+[07-Mar-2022 09:52:26 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 09:52:26 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 09:52:26 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 09:52:26 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 09:52:26 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 09:52:26 UTC] PHP   6. Controller\MainController->getView($sViewName = 'admin/index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 09:52:26 UTC] PHP   7. Controller\MainController->_get($sFileName = 'admin/index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 09:52:26 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:35
+[07-Mar-2022 09:55:55 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 09:55:55 UTC] PHP Stack trace:
+[07-Mar-2022 09:55:55 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 09:55:55 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 09:55:55 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 09:55:55 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 09:55:55 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 09:55:55 UTC] PHP   6. Controller\MainController->getView($sViewName = 'admin/index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 09:55:55 UTC] PHP   7. Controller\MainController->_get($sFileName = 'admin/index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 09:55:55 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:35
+[07-Mar-2022 09:56:57 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 09:56:57 UTC] PHP Stack trace:
+[07-Mar-2022 09:56:57 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 09:56:57 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 09:56:57 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 09:56:57 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 09:56:57 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 09:56:57 UTC] PHP   6. Controller\MainController->getView($sViewName = 'admin/index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 09:56:57 UTC] PHP   7. Controller\MainController->_get($sFileName = 'admin/index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 09:56:57 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:35
+[07-Mar-2022 10:00:19 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:00:19 UTC] PHP Stack trace:
+[07-Mar-2022 10:00:19 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:00:19 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:00:19 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:00:19 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:00:19 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:00:19 UTC] PHP   6. Controller\MainController->getView($sViewName = '/admin/index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 10:00:19 UTC] PHP   7. Controller\MainController->_get($sFileName = '/admin/index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:00:19 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:35
+[07-Mar-2022 10:00:49 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:00:49 UTC] PHP Stack trace:
+[07-Mar-2022 10:00:49 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:00:49 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:00:49 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:00:49 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:00:49 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:00:49 UTC] PHP   6. Controller\MainController->getView($sViewName = '\\admin\\index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 10:00:49 UTC] PHP   7. Controller\MainController->_get($sFileName = '\\admin\\index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:00:49 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:35
+[07-Mar-2022 10:03:40 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:03:40 UTC] PHP Stack trace:
+[07-Mar-2022 10:03:40 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:03:40 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:03:40 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:03:40 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:03:40 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:03:40 UTC] PHP   6. Controller\MainController->getView($sViewName = 'index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 10:03:40 UTC] PHP   7. Controller\MainController->_get($sFileName = 'index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:03:40 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:36
+[07-Mar-2022 10:03:40 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:03:40 UTC] PHP Stack trace:
+[07-Mar-2022 10:03:40 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:03:40 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:03:40 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => class Closure { virtual $closure = "{closure}", public $static = [...] }, 'type' => 'closure', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:120
+[07-Mar-2022 10:03:40 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = class Closure { virtual $closure = "{closure}", public $static = ['PostController' => class Controller\PostController { ... }] }, $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:03:40 UTC] PHP   5. {closure:D:\project\simple-blog-advanced\index.php:194-197}() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:03:40 UTC] PHP   6. Controller\MainController->getView($sViewName = '404') D:\project\simple-blog-advanced\index.php:196
+[07-Mar-2022 10:03:40 UTC] PHP   7. Controller\MainController->_get($sFileName = '404') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:03:40 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:36
+[07-Mar-2022 10:04:40 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:04:40 UTC] PHP Stack trace:
+[07-Mar-2022 10:04:40 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:04:40 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:04:40 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:04:40 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:04:40 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:04:40 UTC] PHP   6. Controller\MainController->getView($sViewName = 'index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 10:04:40 UTC] PHP   7. Controller\MainController->_get($sFileName = 'index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:04:40 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:36
+[07-Mar-2022 10:04:40 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:04:40 UTC] PHP Stack trace:
+[07-Mar-2022 10:04:40 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:04:40 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:04:40 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => class Closure { virtual $closure = "{closure}", public $static = [...] }, 'type' => 'closure', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:120
+[07-Mar-2022 10:04:40 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = class Closure { virtual $closure = "{closure}", public $static = ['PostController' => class Controller\PostController { ... }] }, $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:04:40 UTC] PHP   5. {closure:D:\project\simple-blog-advanced\index.php:194-197}() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:04:40 UTC] PHP   6. Controller\MainController->getView($sViewName = '404') D:\project\simple-blog-advanced\index.php:196
+[07-Mar-2022 10:04:40 UTC] PHP   7. Controller\MainController->_get($sFileName = '404') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:04:40 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:36
+[07-Mar-2022 10:05:03 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:05:03 UTC] PHP Stack trace:
+[07-Mar-2022 10:05:03 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:05:03 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:05:03 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:05:03 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:05:03 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:05:03 UTC] PHP   6. Controller\MainController->getView($sViewName = 'index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 10:05:03 UTC] PHP   7. Controller\MainController->_get($sFileName = 'index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:05:03 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:36
+[07-Mar-2022 10:05:03 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:05:03 UTC] PHP Stack trace:
+[07-Mar-2022 10:05:03 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:05:03 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:05:03 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => class Closure { virtual $closure = "{closure}", public $static = [...] }, 'type' => 'closure', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:120
+[07-Mar-2022 10:05:03 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = class Closure { virtual $closure = "{closure}", public $static = ['PostController' => class Controller\PostController { ... }] }, $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:05:03 UTC] PHP   5. {closure:D:\project\simple-blog-advanced\index.php:194-197}() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:05:03 UTC] PHP   6. Controller\MainController->getView($sViewName = '404') D:\project\simple-blog-advanced\index.php:196
+[07-Mar-2022 10:05:03 UTC] PHP   7. Controller\MainController->_get($sFileName = '404') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:05:03 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:36
+[07-Mar-2022 10:05:29 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:05:29 UTC] PHP Stack trace:
+[07-Mar-2022 10:05:29 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:05:29 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:05:29 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:05:29 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:05:29 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:05:29 UTC] PHP   6. Controller\MainController->getView($sViewName = 'index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 10:05:29 UTC] PHP   7. Controller\MainController->_get($sFileName = 'index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:05:29 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:36
+[07-Mar-2022 10:05:29 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:05:29 UTC] PHP Stack trace:
+[07-Mar-2022 10:05:29 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:05:29 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:05:29 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => class Closure { virtual $closure = "{closure}", public $static = [...] }, 'type' => 'closure', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:120
+[07-Mar-2022 10:05:29 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = class Closure { virtual $closure = "{closure}", public $static = ['PostController' => class Controller\PostController { ... }] }, $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:05:29 UTC] PHP   5. {closure:D:\project\simple-blog-advanced\index.php:194-197}() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:05:29 UTC] PHP   6. Controller\MainController->getView($sViewName = '404') D:\project\simple-blog-advanced\index.php:196
+[07-Mar-2022 10:05:29 UTC] PHP   7. Controller\MainController->_get($sFileName = '404') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:05:29 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:36
+[07-Mar-2022 10:06:03 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:06:03 UTC] PHP Stack trace:
+[07-Mar-2022 10:06:03 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:06:03 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:06:03 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:06:03 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:06:03 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:06:03 UTC] PHP   6. Controller\MainController->getView($sViewName = 'index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 10:06:03 UTC] PHP   7. Controller\MainController->_get($sFileName = 'index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:06:03 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:37
+[07-Mar-2022 10:06:03 UTC] PHP Warning:  require(components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:06:03 UTC] PHP Stack trace:
+[07-Mar-2022 10:06:03 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:06:03 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:06:03 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => class Closure { virtual $closure = "{closure}", public $static = [...] }, 'type' => 'closure', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:120
+[07-Mar-2022 10:06:03 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = class Closure { virtual $closure = "{closure}", public $static = ['PostController' => class Controller\PostController { ... }] }, $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:06:03 UTC] PHP   5. {closure:D:\project\simple-blog-advanced\index.php:194-197}() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:06:03 UTC] PHP   6. Controller\MainController->getView($sViewName = '404') D:\project\simple-blog-advanced\index.php:196
+[07-Mar-2022 10:06:03 UTC] PHP   7. Controller\MainController->_get($sFileName = '404') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:06:03 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:37
+[07-Mar-2022 10:07:21 UTC] PHP Warning:  require(../components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:07:21 UTC] PHP Stack trace:
+[07-Mar-2022 10:07:21 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:07:21 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:07:21 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:07:21 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:07:21 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:07:21 UTC] PHP   6. Controller\MainController->getView($sViewName = 'index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 10:07:21 UTC] PHP   7. Controller\MainController->_get($sFileName = 'index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:07:21 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:37
+[07-Mar-2022 10:07:21 UTC] PHP Warning:  require(../components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:07:21 UTC] PHP Stack trace:
+[07-Mar-2022 10:07:21 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:07:21 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:07:21 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => class Closure { virtual $closure = "{closure}", public $static = [...] }, 'type' => 'closure', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:120
+[07-Mar-2022 10:07:21 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = class Closure { virtual $closure = "{closure}", public $static = ['PostController' => class Controller\PostController { ... }] }, $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:07:21 UTC] PHP   5. {closure:D:\project\simple-blog-advanced\index.php:194-197}() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:07:21 UTC] PHP   6. Controller\MainController->getView($sViewName = '404') D:\project\simple-blog-advanced\index.php:196
+[07-Mar-2022 10:07:21 UTC] PHP   7. Controller\MainController->_get($sFileName = '404') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:07:21 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:37
+[07-Mar-2022 10:09:27 UTC] PHP Warning:  require(../components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:09:27 UTC] PHP Stack trace:
+[07-Mar-2022 10:09:27 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:09:27 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:09:27 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:09:27 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:09:27 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:09:27 UTC] PHP   6. Controller\MainController->getView($sViewName = 'index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 10:09:27 UTC] PHP   7. Controller\MainController->_get($sFileName = 'index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:09:27 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:37
+[07-Mar-2022 10:09:27 UTC] PHP Warning:  require(../components/header.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 1
+[07-Mar-2022 10:09:27 UTC] PHP Stack trace:
+[07-Mar-2022 10:09:27 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:09:27 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:09:27 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => class Closure { virtual $closure = "{closure}", public $static = [...] }, 'type' => 'closure', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:120
+[07-Mar-2022 10:09:27 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = class Closure { virtual $closure = "{closure}", public $static = ['PostController' => class Controller\PostController { ... }] }, $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:09:27 UTC] PHP   5. {closure:D:\project\simple-blog-advanced\index.php:194-197}() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:09:27 UTC] PHP   6. Controller\MainController->getView($sViewName = '404') D:\project\simple-blog-advanced\index.php:196
+[07-Mar-2022 10:09:27 UTC] PHP   7. Controller\MainController->_get($sFileName = '404') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:09:27 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:37
+[07-Mar-2022 10:11:17 UTC] PHP Warning:  require(components/footer.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\admin\index_admin.php on line 51
+[07-Mar-2022 10:11:17 UTC] PHP Stack trace:
+[07-Mar-2022 10:11:17 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:11:17 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:11:17 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\AdminController { ... }, 1 => 'index'], 'type' => 'class', 'parameters' => []]) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:11:17 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\AdminController { private Model\AdminModel $AdminModel = class Model\AdminModel { ... }; public string $msg = *uninitialized*; protected array $oAdmins = [...] }, 1 => 'index'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:11:17 UTC] PHP   5. Controller\AdminController->index() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:11:17 UTC] PHP   6. Controller\MainController->getView($sViewName = 'index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
+[07-Mar-2022 10:11:17 UTC] PHP   7. Controller\MainController->_get($sFileName = 'index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:11:17 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:37

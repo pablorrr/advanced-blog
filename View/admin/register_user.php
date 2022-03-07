@@ -1,4 +1,4 @@
-<?php require 'components/header.php' ?>
+<?php require  ROOT_PATH .'View/components/header.php' ?>
 <h3>Info</h3>
 <p> 1. Email must be unique  </p>
 <p> 2. Password must contains at least 6 characters , at least one digit , at least one letter.</p>
@@ -17,4 +17,4 @@
     <p><input type="submit" name="register" value="register"/></p>
 </form>
 
-<?php require 'components/footer-form.php' ?>
+<?php require  ROOT_PATH .'View/components/footer-form.php' ?>

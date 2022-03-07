@@ -1,5 +1,5 @@
-<?php require 'components/header.php' ?>
-<?php require 'components/admin-msg.php' ?>
+<?php require  ROOT_PATH .'View/components/header.php' ?>
+<?php require  ROOT_PATH .'View/components/admin-msg.php' ?>
 <br>
 <br>
 <h3>Edit User Page</h3>
@@ -22,5 +22,4 @@
     <p><input type="submit" name="edit_submit" value="Update"/></p>
 </form>
 
-
-<?php require 'components/footer-form.php' ?>
+<?php require  ROOT_PATH .'View/components/footer-form.php' ?>

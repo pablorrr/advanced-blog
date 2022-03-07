@@ -24,12 +24,14 @@ abstract class MainController implements MainInterface
     }
 
     /**
-     * @param $sFileName
+     * @param $path
      */
-    public function _get($sFileName)
+    public function _get($path)
     {
-        $sFullPath = ROOT_PATH . '/View/' . $sFileName . '.php';
-
+        $sFullPath = ROOT_PATH . 'View/' . $path . '.php';
+      //  $sFullPath = ROOT_PATH . 'View\admin\index_admin.php';
+        //echo $sFullPath;
+        //var_dump(is_file($sFullPath));
 
         if (is_file($sFullPath))
             require $sFullPath;
@@ -37,7 +39,7 @@ abstract class MainController implements MainInterface
             echo ROOT_PATH . '<br>';
 
             echo $sFullPath . '<br>';
-            echo $sFileName;
+            echo $path ;
 
             exit('The "' . $sFullPath . '" file doesn\'t exist');
         }
