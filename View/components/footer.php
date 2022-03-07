@@ -1,22 +1,32 @@
 <?php
 use Controller\MainController;
 ?>
-<footer>
-    <p class="italic"><strong><a href="<?= ROOT_URL ?>" title="Home page">Simple Blog</a></strong> created for a PHP
-        Technical Test &nbsp; | &nbsp;
-        <?php if (!empty($_SESSION['is_logged'])): ?>
-        You are connected as Admin -
-    <h3><?= $_SESSION['userEmail']; ?></h3> <a href="<?= ROOT_URL ?>logout">Logout</a> &nbsp;
-    Register New User - <a href="<?= ROOT_URL ?>admin/register">Register</a> &nbsp;
-    View All Admin Users - <a href="<?= ROOT_URL ?>admin">Display ADMINS</a> &nbsp;
-    <a href="<?= ROOT_URL ?>">View All Blog Posts</a></p>
-    <?php else: ?>
-        <p class="italic"><strong>You are looged off to add post please click on <a
-                        href="<?= ROOT_URL ?>login">Backend Login</a> </strong></p>
-    <?php endif ?>
-    </p>
+<footer class="bg-light text-lg-start">
 
+
+    <hr class="m-0"/>
+
+    <div class="text-center py-4 align-items-center">
+        <p>Follow MDB on social media</p>
+        <a href="" class="btn btn-primary m-1" role="button"
+           rel="nofollow" target="_blank">
+
+        </a>
+        <a href="" class="btn btn-primary m-1" role="button" rel="nofollow"
+           target="_blank">
+
+        </a>
+        <a href="" class="btn btn-primary m-1" role="button" rel="nofollow"
+           target="_blank">
+
+        </a>
+        <a href="" class="btn btn-primary m-1" role="button" rel="nofollow"
+           target="_blank">
+
+        </a>
+    </div>
 </footer>
+
 </div>
 </body>
 </html>
