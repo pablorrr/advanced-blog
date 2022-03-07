@@ -18,18 +18,18 @@ class AdminController extends MainController
 //todo: sprawdz czt ta zmioenna potrzbn id
     private $_iId;//update usage
     private AdminModel $AdminModel;
-    private Notificator  $Notificator;//update usage
+
     public string $msg;
 
 
-    public function __construct(AdminModel $AdminModel, Notificator $Notificator)
+    public function __construct(AdminModel $AdminModel)
     {
         // Enable PHP Session
         if (empty($_SESSION))
             session_start();
 
         $this->AdminModel = $AdminModel;
-        $this->Notificator = $Notificator;
+
     }
 
     use Valid;
@@ -268,6 +268,13 @@ class AdminController extends MainController
         $this->oAdmin = $this->AdminModel->getById($admin_id);
 
         $this->getView('edit_user');
+    }
+
+
+    public function api_posts()
+    {
+
+        echo '{"name":"John", "age":30, "car":null}';
     }
 
     //todo:dont delete admin when i same logged and leave at least one not deleted

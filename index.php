@@ -51,7 +51,7 @@ if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
 $router = new Router;
 $PostController = new PostController(new PostModel(), new CommentModel());
 $CommentController = new CommentController(new PostModel(), new CommentModel());
-$AdminController = new AdminController(new AdminModel(),new Notificator());
+$AdminController = new AdminController(new AdminModel());
 
 //TestController::test();
 
@@ -170,6 +170,14 @@ $router->all('/admin/delete', array(
     'func' => array($AdminController, 'delete'),
     'parameters' => array($router->getId(true))
 ));
+
+
+//** API **//
+$router->get('/api/posts', array(
+    'func' => array($AdminController, 'api_posts')
+));
+
+
 
 $router->catch_exception(function () use ($PostController) {
 
