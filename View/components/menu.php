@@ -18,22 +18,15 @@
 
                 <?php if (!empty($_SESSION['is_logged'])): ?>
                     <li class="nav-item active">
-                        <p> Welcome <?= $_SESSION['userEmail']; ?></p>
-                    </li>
-
-                    <li class="nav-item active">
                         <a class="nav-link" aria-current="page" href="<?= ROOT_URL ?>admin/register">
                             Register</a>
                     </li>
-
                     <li class="nav-item active">
                         <a class="nav-link" aria-current="page" href="<?= ROOT_URL ?>admin">Admin</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" aria-current="page" href="<?= ROOT_URL ?>logout">Logout</a>
                     </li>
-
-
                 <?php endif ?>
 
                 <?php if (empty($_SESSION['is_logged'])): ?>
@@ -42,6 +35,11 @@
                     </li>
                 <?php endif ?>
             </ul>
+            <?php if (!empty($_SESSION['is_logged'])): ?>
+                <span class="navbar-text">
+        Welcome <b><?= $_SESSION['userEmail']; ?></b>
+    </span>
+            <?php endif ?>
         </div>
     </div>
 </nav>
