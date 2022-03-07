@@ -313,4 +313,32 @@ class AdminController extends MainController
 
         }
     }
+
+    /******************* Magics method zone******************
+     * @param $name
+     * @param $value
+
+
+
+    // Wykrycie ustawienie zmiennej członkowskiej
+    public function __set($name, $value) {
+       var_dump($name);
+        var_dump($value);
+    }
+   //Wykrycie odczyt zmiennej członkowskiej
+    public function __get($name) {
+        var_dump($name);
+    }
+
+    //Wykrycie sprawdzenie istnienia zmiennej członkowskiej
+    public function __isset($name) {
+        var_dump($name);
+    }
+
+    // Wykrycie niszczenie zmiennej członkowskiej
+    public function __unset($name) {
+        var_dump($name);
+    }  */
+
+
 }
