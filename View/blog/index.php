@@ -2,21 +2,67 @@
 <?php require ROOT_PATH . 'View/components/msg.php' ?>
 
 <?php if (empty($this->oPosts)): ?>
+    <body>
+    <header>
+        <!-- Intro settings -->
+        <style>
+            #intro {
+                /* Margin to fix overlapping fixed navbar */
+                margin-top: 58px;
+            }
 
-    <p class="bold">There is no Blog Post.</p>
+            @media (max-width: 991px) {
+                #intro {
+                    /* Margin to fix overlapping fixed navbar */
+                    margin-top: 45px;
+                }
+            }
+        </style>
 
-    <?php if (isset($_SESSION['is_logged'])) : ?>
-        <p>
-            <button type="button" onclick="window.location='<?= ROOT_URL ?>add'" class="bold">Add Your
-                First
-                Blog Post!
-            </button>
-        </p>
-    <?php endif; ?>
+        <!-- Navbar -->
+        <?php require ROOT_PATH . 'View/components/menu.php' ?>
+        <!-- Navbar -->
 
-    <?php if (!isset($_SESSION['is_logged'])) : ?>
-        <p> To add your first post you must be logged!!</p>
-    <?php endif; ?>
+        <!-- Jumbotron -->
+        <div id="intro" class="p-5 text-center bg-light">
+            <h1 class="mb-3 h2">Welcome Blog Page</h1>
+            <p class="mb-3">Just for educational purposes</p>
+            <p class="mb-3">There is no Blog Post.</p>
+
+
+        </div>
+
+        <!-- Jumbotron -->
+    </header>
+    <main class="my-5">
+        <div class="container">
+            <!--Section: Content-->
+            <section class="text-center">
+                <h4 class="mb-5"><strong>No Posts!!!</strong></h4>
+                <div class="row text-center">
+                    <div class="col-lg-4 col-md-4 mb-4"></div>
+                    <div class="col-lg-4 col-md-4 mb-4">
+                        <?php if (isset($_SESSION['is_logged'])) : ?>
+
+                            <button type="button" onclick="window.location='<?= ROOT_URL ?>add'"
+                                    class="btn-outline-secondary">
+                                Add Your
+                                First
+                                Blog Post!
+                            </button>
+
+                        <?php endif; ?>
+
+                        <?php if (!isset($_SESSION['is_logged'])) : ?>
+                            <p> To add your first post you must be logged!!</p>
+                        <?php endif; ?>
+                    </div>
+                    <div class="col-lg-4 col-md-4 mb-4"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
 
 <?php else: ?>
     <body>
@@ -37,53 +83,7 @@
         </style>
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-            <div class="container-fluid">
-                <!-- Navbar brand -->
-                <a class="navbar-brand" target="_blank" href="https://mdbootstrap.com/docs/standard/">
-
-                </a>
-                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-                        data-mdb-target="#navbarExample01"
-                        aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarExample01">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" aria-current="page" href="<?= ROOT_URL ?>">Home</a>
-                        </li>
-
-                        <?php if (!empty($_SESSION['is_logged'])): ?>
-                            <li class="nav-item active">
-                                <p> Welcome <?= $_SESSION['userEmail']; ?></p>
-                            </li>
-
-                            <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href="<?= ROOT_URL ?>admin/register">
-                                    Register</a>
-                            </li>
-
-                            <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href="<?= ROOT_URL ?>admin">Admin</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href="<?= ROOT_URL ?>logout">Logout</a>
-                            </li>
-
-
-                        <?php endif ?>
-
-                        <?php if (empty($_SESSION['is_logged'])): ?>
-                            <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href="<?= ROOT_URL ?>login">Login</a>
-                            </li>
-                        <?php endif ?>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php require ROOT_PATH . 'View/components/menu.php' ?>
         <!-- Navbar -->
 
         <!-- Jumbotron -->
@@ -124,11 +124,13 @@
                                     to see more?</a>
                             </div>
                         </div>
+                        <hr>
                     <?php endforeach ?>
 
                     <?php if (isset($_SESSION['is_logged'])) : ?>
 
-                        <button type="button" onclick="window.location='<?= ROOT_URL ?>add'" class="bold">Add New Post
+                        <button type="button" class="btn btn-primary" onclick="window.location='<?= ROOT_URL ?>add'">Add
+                            New Post
                         </button>
                         <br>
                         <br>
