@@ -101,8 +101,6 @@ class PostController extends MainController
         if (!$this->isLogged()) exit;
 
         $this->oPost = $this->PostModel->getById($post_id);
-
-
         //** EDIT WHEN NO COMMENTS**//
         if (!empty($_POST['edit_submit'])) {
 
@@ -208,6 +206,14 @@ class PostController extends MainController
         echo json_encode($this->oPosts);
 
     }
+
+    public function post()
+    {
+
+        echo json_encode($this->oPosts);
+
+    }
+
 
 
 }
