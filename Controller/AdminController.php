@@ -271,11 +271,7 @@ class AdminController extends MainController
     }
 
 
-    public function api_posts()
-    {
 
-        echo '{"name":"John", "age":30, "car":null}';
-    }
 
     //todo:dont delete admin when i same logged and leave at least one not deleted
     public function delete($admin_id)

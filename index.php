@@ -174,7 +174,7 @@ $router->all('/admin/delete', array(
 
 //** API **//
 $router->get('/api/posts', array(
-    'func' => array($AdminController, 'api_posts')
+    'func' => array($PostController, 'api_posts')
 ));
 
 

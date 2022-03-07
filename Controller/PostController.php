@@ -28,9 +28,6 @@ class PostController extends MainController
 
     use Valid;
 
-    /******************* Test Zone *****************************/
-
-
     public function getMainPage()
     {
         $this->oPosts = $this->PostModel->getAll();
@@ -49,7 +46,6 @@ class PostController extends MainController
      */
     public function add_get()
     {
-
         if (!$this->isLogged()) exit;
         $this->getView('add_post');
     }
@@ -76,18 +72,11 @@ class PostController extends MainController
 
                 } else {
                     header('Location: ' . MAIN_ROOT_URL . '/add');
-
-                  //  if (!empty($_SESSION['PostSuccessMsg'])) {
-                      //  unset($_SESSION['PostSuccessMsg']);
-               //     }
-
                     $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
                 }
 
             } else {
-              //  if (!empty($_SESSION['PostSuccessMsg'])) {
-                   // unset($_SESSION['PostSuccessMsg']);
-           //     }
+
                 header('Location: ' . MAIN_ROOT_URL . '/add');
                 $_SESSION['PostErrorMsg'] = 'All fields are required and the title cannot exceed 50 characters.';
             }
@@ -98,7 +87,6 @@ class PostController extends MainController
     public function edit_get($post_id)
     {
         if (!$this->isLogged()) exit;
-
 
         /* Get the data of the post */
         //todo: sprawdz czy nie wystepuje niepotr\zbny duplikat getbyid
@@ -131,26 +119,17 @@ class PostController extends MainController
                 if ($this->PostModel->update($aData)) {
 
                     header('Location: ' . MAIN_PAGE);
-                //    if (!empty($_SESSION['PostErrorMsg'])) {
-                      //  unset($_SESSION['PostErrorMsg']);
-               //     }
                     $_SESSION['PostSuccessMsg'] = 'Hurray!! The post has been updated.';
 
                 } else {
 
                     header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
-                  //  if (!empty($_SESSION['PostSuccessMsg'])) {
-                     //   unset($_SESSION['PostSuccessMsg']);
-                 //   }
                     $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later';
                 }
 
             } else {
 
                 header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
-           //     if (!empty($_SESSION['PostSuccessMsg'])) {
-                 //   unset($_SESSION['PostSuccessMsg']);
-            //    }
                 $_SESSION['PostErrorMsg'] = 'All fields are required and only letters allowed.';
             }
 
@@ -166,39 +145,24 @@ class PostController extends MainController
                         'title' => self::test_input($_POST['title']),
                         'body' => self::test_input($_POST['body']));
 
-
                     $CommentData = array('post_id' => self::test_input($post_id),
                         'comment' => self::test_input($_POST['comment'])
                     );
 
-
                     if (($this->PostModel->update($aData)) && ($this->CommentModel->update($CommentData))) {
 
                         header('Location: ' . MAIN_PAGE);
-
-                      //  if (!empty($_SESSION['PostErrorMsg'])) {
-                           // unset($_SESSION['PostErrorMsg']);
-                     //   }
                         $_SESSION['PostSuccessMsg'] = 'Hurray! The post and comment has been updated.';
 
                     } else {
 
                         header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
-
-                    //    if (!empty($_SESSION['PostSuccessMsg'])) {
-                           // unset($_SESSION['PostSuccessMsg']);
-                     //   }
                         $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later';
                     }
 
                 } else {
 
                     header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
-
-                //    if (!empty($_SESSION['PostSuccessMsg'])) {
-                        //unset($_SESSION['PostSuccessMsg']);
-                   // }
-
                     $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later';
                 }
             }
@@ -211,20 +175,6 @@ class PostController extends MainController
     public function delete($post_id)
     {
         if (!$this->isLogged()) exit;
-
-        //to prevent display msg when it is unconcern
-
-     /*   if (!empty($_SESSION['CommentSuccessMsg'])) {
-            unset($_SESSION['CommentSuccessMsg']);
-        }
-
-        if (!empty($_SESSION['PostSuccessMsg'])) {
-            unset($_SESSION['PostSuccessMsg']);
-        }
-
-        if (!empty($_SESSION['PostErrorMsg'])) {
-            unset($_SESSION['PostErrorMsg']);
-        }*/
 
 
         //when comments exists
@@ -252,28 +202,11 @@ class PostController extends MainController
     }
 
 
-    /*******************  End Test Zone *****************************/
-
-
-    public function text($t1, $t2, $t3)
+    public function api_posts()
     {
-        echo 'Text: ' . $t1 . $t2 . $t3;
-    }
+        $this->oPosts = $this->PostModel->getAll();
+        echo json_encode($this->oPosts);
 
-    public function path($path, $path2)
-    {
-        echo 'Current Path:' . $path;
-        echo '<br />Current Path with parameters:' . $path2;
-    }
-
-    public function form_get()
-    {
-        echo '<form method="post"><input type="text" name="test" /><input type="submit" /></form>';
-    }
-
-    public function form_post()
-    {
-        var_dump($_POST);
     }
 
 
