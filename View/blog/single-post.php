@@ -16,7 +16,6 @@
     <!-- Jumbotron -->
 </header>
 
-
 <?php else: ?>
 
 <body>
