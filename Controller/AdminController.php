@@ -48,7 +48,7 @@ class AdminController extends MainController
     public function index()
     {
         $this->oAdmins = $this->AdminModel->getAll();
-        $this->getView('admin/index_admin');
+        $this->getView('admin/index-admin');
     }
 
 
@@ -59,7 +59,7 @@ class AdminController extends MainController
             exit();
         }
 
-        $this->getView('login');
+        $this->getView('admin/login');
     }
 
     public function login_post()
@@ -201,13 +201,13 @@ class AdminController extends MainController
 
     public function register_get()
     {
-        $this->getView('register_user');
+        $this->getView('admin/register-user');
     }
 
 
     public function getLogoutPage()
     {
-        $this->getView('logout');
+        $this->getView('admin/logout');
     }
 
     /**
@@ -278,7 +278,7 @@ class AdminController extends MainController
     {
         $this->oAdmin = $this->AdminModel->getById($admin_id);
 
-        $this->getView('edit_user');
+        $this->getView('admin/edit-user');
     }
 
     /**
