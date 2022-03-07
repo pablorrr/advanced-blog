@@ -5,19 +5,7 @@
     <body>
     <header>
         <!-- Intro settings -->
-        <style>
-            #intro {
-                /* Margin to fix overlapping fixed navbar */
-                margin-top: 58px;
-            }
-
-            @media (max-width: 991px) {
-                #intro {
-                    /* Margin to fix overlapping fixed navbar */
-                    margin-top: 45px;
-                }
-            }
-        </style>
+        <?php require ROOT_PATH . 'View/components/style.php' ?>
 
         <!-- Navbar -->
         <?php require ROOT_PATH . 'View/components/menu.php' ?>
@@ -28,8 +16,6 @@
             <h1 class="mb-3 h2">Welcome Blog Page</h1>
             <p class="mb-3">Just for educational purposes</p>
             <p class="mb-3">There is no Blog Post.</p>
-
-
         </div>
 
         <!-- Jumbotron -->
@@ -68,20 +54,7 @@
     <body>
     <header>
         <!-- Intro settings -->
-        <style>
-            #intro {
-                /* Margin to fix overlapping fixed navbar */
-                margin-top: 58px;
-            }
-
-            @media (max-width: 991px) {
-                #intro {
-                    /* Margin to fix overlapping fixed navbar */
-                    margin-top: 45px;
-                }
-            }
-        </style>
-
+        <?php require ROOT_PATH . 'View/components/style.php' ?>
         <!-- Navbar -->
         <?php require ROOT_PATH . 'View/components/menu.php' ?>
         <!-- Navbar -->

@@ -1,0 +1,13 @@
+<style>
+    #intro {
+        /* Margin to fix overlapping fixed navbar */
+        margin-top: 58px;
+    }
+
+    @media (max-width: 991px) {
+        #intro {
+            /* Margin to fix overlapping fixed navbar */
+            margin-top: 45px;
+        }
+    }
+</style>
