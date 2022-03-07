@@ -1,7 +1,10 @@
 <?php
 namespace Libs;
 
-
+/**
+ * Interface MainInterface
+ * @package Libs
+ */
 interface MainInterface
 {
     public function getView($sViewName);

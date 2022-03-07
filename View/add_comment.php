@@ -1,15 +1,6 @@
-<?php
-/**
- * @author           Pierre-Henry Soria <phy@hizup.uk>
- * @copyright        (c) 2015-2017, Pierre-Henry Soria. All Rights Reserved.
- * @license          Lesser General Public License <http://www.gnu.org/copyleft/lesser.html>
- * @link             http://hizup.uk
- */
-?>
 <?php require 'components/header.php' ?>
 <?php require 'components/comment-msg.php' ?>
 
-<!--todo add prtoection validate in php-->
 <h1> Add comment page</h1>
 <form action="" method="POST">
 

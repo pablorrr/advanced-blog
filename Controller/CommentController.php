@@ -6,16 +6,27 @@ use Libs\Valid;
 use Model\CommentModel;
 use Model\PostModel;
 
-
+/**
+ * Class CommentController
+ * @package Controller
+ */
 class CommentController extends MainController
 {
-//todo : sprawdz czy ta zmienna jest potrzebna!!
-    private $_iId;
-    private $PostModel;
-    private $CommentModel;
+    /**
+     * @var PostModel
+     */
+    private PostModel $PostModel;
+    /**
+     * @var CommentModel
+     */
+    private CommentModel $CommentModel;
 
-
-    public function __construct(PostModel $PostModel,CommentModel $CommentModel)
+    /**
+     * CommentController constructor.
+     * @param PostModel $PostModel
+     * @param CommentModel $CommentModel
+     */
+    public function __construct(PostModel $PostModel, CommentModel $CommentModel)
     {
         // Enable PHP Session
         if (empty($_SESSION))
@@ -33,25 +44,11 @@ class CommentController extends MainController
      */
     use Valid;
 
-
+    /**
+     * @param $post_id
+     */
     public function add_post($post_id)
     {
-      /*  if (!empty($_SESSION['PostSuccessMsg'])) {
-            unset($_SESSION['PostSuccessMsg']);
-        }
-
-        if (empty($_POST['add_comment'])): if (!empty($_SESSION['CommentSuccessMsg'])) {
-            unset($_SESSION['CommentSuccessMsg']);
-        }
-        endif;
-
-        if (empty($_POST['add_comment'])): if (!empty($_SESSION['CommentErrorMsg'])) {
-            unset($_SESSION['CommentErrorMsg']);
-        }
-        endif;*/
-
-        // $this->oPost = $this->PostModel->getById($post_id);
-
         if (!empty($_POST['add_comment'])) {
 
             if (isset($_POST['comment'])
@@ -68,21 +65,11 @@ class CommentController extends MainController
                 if ($this->CommentModel->add($aData)) {
 
                     header('Location: ' . MAIN_PAGE);
-
-                 //   if (!empty($_SESSION['CommentErrorMsg'])) {
-                      //  unset($_SESSION['CommentErrorMsg']);
-                //    }
-
                     $_SESSION['CommentSuccessMsg'] = 'Hurray!! The comment has been added.';
 
                 } else {
 
                     header('Location: ' . MAIN_ROOT_URL . '/add-comment?id=' . $post_id);
-
-                //    if (!empty($_SESSION['CommentSuccessMsg'])) {
-                      //  unset($_SESSION['CommentSuccessMsg']);
-             //       }
-
                     $_SESSION['CommentErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
                 }
 
@@ -91,11 +78,6 @@ class CommentController extends MainController
             } else {
 
                 header('Location: ' . MAIN_ROOT_URL . '/add-comment?id=' . $post_id);
-
-             //   if (!empty($_SESSION['CommentSuccessMsg'])) {
-                   // unset($_SESSION['CommentSuccessMsg']);
-              //  }
-
                 $_SESSION['CommentErrorMsg'] = 'All fields are required  cannot exceed 250 characters and must be leettes and contains two single separated words .';
             }
         }//add comment if

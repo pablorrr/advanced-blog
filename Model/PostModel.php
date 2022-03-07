@@ -1,34 +1,37 @@
 <?php
-/**
- * @author           Pierre-Henry Soria <phy@hizup.uk>
- * @copyright        (c) 2015-2017, Pierre-Henry Soria. All Rights Reserved.
- * @license          Lesser General Public License <http://www.gnu.org/copyleft/lesser.html>
- * @link             http://hizup.uk
- */
-
 namespace Model;
 
+use PDO;
 
+/**
+ * Class PostModel
+ * @package Model
+ */
 class PostModel extends MainModel
 {
+    /**
+     * @var PDO
+     */
+    protected PDO $oDb;
+    /**
+     * @var CommentModel
+     */
+    protected CommentModel $CommentModel;
 
-    protected $oDb;
-    protected $CommentModel;
-
-    public function __construct()
+    /**
+     * PostModel constructor.
+     * @param CommentModel $CommentModel
+     */
+    public function __construct(CommentModel $CommentModel)
     {
         $this->oDb = MainModel::getInstance()->getConnection();
-        $this->CommentModel = new CommentModel();
-
-
+        $this->CommentModel = $CommentModel;
     }
 
     /**
-     * pobranie okrslonej  ilosci postow (tutja njprwd  5)
      * @param $iOffset
      * @param $iLimit
      * @return array
-     *
      *
      */
     public function get($iOffset, $iLimit)
@@ -56,15 +59,11 @@ class PostModel extends MainModel
     }
 
     /**
-     * pobranie wszytskich postow
      *
      * @return array
      */
     public function getAll()
     {
-     /*   $oStmt = $this->oDb->query('SELECT * FROM Posts ORDER BY createdDate DESC');
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);*/
-
         if ($this->CommentModel->get() == false) {
             $oStmt = $this->oDb->query('SELECT * FROM Posts ORDER BY createdDate DESC');
             return $oStmt->fetchAll(\PDO::FETCH_OBJ);
@@ -80,12 +79,8 @@ class PostModel extends MainModel
 
     /**
      *
-     * dodoaje post
-     *
      * @param array $aData
      * @return bool
-     *
-     *
      */
     public function add(array $aData)
     {
@@ -95,18 +90,11 @@ class PostModel extends MainModel
 
     /**
      *
-     * pobiera pojedynczy post za pomaca jego id
      * @param $iId
      * @return mixed
      */
     public function getById($iId)
     {
-        /*$oStmt = $this->oDb->prepare('SELECT * FROM Posts WHERE id = :postId LIMIT 1');
-        $oStmt->bindParam(':postId', $iId, \PDO::PARAM_INT);
-        $oStmt->execute();
-        return $oStmt->fetch(\PDO::FETCH_OBJ);*/
-
-
         if ($this->CommentModel->getById($iId) == false) {
 
             $oStmt = $this->oDb->prepare('SELECT * FROM Posts WHERE id = :postId LIMIT 1');
@@ -122,11 +110,9 @@ WHERE posts.id= :postId AND comments.post_id= :postId');
             return $oStmt->fetch(\PDO::FETCH_OBJ);
         }
 
-
     }
 
     /**
-     * aktuazlizacja postu wg id
      * @param array $aData
      * @return bool
      */
@@ -140,7 +126,6 @@ WHERE posts.id= :postId AND comments.post_id= :postId');
     }
 
     /**
-     * usuwanie posta
      *
      * @param $iId
      * @return bool

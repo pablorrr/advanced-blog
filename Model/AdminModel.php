@@ -1,26 +1,26 @@
 <?php
-/**
- * @author           Pierre-Henry Soria <phy@hizup.uk>
- * @copyright        (c) 2015-2017, Pierre-Henry Soria. All Rights Reserved.
- * @license          Lesser General Public License <http://www.gnu.org/copyleft/lesser.html>
- * @link             http://hizup.uk
- */
 
 namespace Model;
+use PDO;
 
+/**
+ * Class AdminModel
+ * @package Model
+ */
 class AdminModel extends MainModel
 {
     /**
-     * @var \PDO
+     * @var PDO
      */
-    protected $oDb;
+    protected PDO $oDb;
 
     /**
      * Admin constructor.
      */
     public function __construct()
     {
-        $this->oDb = MainModel::getInstance()->getConnection();
+       // parent::__construct();
+       $this->oDb = MainModel::getInstance()->getConnection();
     }
 
     /**
@@ -30,9 +30,9 @@ class AdminModel extends MainModel
     public function login($sEmail)
     {
         $oStmt = $this->oDb->prepare('SELECT email, password FROM Admins WHERE email = :email LIMIT 1');
-        $oStmt->bindValue(':email', $sEmail, \PDO::PARAM_STR);
+        $oStmt->bindValue(':email', $sEmail, PDO::PARAM_STR);
         $oStmt->execute();
-        $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
+        $oRow = $oStmt->fetch(PDO::FETCH_OBJ);
 
         return @$oRow->password;
     }
@@ -55,18 +55,8 @@ class AdminModel extends MainModel
     {
         $oStmt = $this->oDb->prepare('SELECT email FROM Admins');
         $oStmt->execute();
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+        return $oStmt->fetchAll(PDO::FETCH_OBJ);
     }
-
-    public function getEmailById($iId)
-    {
-        $oStmt = $this->oDb->prepare('SELECT email FROM Admins WHERE id = :id LIMIT 1');
-        $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
-        $oStmt->execute();
-        return $oStmt->fetch(\PDO::FETCH_OBJ);
-
-    }
-
 
     /**
      * @param array $aData
@@ -75,7 +65,7 @@ class AdminModel extends MainModel
     public function update(array $aData)
     {
         $oStmt = $this->oDb->prepare('UPDATE Admins SET email = :email, password = :password WHERE id = :id LIMIT 1');
-        $oStmt->bindValue(':id', $aData['id'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':id', $aData['id'], PDO::PARAM_INT);
         $oStmt->bindValue(':email', $aData['email']);
         $oStmt->bindValue(':password', $aData['password']);
         return $oStmt->execute();
@@ -87,7 +77,7 @@ class AdminModel extends MainModel
     public function getAll()
     {
         $oStmt = $this->oDb->query('SELECT * FROM Admins ORDER BY id ASC');
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+        return $oStmt->fetchAll(PDO::FETCH_OBJ);
     }
 
 
@@ -98,9 +88,9 @@ class AdminModel extends MainModel
     public function getById($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM Admins WHERE id = :id LIMIT 1');
-        $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
+        $oStmt->bindParam(':id', $iId, PDO::PARAM_INT);
         $oStmt->execute();
-        return $oStmt->fetch(\PDO::FETCH_OBJ);
+        return $oStmt->fetch(PDO::FETCH_OBJ);
 
     }
 
@@ -120,13 +110,12 @@ class AdminModel extends MainModel
      * @param $id
      * @return bool
      *
-
      */
 
     public function delete($id)
     {
         $oStmt = $this->oDb->prepare('DELETE FROM Admins WHERE id = :id LIMIT 1');
-        $oStmt->bindParam(':id', $id, \PDO::PARAM_INT);
+        $oStmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $oStmt->execute();
     }
 }

@@ -9,11 +9,13 @@
 namespace Libs;
 /**
  * Trait Valid
- * @package PhpMVC\Libs
+ * @package Libs
  */
 trait Valid
 {
-  public static  function test_input($data) {        $data = trim($data);
+    public static function test_input($data)
+    {
+        $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;

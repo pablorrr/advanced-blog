@@ -1,15 +1,19 @@
 <?php
 
-
 namespace Model;
 
 
 use PDO;
 
+/**
+ * Class CommentModel
+ * @package Model
+ */
+
 class CommentModel extends MainModel
 {
 
-    protected $oDb;
+    protected PDO $oDb;
 
     public function __construct()
     {
@@ -17,11 +21,10 @@ class CommentModel extends MainModel
     }
 
     /**
-     * pobranie okrslonej  ilosci postow (tutja njprwd  5)
+     *
      * @param $iOffset
      * @param $iLimit
      * @return bool
-     *
      *
      */
     public function get()
@@ -44,8 +47,6 @@ class CommentModel extends MainModel
     }
 
     /**
-     *
-     * pobiera pojedynczy post za pomaca jego id
      * @param $iId
      * @return mixed
      */
@@ -57,6 +58,10 @@ class CommentModel extends MainModel
         return $oStmt->fetch(PDO::FETCH_OBJ);
     }
 
+    /**
+     * @param $iId
+     * @return bool
+     */
     public function getByIdCheck($iId)
     {
         return !empty($this->getById($iId));

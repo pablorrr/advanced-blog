@@ -8,20 +8,30 @@
 
 namespace Controller;
 
-use Libs\Notificator;
+
 use Libs\Valid;
 use Model\AdminModel;
 
-
+/**
+ * Class AdminController
+ * @package Controller
+ */
 class AdminController extends MainController
 {
-//todo: sprawdz czt ta zmioenna potrzbn id
-    private $_iId;//update usage
-    private AdminModel $AdminModel;
 
+    /**
+     * @var AdminModel
+     */
+    private AdminModel $AdminModel;
+    /**
+     * @var string
+     */
     public string $msg;
 
-
+    /**
+     * AdminController constructor.
+     * @param AdminModel $AdminModel
+     */
     public function __construct(AdminModel $AdminModel)
     {
         // Enable PHP Session
@@ -29,18 +39,14 @@ class AdminController extends MainController
             session_start();
 
         $this->AdminModel = $AdminModel;
-
     }
+
 
     use Valid;
 
 
     public function index()
     {
-        //todo function below doesnt work  fix that
-        // self::isRefreshedAdminPage();
-
-
         $this->oAdmins = $this->AdminModel->getAll();
         $this->getView('index_admin');
     }
@@ -55,7 +61,6 @@ class AdminController extends MainController
 
         $this->getView('login');
     }
-
 
     public function login_post()
     {
@@ -106,7 +111,7 @@ class AdminController extends MainController
 
     public function register_post()
     {
-        //todo: dodoac klase walidator
+
         if (!$this->isLogged())
             exit;
 
@@ -205,10 +210,13 @@ class AdminController extends MainController
         $this->getView('logout');
     }
 
-
+    /**
+     * @param $admin_id
+     */
     public function edit_post($admin_id)
     {
         if (!$this->isLogged()) exit;
+
         $this->oAdmin = $this->AdminModel->getById($admin_id);
 
         if (!empty($_POST['edit_submit'])) {
@@ -262,6 +270,9 @@ class AdminController extends MainController
         }
     }
 
+    /**
+     * @param $admin_id
+     */
 
     public function edit_get($admin_id)
     {
@@ -270,10 +281,9 @@ class AdminController extends MainController
         $this->getView('edit_user');
     }
 
-
-
-
-    //todo:dont delete admin when i same logged and leave at least one not deleted
+    /**
+     * @param $admin_id
+     */
     public function delete($admin_id)
     {
         if (!$this->isLogged()) exit;
@@ -287,15 +297,11 @@ class AdminController extends MainController
                 if ($this->AdminModel->delete($admin_id)) {
 
                     header('Location: ' . ROOT_URL);
-
                     $_SESSION['AdminSuccMsg'] = 'User has been deleted properly';
 
                 } else {
                     header('Location: ' . ROOT_URL);
-
                     $_SESSION['AdminErrorMsg'] = 'Whoops! Post cannot be deleted.';
-                    // exit('Whoops! Post cannot be deleted.');
-
                 }
             } else {
                 header('Location: ' . ROOT_URL);

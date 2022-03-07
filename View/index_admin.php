@@ -1,16 +1,3 @@
-<?php
-/**
- * @author           Pierre-Henry Soria <phy@hizup.uk>
- * @copyright        (c) 2015-2017, Pierre-Henry Soria. All Rights Reserved.
- * @license          Lesser General Public License <http://www.gnu.org/copyleft/lesser.html>
- * @link             http://hizup.uk
- */
-
-
-/**
- * Since PHP 5.4, the echo short tag "<?= ?> is always available, so I use it to simplify the visibility of the template
- */
-?>
 <?php require 'components/header.php' ?>
 <?php require 'components/admin-msg.php' ?>
 <div class="container">

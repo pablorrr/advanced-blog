@@ -6,17 +6,32 @@ use Libs\Valid;
 use Model\CommentModel;
 use Model\PostModel;
 
-
+/**
+ * Class PostController
+ * @package Controller
+ */
 class PostController extends MainController
 {
     /**
      * @var array
      */
-    protected $oPosts;
-    protected $oPost;
-    public PostModel $PostModel;
-    protected $CommentModel;
+    protected array $oPosts;
 
+    protected $oPost;
+    /**
+     * @var PostModel
+     */
+    public PostModel $PostModel;
+    /**
+     * @var CommentModel
+     */
+    protected CommentModel $CommentModel;
+
+    /**
+     * PostController constructor.
+     * @param PostModel $PostModel
+     * @param CommentModel $CommentModel
+     */
     public function __construct(PostModel $PostModel, CommentModel $CommentModel)
     {
         // Enable PHP Session
@@ -34,6 +49,9 @@ class PostController extends MainController
         $this->getView('index');
     }
 
+    /**
+     * @param $post_id
+     */
     public function getSinglePost($post_id)
     {
         $this->oPost = $this->PostModel->getById($post_id);
@@ -84,6 +102,9 @@ class PostController extends MainController
 
     }
 
+    /**
+     * @param $post_id
+     */
     public function edit_get($post_id)
     {
         if (!$this->isLogged()) exit;
@@ -95,7 +116,9 @@ class PostController extends MainController
         $this->getView('edit_post');
     }
 
-
+    /**
+     * @param $post_id
+     */
     public function edit_post($post_id)
     {
         if (!$this->isLogged()) exit;
@@ -169,7 +192,9 @@ class PostController extends MainController
 
     }
 
-
+    /**
+     * @param $post_id
+     */
     public function delete($post_id)
     {
         if (!$this->isLogged()) exit;

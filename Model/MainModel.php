@@ -1,10 +1,4 @@
 <?php
-/**
- * @author           Pierre-Henry Soria <phy@hizup.uk>
- * @copyright        (c) 2015-2017, Pierre-Henry Soria. All Rights Reserved.
- * @license          Lesser General Public License <http://www.gnu.org/copyleft/lesser.html>
- * @link             http://hizup.uk
- */
 
 namespace Model;
 
@@ -15,23 +9,25 @@ use PDO;
 
 /**
  * Class MainModel
- * @package PhpMVC\Model
+ * @package Model
  */
-// Singleton to connect db.
+
 class MainModel
 {
     // Hold the class instance.
-    private static $instance = null;
-    private $conn;
+    private static  $instance = null;
+    private PDO $conn;
 
-    private $host = Config::DB_HOST;
-    private $user = Config::DB_USR;
-    private $pass = Config::DB_PWD;
-    private $name = Config::DB_NAME;
+    private string $host = Config::DB_HOST;
+    private string $user = Config::DB_USR;
+    private string $pass = Config::DB_PWD;
+    private string $name = Config::DB_NAME;
 
 
-    // The db connection is established in the private constructor.
-    private function __construct()
+    /**
+     * MainModel constructor.
+     */
+    protected function __construct()
     {
         set_exception_handler(array($this, 'customException'));
 

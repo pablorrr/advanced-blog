@@ -1,15 +1,4 @@
-<?php
-/**
- * @author           Pierre-Henry Soria <phy@hizup.uk>
- * @copyright        (c) 2015-2017, Pierre-Henry Soria. All Rights Reserved.
- * @license          Lesser General Public License <http://www.gnu.org/copyleft/lesser.html>
- * @link             http://hizup.uk
- */
-?>
 <?php require 'components/header.php' ?>
-
-<!--todo add prtoection validate in php-->
-
 <h3>Info</h3>
 <p> 1. Email must be unique  </p>
 <p> 2. Password must contains at least 6 characters , at least one digit , at least one letter.</p>

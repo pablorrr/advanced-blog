@@ -1,4 +1,10 @@
 <?php
+/**
+ * @author           Pierre-Henry Soria <phy@hizup.uk>
+ * @copyright        (c) 2015-2017, Pierre-Henry Soria. All Rights Reserved.
+ * @license          Lesser General Public License <http://www.gnu.org/copyleft/lesser.html>
+ * @link             http://hizup.uk
+ */
 
 use Libs\Router;
 use Libs\Config;
@@ -10,7 +16,6 @@ use Model\CommentModel;
 use Model\PostModel;
 
 //use Controller\TestController;
-// php code for logging error into a given file
 
 
 require __DIR__ . '/vendor/autoload.php';
@@ -42,18 +47,18 @@ if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
 //Todo: wprowadzic klase powidomien  notyfikator w libs
 
 $router = new Router;
-$PostController = new PostController(new PostModel(), new CommentModel());
-$CommentController = new CommentController(new PostModel(), new CommentModel());
+$PostController = new PostController(new PostModel(new CommentModel()), new CommentModel());
+$CommentController = new CommentController(new PostModel(new CommentModel()), new CommentModel());
 $AdminController = new AdminController(new AdminModel());
 
 //TestController::test();
 
-//var_dump($_SESSION);
+
 
 
 /************* Front End **********************/
 
-/** MAIN PAGE **/
+
 
 $router->get(Config::MAIN_PAGE_SLUG, array(
     'func' => array($PostController, 'getMainPage'),
@@ -67,9 +72,11 @@ $router->get('/single-post', array(
 ));
 
 
+
+
 /***************** Back End ********************/
 
-///*** CRUD**********//
+
 //add post
 $router->get('/add', array(
     'func' => array($PostController, 'add_get')
@@ -189,4 +196,4 @@ $router->catch_exception(function () use ($PostController) {
     $PostController->getView('404');
 });
 
-$router->match();
+$router->run();

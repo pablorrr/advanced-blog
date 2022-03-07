@@ -1,44 +1,30 @@
 <?php
 
 namespace Controller;
+
 use Libs\MainInterface;
 
 /**
- *
  * Class MainController
- * @package TestProject\Libs
+ * @package Controller
  */
-
-
 abstract class MainController implements MainInterface
 {
     /**
      * @var array
      */
-    protected $oAdmins;
-    /**
-     * @var string
-     */
-    private $sSuccMsg;
-    /**
-     * @var string
-     */
-    private $sErrMsg;
+    protected array $oAdmins;
 
-
+    /**
+     * @param $sViewName
+     */
     public function getView($sViewName)
     {
         $this->_get($sViewName);
     }
 
     /**
-     * This method is useful in order to avoid the duplication of code (create almost the same method for "getView" and "getModel"
-     *
      * @param $sFileName
-     * @param $sType
-     *
-     * jest to uzupenienie getview wykorzytywanego w kontrolerze - ustala sciezki dostepowe do widokow
-     *
      */
     public function _get($sFileName)
     {
@@ -116,24 +102,4 @@ abstract class MainController implements MainInterface
 
 
     }
-
-
-    /* public static function manageNotif()
-     {
-         if (!empty($_SESSION['CommentSuccessMsg'])) {
-             unset($_SESSION['CommentSuccessMsg']);
-         }
-
-         if (empty($_POST['add_submit'])): if (!empty($_SESSION['PostSuccessMsg'])) {
-             unset($_SESSION['PostSuccessMsg']);
-         }
-         endif;
-
-         if (empty($_POST['add_submit'])): if (!empty($_SESSION['PostErrorMsg'])) {
-             unset($_SESSION['PostErrorMsg']);
-         }
-         endif;
-     }*/
-
-
 }
