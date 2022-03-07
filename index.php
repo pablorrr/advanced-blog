@@ -1,13 +1,10 @@
 <?php
 
+use Libs\Router;
+use Libs\Config;
 use Controller\AdminController;
 use Controller\CommentController;
 use Controller\PostController;
-
-//use Controller\MainController;
-use Libs\Notificator;
-use Libs\Router;
-use Libs\Config;
 use Model\AdminModel;
 use Model\CommentModel;
 use Model\PostModel;
@@ -20,7 +17,6 @@ require __DIR__ . '/vendor/autoload.php';
 
 //error_reporting(E_ALL);
 //disable error  warnings
-
 error_reporting(error_reporting() & ~E_NOTICE);
 
 
@@ -169,7 +165,8 @@ $router->all('/admin/delete', array(
 ));
 
 
-//** API **//
+/******* API **********/
+
 $router->get('/api/posts', array(
     'func' => array($PostController, 'api_posts')
 ));
