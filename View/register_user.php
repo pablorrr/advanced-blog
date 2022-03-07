@@ -6,7 +6,6 @@
 
 <form action="" method="POST">
 
-
     <p><label for="email">User Email</label><br/></p>
     <p><input type="email" name="email" id="email" value="" required="required"/></p>
     <p><label for="password">User Password</label><br/></p>
