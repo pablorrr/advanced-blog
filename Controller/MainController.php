@@ -29,9 +29,6 @@ abstract class MainController implements MainInterface
     public function _get($path)
     {
         $sFullPath = ROOT_PATH . 'View/' . $path . '.php';
-      //  $sFullPath = ROOT_PATH . 'View\admin\index_admin.php';
-        //echo $sFullPath;
-        //var_dump(is_file($sFullPath));
 
         if (is_file($sFullPath))
             require $sFullPath;

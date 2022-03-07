@@ -86,7 +86,7 @@ class CommentController extends MainController
 
     public function add_get()
     {
-        $this->getView('add_comment');
+        $this->getView('blog/add_comment');
     }
 
 }

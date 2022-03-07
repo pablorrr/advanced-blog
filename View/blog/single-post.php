@@ -13,7 +13,7 @@
 
         <?php
         $oPost = $this->oPost;
-        require 'components/control_buttons.php';
+        require ROOT_PATH .'View/components/control-buttons.php';
         ?>
     </article>
 

@@ -40,7 +40,7 @@
                     <?php if (property_exists($oPost, 'comment') == true): ?>
                         <p>Comments: <?= nl2br(htmlspecialchars(mb_strimwidth($oPost->comment, 0, 5, '...'))) ?></p>
                     <?php endif; ?>
-                    <?php require 'components/control_buttons.php' ?>
+                    <?php require ROOT_PATH .'View/components/control-buttons.php' ?>
                     <hr class="clear"/><br/>
                 <?php endforeach ?>
 

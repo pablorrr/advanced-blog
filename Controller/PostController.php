@@ -46,7 +46,7 @@ class PostController extends MainController
     public function getMainPage()
     {
         $this->oPosts = $this->PostModel->getAll();
-        $this->getView('index');
+        $this->getView('blog/index');
     }
 
     /**
@@ -55,7 +55,7 @@ class PostController extends MainController
     public function getSinglePost($post_id)
     {
         $this->oPost = $this->PostModel->getById($post_id);
-        $this->getView('single-post');
+        $this->getView('blog/single-post');
     }
 
 
@@ -65,7 +65,7 @@ class PostController extends MainController
     public function add_get()
     {
         if (!$this->isLogged()) exit;
-        $this->getView('add_post');
+        $this->getView('blog/add-post');
     }
 
     public function add_post()
@@ -113,7 +113,7 @@ class PostController extends MainController
         //todo: sprawdz czy nie wystepuje niepotr\zbny duplikat getbyid
         $this->oPost = $this->PostModel->getById($post_id);
 
-        $this->getView('edit_post');
+        $this->getView('blog/edit-post');
     }
 
     /**

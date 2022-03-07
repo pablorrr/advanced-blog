@@ -250,3 +250,23 @@
 [07-Mar-2022 10:11:17 UTC] PHP   6. Controller\MainController->getView($sViewName = 'index_admin') D:\project\simple-blog-advanced\Controller\AdminController.php:51
 [07-Mar-2022 10:11:17 UTC] PHP   7. Controller\MainController->_get($sFileName = 'index_admin') D:\project\simple-blog-advanced\Controller\MainController.php:23
 [07-Mar-2022 10:11:17 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:37
+[07-Mar-2022 10:30:23 UTC] PHP Warning:  require(components/control_buttons.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\blog\index.php on line 43
+[07-Mar-2022 10:30:23 UTC] PHP Stack trace:
+[07-Mar-2022 10:30:23 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:30:23 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:30:23 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\PostController { ... }, 1 => 'getMainPage'], 'parameters' => [], 'type' => 'class']) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:30:23 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\PostController { protected array $oPosts = [...]; protected $oPost = NULL; public Model\PostModel $PostModel = class Model\PostModel { ... }; protected Model\CommentModel $CommentModel = class Model\CommentModel { ... }; protected array $oAdmins = *uninitialized* }, 1 => 'getMainPage'], $args = []) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:30:23 UTC] PHP   5. Controller\PostController->getMainPage() D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:30:23 UTC] PHP   6. Controller\MainController->getView($sViewName = 'blog/index') D:\project\simple-blog-advanced\Controller\PostController.php:49
+[07-Mar-2022 10:30:23 UTC] PHP   7. Controller\MainController->_get($path = 'blog/index') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:30:23 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:34
+[07-Mar-2022 10:32:13 UTC] PHP Warning:  require(components/control_buttons.php): Failed to open stream: No such file or directory in D:\project\simple-blog-advanced\View\blog\single-post.php on line 16
+[07-Mar-2022 10:32:13 UTC] PHP Stack trace:
+[07-Mar-2022 10:32:13 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[07-Mar-2022 10:32:13 UTC] PHP   2. Libs\Router->run() D:\project\simple-blog-advanced\index.php:199
+[07-Mar-2022 10:32:13 UTC] PHP   3. Libs\Router->execute_func($exec = ['func' => [0 => class Controller\PostController { ... }, 1 => 'getSinglePost'], 'parameters' => [0 => 101], 'type' => 'class']) D:\project\simple-blog-advanced\Libs\Router.php:113
+[07-Mar-2022 10:32:13 UTC] PHP   4. call_user_func_array:{D:\project\simple-blog-advanced\Libs\Router.php:223}($callback = [0 => class Controller\PostController { protected array $oPosts = *uninitialized*; protected $oPost = class stdClass { ... }; public Model\PostModel $PostModel = class Model\PostModel { ... }; protected Model\CommentModel $CommentModel = class Model\CommentModel { ... }; protected array $oAdmins = *uninitialized* }, 1 => 'getSinglePost'], $args = [0 => 101]) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:32:13 UTC] PHP   5. Controller\PostController->getSinglePost($post_id = 101) D:\project\simple-blog-advanced\Libs\Router.php:223
+[07-Mar-2022 10:32:13 UTC] PHP   6. Controller\MainController->getView($sViewName = 'blog/single-post') D:\project\simple-blog-advanced\Controller\PostController.php:58
+[07-Mar-2022 10:32:13 UTC] PHP   7. Controller\MainController->_get($path = 'blog/single-post') D:\project\simple-blog-advanced\Controller\MainController.php:23
+[07-Mar-2022 10:32:13 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:34
