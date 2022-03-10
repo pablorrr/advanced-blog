@@ -1,6 +1,5 @@
 <?php require ROOT_PATH . 'View/components/header.php' ?>
 <?php require ROOT_PATH . 'View/components/admin-msg.php' ?>
-
 <body>
 <header>
     <!-- Intro settings -->
