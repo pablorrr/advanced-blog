@@ -69,8 +69,5 @@
         </section>
     </div>
 </main>
-
-
 <?php endif ?>
-
 <?php require ROOT_PATH . 'View/components/footer.php' ?>

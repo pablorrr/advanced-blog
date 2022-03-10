@@ -1,26 +1,5 @@
 <?php require ROOT_PATH .'View/components/header.php' ?>
 <?php require ROOT_PATH .'View/components/admin-msg.php' ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Admin Users List</h1>
-        </div>
-
-    </div>
-    <div class="row">
-
-
-    </div>
-</div>
-
-
-
-
-
-<!--////////////////////////////////////-->
-
-
-
 <body>
 <header>
     <!-- Intro settings -->
@@ -86,19 +65,5 @@
         </section>
     </div>
 </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php require ROOT_PATH .'View/components/footer.php' ?>
 

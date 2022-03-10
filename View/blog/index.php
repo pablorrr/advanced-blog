@@ -48,8 +48,6 @@
             </section>
         </div>
     </main>
-
-
 <?php else: ?>
     <body>
     <header>

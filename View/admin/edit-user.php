@@ -8,8 +8,6 @@
     <?php require ROOT_PATH . 'View/components/menu.php' ?>
     <!-- Navbar -->
 </header>
-<!--Main Navigation-->
-
 <!--Main layout-->
 <main class="my-5">
     <div class="container">
