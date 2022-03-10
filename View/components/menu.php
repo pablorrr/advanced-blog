@@ -2,7 +2,6 @@
     <div class="container-fluid">
         <!-- Navbar brand -->
         <a class="navbar-brand" target="_blank" href="https://mdbootstrap.com/docs/standard/">
-
         </a>
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
                 data-mdb-target="#navbarExample01"
