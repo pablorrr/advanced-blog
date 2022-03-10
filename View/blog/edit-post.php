@@ -1,34 +1,92 @@
-<?php require  ROOT_PATH .'View/components/header.php' ?>
+<?php require ROOT_PATH . 'View/components/header.php' ?>
 
 <?php if (empty($this->oPost)): ?>
-    <p class="error">Post Data Not Found!</p>
-<?php else: ?>
+<body>
+<header>
+    <!-- Intro settings -->
+    <?php require ROOT_PATH . 'View/components/style.php' ?>
+    <!-- Navbar -->
+    <?php require ROOT_PATH . 'View/components/menu.php' ?>
+    <!-- Navbar -->
+</header>
+<!--Main Navigation-->
 
-    <div class="row">
+<!--Main layout-->
+<main class="my-5">
+    <div class="container">
+        <!--Section: Content-->
+        <section class="text-center">
+            <br>
+            <br>
 
-        <form action="" method="post">
-            <p><label for="title">Title:</label><br/>
-                <input type="text" name="title" id="title" value="<?= htmlspecialchars($this->oPost->title) ?>"
-                       required="required"/>
-            </p>
+            <div class="row text-center">
+                <div class="col-lg-4 col-md-4 mb-4"></div>
+                <div class="col-lg-4 col-md-4 mb-4">
 
-            <p><label for="body">Body:</label><br/>
-                <textarea name="body" id="body" rows="5" cols="35"
-                          required="required"><?= htmlspecialchars($this->oPost->body) ?></textarea>
-            </p>
-            <?php if (!empty($this->oPost->comment)): ?>
-                <p><label for="comment">Comment:</label><br/>
-                    <textarea name="comment" id="comment" rows="5" cols="35"
-                              required=""><?= htmlspecialchars($this->oPost->comment) ?></textarea>
-                </p>
-            <?php endif ?>
+                    <h4 class="mb-5"><strong>Post Data Not Found!</strong></h4>
 
-            <p><input type="submit" name="edit_submit" value="Update"/></p>
-        </form>
+                </div>
 
+                <div class="col-lg-4 col-md-4 mb-4"></div>
+            </div>
+        </section>
     </div>
-<?php endif ?>
-<div class="row">
-    <?php require  ROOT_PATH .'View/components/footer-form.php' ?>
+</main>
+<?php else: ?>
+<body>
+<header>
+    <!-- Intro settings -->
+    <?php require ROOT_PATH . 'View/components/style.php' ?>
+    <!-- Navbar -->
+    <?php require ROOT_PATH . 'View/components/menu.php' ?>
+    <!-- Navbar -->
+</header>
+<!--Main Navigation-->
 
-</div>
+<!--Main layout-->
+<main class="my-5">
+    <div class="container">
+        <!--Section: Content-->
+        <section class="text-center">
+            <br>
+            <br>
+            <h4 class="mb-5"><strong>Edit Post</strong></h4>
+            <div class="row text-center">
+                <div class="col-lg-4 col-md-4 mb-4"></div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <label for="title">Title:</label><br/>
+                            <input type="text" name="title" id="title" class="form-control"
+                                   value="<?= htmlspecialchars($this->oPost->title) ?>"
+                             required="required"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="body">Body:(musi skladac sie conajmniej z dwoch slow)</label><br/>
+                            <textarea name="body" id="body" class="form-control" rows="5" cols="35" required="required">
+                                <?= htmlspecialchars($this->oPost->body) ?>
+                            </textarea>
+                        </div>
+
+                        <?php if (!empty($this->oPost->comment)): ?>
+                            <div class="form-group">
+                                <label for="comment">Comment:</label><br/>
+                                <textarea name="comment" id="comment" rows="5" cols="35" class="form-control"
+                                          required=""><?= htmlspecialchars($this->oPost->comment) ?></textarea>
+                            </div>
+                        <?php endif ?>
+                        <br>
+                        <br>
+                        <input type="submit" name="edit_submit" class="btn btn-outline-secondary" value="Update"/>
+                    </form>
+                </div>
+
+                <div class="col-lg-4 col-md-4 mb-4"></div>
+            </div>
+        </section>
+    </div>
+</main>
+<?php endif ?>
+<?php require ROOT_PATH . 'View/components/footer.php' ?>
+
+
