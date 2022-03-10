@@ -1,23 +1,45 @@
-<?php require ROOT_PATH .'View/components/header.php' ?>
+<?php require ROOT_PATH . 'View/components/header.php' ?>
 
-<br>
-<div class="row">
-    <div class="md-col-4"></div>
-    <div class="md-col-4">
-        <h3>Log in Form</h3>
-        <form action="" method="post">
+<body>
+<header>
+    <!-- Intro settings -->
+    <?php require ROOT_PATH . 'View/components/style.php' ?>
+    <!-- Navbar -->
+    <?php require ROOT_PATH . 'View/components/menu.php' ?>
+    <!-- Navbar -->
+</header>
+<!--Main Navigation-->
 
-            <p><label for="email">Email:</label><br/>
-                <input type="email" name="email" id="email" required="required"/>
-            </p>
+<!--Main layout-->
+<main class="my-5">
+    <div class="container">
+        <!--Section: Content-->
+        <section class="text-center">
+            <h4 class="mb-5"><strong>Login Form</strong></h4>
+            <div class="row text-center">
+                <div class="col-lg-4 col-md-4 mb-4"></div>
 
-            <p><label for="password">Password:</label><br/>
-                <input type="password" name="password" id="password" required="required"/>
-            </p>
+                <form action="" method="post">
 
-            <p><input type="submit" value="Log In"/></p>
-        </form>
+
+                    <div class="form-group">
+                        <label for="email">email:</label><br/>
+                        <input type="email" name="email" id="email" class="form-control" required="required"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">password:</label><br/>
+                        <input type=password name="password" id="password" class="form-control" value=""
+                               required="required"/>
+                    </div>
+
+                    <input type="submit" value="Log In" class="btn btn-primary"/>
+                </form>
+
+
+                <div class="col-lg-4 col-md-4 mb-4"></div>
+            </div>
+        </section>
     </div>
-    <div class="md-col-4"></div>
-</div>
-<?php require  ROOT_PATH .'View/components/footer-form.php' ?>
+</main>
+<?php require ROOT_PATH . 'View/components/form.php' ?>
