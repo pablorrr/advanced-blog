@@ -4,7 +4,7 @@ use Controller\MainController;
 
 ?>
 <footer class="bg-light text-lg-start">
-
+    <script>$('.alert').alert()</script>
     <hr class="m-0"/>
 
     <div class="text-center py-4 align-items-center">
