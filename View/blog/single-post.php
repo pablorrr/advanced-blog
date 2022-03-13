@@ -52,20 +52,22 @@
                                 <p class="card-text"><?= nl2br(htmlspecialchars($this->oPost->body)) ?></p>
                                 <p class="card-text">Posted on <?= $this->oPost->createdDate ?></p>
 
-                                <?php
-                                $oPost = $this->oPost;
-                                require ROOT_PATH . 'View/components/control-buttons.php';
-                                ?>
+
                             </article>
 
                             <?php if (!empty($this->oPost->comment)): ?>
                                 <p class="card-text">Comment: <?= $this->oPost->comment ?></p>
                             <?php endif; ?>
+
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 mb-4"></div>
             </div>
+            <?php
+            $oPost = $this->oPost;
+            require ROOT_PATH . 'View/components/control-buttons.php';
+            ?>
         </section>
     </div>
 </main>
