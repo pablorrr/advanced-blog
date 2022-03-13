@@ -233,7 +233,7 @@ class AdminController extends MainController
 
                         if ($this->AdminModel->update($aData)) {
 
-                            header('Location: ' . ROOT_URL . 'logout');
+                            header('Location: ' . ROOT_URL . 'admin/logout');
 
                             exit();
                         } else {
