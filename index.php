@@ -27,22 +27,14 @@ error_reporting(error_reporting() & ~E_NOTICE);
 
 define('PROT', (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? 'https://' : 'http://');
 define('ROOT_PATH', __DIR__ . '/');
-define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))) . '/');
-define('MAIN_ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . str_replace('\\', '', dirname(htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES))));
-define('MAIN_PAGE', PROT . $_SERVER['SERVER_NAME'] . Config::MAIN_PAGE_SLUG);
+define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . '/');
+
 
 
 //set up custom logging file
 $log_file = ROOT_PATH . '/log.log';
 ini_set("log_errors", TRUE);
 ini_set('error_log', $log_file);
-
-
-//to redirect to main page when is visit load page
-if (PROT . $_SERVER['SERVER_NAME'] === MAIN_ROOT_URL) {
-    header('Location: ' . MAIN_PAGE);
-}
-
 
 //Todo: wprowadzic klase powidomien  notyfikator w libs
 
@@ -53,14 +45,10 @@ $AdminController = new AdminController(new AdminModel());
 
 //TestController::test();
 
-
-
-
 /************* Front End **********************/
 
 
-
-$router->get(Config::MAIN_PAGE_SLUG, array(
+$router->get('', array(
     'func' => array($PostController, 'getMainPage'),
     'parameters' => array()
 ));
@@ -70,8 +58,6 @@ $router->get('/single-post', array(
     'parameters' => array($router->getId(true))
 
 ));
-
-
 
 
 /***************** Back End ********************/

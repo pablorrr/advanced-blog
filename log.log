@@ -320,3 +320,17 @@
 [10-Mar-2022 14:01:05 UTC] PHP   6. Controller\MainController->getView($sViewName = 'admin/login') D:\project\simple-blog-advanced\Controller\AdminController.php:56
 [10-Mar-2022 14:01:05 UTC] PHP   7. Controller\MainController->_get($path = 'admin/login') D:\project\simple-blog-advanced\Controller\MainController.php:23
 [10-Mar-2022 14:01:05 UTC] PHP   8. require() D:\project\simple-blog-advanced\Controller\MainController.php:34
+[13-Mar-2022 11:39:13 UTC] PHP Warning:  Undefined variable $PostController in D:\project\simple-blog-advanced\index.php on line 45
+[13-Mar-2022 11:39:13 UTC] PHP Stack trace:
+[13-Mar-2022 11:39:13 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[13-Mar-2022 11:39:13 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMainPage() on null in D:\project\simple-blog-advanced\index.php:45
+Stack trace:
+#0 {main}
+  thrown in D:\project\simple-blog-advanced\index.php on line 45
+[13-Mar-2022 11:39:13 UTC] PHP Warning:  Undefined variable $PostController in D:\project\simple-blog-advanced\index.php on line 45
+[13-Mar-2022 11:39:13 UTC] PHP Stack trace:
+[13-Mar-2022 11:39:13 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
+[13-Mar-2022 11:39:13 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMainPage() on null in D:\project\simple-blog-advanced\index.php:45
+Stack trace:
+#0 {main}
+  thrown in D:\project\simple-blog-advanced\index.php on line 45

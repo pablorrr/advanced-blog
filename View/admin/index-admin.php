@@ -8,11 +8,10 @@
     <?php require ROOT_PATH . 'View/components/menu.php' ?>
     <!-- Navbar -->
 </header>
-<!--Main Navigation-->
-
 <!--Main layout-->
 <main class="my-5">
     <div class="container">
+
         <!--Section: Content-->
         <section class="text-center">
             <br>
@@ -32,7 +31,8 @@
                         </thead>
                         <tbody>
 
-                        <?php foreach ($this->oAdmins as $oAdmin): ?>
+                        <?php
+                        foreach ($this->oAdmins as $oAdmin): ?>
                             <tr>
                                 <td><?= $oAdmin->id ?></td>
                                 <td><?= $oAdmin->email ?></td>

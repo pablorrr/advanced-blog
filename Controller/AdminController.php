@@ -49,7 +49,7 @@ class AdminController extends MainController
     public function login_get()
     {
         if ($this->isLogged()) {
-            header('Location: ' . MAIN_PAGE);
+            header('Location: ' . ROOT_URL);
             exit();
         }
 
@@ -59,7 +59,7 @@ class AdminController extends MainController
     public function login_post()
     {
         if ($this->isLogged())
-            header('Location: ' . MAIN_PAGE);
+            header('Location: ' . ROOT_URL);
 
         if (isset($_POST['email'], $_POST['password'])) {
 
@@ -70,12 +70,12 @@ class AdminController extends MainController
                 $_SESSION['is_logged'] = true;
                 $_SESSION['userEmail'] = $_POST['email'];
 
-                header('Location: ' . MAIN_PAGE);
+                header('Location: ' . ROOT_URL);
                 exit;
 
             } else {
 
-                header('Location: ' . MAIN_ROOT_URL . '/login');
+                header('Location: ' . ROOT_URL . '/login');
                 $_SESSION['is_logged'] = false;
 
                 $_SESSION['AdminErrorMsg'] = 'Incorrect Login!';

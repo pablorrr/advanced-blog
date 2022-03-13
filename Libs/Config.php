@@ -13,8 +13,8 @@ final class Config
         DB_HOST = 'localhost',
         DB_NAME = 'newmvcblog',
         DB_USR = 'newmvcblog',
-        DB_PWD = 'newmvcblog',
+        DB_PWD = 'newmvcblog';
 
-        MAIN_PAGE_SLUG = '/main-page';
+        //MAIN_PAGE_SLUG = '/main-page';
 
 }

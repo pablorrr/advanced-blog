@@ -65,8 +65,6 @@
         </div>
         <!-- Jumbotron -->
     </header>
-    <!--Main Navigation-->
-
     <!--Main layout-->
     <main class="my-5">
         <div class="container">
@@ -76,7 +74,8 @@
                 <div class="row text-center">
                     <div class="col-lg-4 col-md-4 mb-4"></div>
 
-                    <?php foreach ($this->oPosts as $oPost): ?>
+                    <?php
+                    foreach ($this->oPosts as $oPost): ?>
                         <div class="card">
                             <div class="card-body">
 

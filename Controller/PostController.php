@@ -85,17 +85,17 @@ class PostController extends MainController
 
                 if ($this->PostModel->add($aData)) {
 
-                    header('Location: ' . MAIN_PAGE);
+                    header('Location: ' . ROOT_URL);
                     $_SESSION['PostSuccessMsg'] = 'Hurray!! The post has been added.';
 
                 } else {
-                    header('Location: ' . MAIN_ROOT_URL . '/add');
+                    header('Location: ' . ROOT_URL . '/add');
                     $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
                 }
 
             } else {
 
-                header('Location: ' . MAIN_ROOT_URL . '/add');
+                header('Location: ' . ROOT_URL . '/add');
                 $_SESSION['PostErrorMsg'] = 'All fields are required and the title cannot exceed 50 characters.';
             }
         }
@@ -139,18 +139,18 @@ class PostController extends MainController
 
                 if ($this->PostModel->update($aData)) {
 
-                    header('Location: ' . MAIN_PAGE);
+                    header('Location: ' . ROOT_URL);
                     $_SESSION['PostSuccessMsg'] = 'Hurray!! The post has been updated.';
 
                 } else {
 
-                    header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
+                    header('Location: ' . ROOT_URL . '/edit?id=' . $post_id);
                     $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later';
                 }
 
             } else {
 
-                header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
+                header('Location: ' . ROOT_URL . '/edit?id=' . $post_id);
                 $_SESSION['PostErrorMsg'] = 'All fields are required and only letters allowed.';
             }
 
@@ -172,18 +172,18 @@ class PostController extends MainController
 
                     if (($this->PostModel->update($aData)) && ($this->CommentModel->update($CommentData))) {
 
-                        header('Location: ' . MAIN_PAGE);
+                        header('Location: ' . ROOT_URL);
                         $_SESSION['PostSuccessMsg'] = 'Hurray! The post and comment has been updated.';
 
                     } else {
 
-                        header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
+                        header('Location: ' . ROOT_URLL . '/edit?id=' . $post_id);
                         $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later';
                     }
 
                 } else {
 
-                    header('Location: ' . MAIN_ROOT_URL . '/edit?id=' . $post_id);
+                    header('Location: ' . ROOT_URL . '/edit?id=' . $post_id);
                     $_SESSION['PostErrorMsg'] = 'Whoops! An error has occurred! Please try again later';
                 }
             }
@@ -207,7 +207,7 @@ class PostController extends MainController
                 && $this->PostModel->delete($post_id)
                 && $this->CommentModel->delete($post_id)) {
 
-                header('Location: ' . MAIN_PAGE);
+                header('Location: ' . ROOT_URL);
             } else {
                 exit('Whoops! Post cannot be deleted.');
             }
@@ -216,7 +216,7 @@ class PostController extends MainController
         //when comments not exists
         if (!$this->CommentModel->getByIdCheck($post_id)) {
             if ((!empty($_POST['delete'])) && ($this->PostModel->delete($post_id))) {
-                header('Location: ' . MAIN_PAGE);
+                header('Location: ' . ROOT_URL);
             } else {
                 exit('Whoops! Post cannot be deleted.');
             }

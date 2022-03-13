@@ -64,12 +64,12 @@ class CommentController extends MainController
 
                 if ($this->CommentModel->add($aData)) {
 
-                    header('Location: ' . MAIN_PAGE);
+                    header('Location: ' . ROOT_URL);
                     $_SESSION['CommentSuccessMsg'] = 'Hurray!! The comment has been added.';
 
                 } else {
 
-                    header('Location: ' . MAIN_ROOT_URL . '/add-comment?id=' . $post_id);
+                    header('Location: ' . ROOT_URL . '/add-comment?id=' . $post_id);
                     $_SESSION['CommentErrorMsg'] = 'Whoops! An error has occurred! Please try again later.';
                 }
 
@@ -77,7 +77,7 @@ class CommentController extends MainController
 
             } else {
 
-                header('Location: ' . MAIN_ROOT_URL . '/add-comment?id=' . $post_id);
+                header('Location: ' . ROOT_URL . '/add-comment?id=' . $post_id);
                 $_SESSION['CommentErrorMsg'] = 'All fields are required  cannot exceed 250 characters and must be leettes and contains two single separated words .';
             }
         }//add comment if
