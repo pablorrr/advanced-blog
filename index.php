@@ -29,8 +29,6 @@ define('PROT', (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'o
 define('ROOT_PATH', __DIR__ . '/');
 define('ROOT_URL', PROT . $_SERVER['HTTP_HOST'] . '/');
 
-
-
 //set up custom logging file
 $log_file = ROOT_PATH . '/log.log';
 ini_set("log_errors", TRUE);
@@ -44,7 +42,7 @@ $CommentController = new CommentController(new PostModel(new CommentModel()), ne
 $AdminController = new AdminController(new AdminModel());
 
 //TestController::test();
-//var_dump($_SESSION);
+
 
 /************* Front End **********************/
 
