@@ -20,5 +20,6 @@ use Controller\MainController;
 </div>
 </body>
 </html>
-<?php MainController::isPageRefreshed(); ?>
+<?php MainController::isPageRefreshed();
+ob_end_flush(); ?>
 

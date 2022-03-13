@@ -4,7 +4,8 @@
     <script>$('.alert').alert()</script>
 </footer>
 <?php use Controller\MainController;
-MainController::isPageRefreshed();?>
+MainController::isPageRefreshed();
+ob_end_flush();?>
 </body>
 </html>
 
