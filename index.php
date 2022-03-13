@@ -44,6 +44,7 @@ $CommentController = new CommentController(new PostModel(new CommentModel()), ne
 $AdminController = new AdminController(new AdminModel());
 
 //TestController::test();
+//var_dump($_SESSION);
 
 /************* Front End **********************/
 

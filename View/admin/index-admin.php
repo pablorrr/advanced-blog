@@ -1,4 +1,7 @@
 <?php require ROOT_PATH .'View/components/header.php' ?>
+<br>
+<br>
+<br>
 <?php require ROOT_PATH .'View/components/admin-msg.php' ?>
 <body>
 <header>
@@ -44,7 +47,7 @@
                                                 class="btn btn-outline-secondary">Edit
                                         </button>
                                     </td>
-                                    <!--todo dzila ale do poprawy ABY USER NIE MOGLSAM SIE USUSNAC-->
+
                                     <?php if ($oAdmin->email != $_SESSION['userEmail']) : ?>
                                         <td>
                                             <form action="<?= ROOT_URL ?>admin/delete?id=<?= $oAdmin->id ?>"

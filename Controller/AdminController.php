@@ -75,7 +75,7 @@ class AdminController extends MainController
 
             } else {
 
-                header('Location: ' . ROOT_URL . '/login');
+                header('Location: ' . ROOT_URL . 'login');
                 $_SESSION['is_logged'] = false;
 
                 $_SESSION['AdminErrorMsg'] = 'Incorrect Login!';
@@ -97,7 +97,7 @@ class AdminController extends MainController
         }
 
         // Redirect to login page
-        header('Location: ' . ROOT_URL . '/login');
+        header('Location: ' . ROOT_URL . 'login');
         exit;
     }
 
@@ -143,7 +143,7 @@ class AdminController extends MainController
 
                     if ($flag == true) {
 
-                        header('Location: ' . ROOT_URL . '/register');
+                        header('Location: ' . ROOT_URL . 'register');
 
                         $this->msg = 'Whoops! Email is already in use,please try  another one';
                         $_SESSION['AdminErrorMsg'] = $this->msg;
@@ -159,14 +159,15 @@ class AdminController extends MainController
 
                         if ($this->AdminModel->register($aData)) {
 
-                            header('Location: ' . ROOT_URL);
-
                             $this->msg = 'Hurray!! The new user has been added.';
                             $_SESSION['AdminSuccMsg'] = $this->msg;
+                            header('Location: ' . ROOT_URL . 'admin');
+
+
 
                         } else {
 
-                            header('Location: ' . ROOT_URL . '/register');
+                            header('Location: ' . ROOT_URL . 'register');
 
                             $this->msg = 'Whoops! An error has occurred! Please try again later.';
                             $_SESSION['AdminErrorMsg'] = $this->msg;
@@ -176,7 +177,7 @@ class AdminController extends MainController
                     }// else true flag
                 } else {
 
-                    header('Location: ' . ROOT_URL . '/register');
+                    header('Location: ' . ROOT_URL . 'register');
 
 
                     $this->msg = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
@@ -237,7 +238,7 @@ class AdminController extends MainController
                             exit();
                         } else {
 
-                            header('Location: ' . ROOT_URL . 'edit?id=' . $admin_id);
+                            header('Location: ' . ROOT_URL . 'admin/edit?id=' . $admin_id);
 
                             $this->msg = 'Ups smth wrong!!!!';
                             $_SESSION['AdminErrorMsg'] = $this->msg;
@@ -246,7 +247,7 @@ class AdminController extends MainController
 
                     if ($this->AdminModel->update($aData)) {
 
-                        header('Location: ' . ROOT_URL);
+                        header('Location: ' . ROOT_URL . 'admin');
 
 
                         $this->msg = 'Hurray! The User (Admin) has been updated.';
@@ -254,7 +255,7 @@ class AdminController extends MainController
                     }
                 } else {
 
-                    header('Location: ' . ROOT_URL . 'edit?id=' . $admin_id);
+                    header('Location: ' . ROOT_URL . 'admin/edit?id=' . $admin_id);
 
                     $this->msg = 'Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.';
@@ -290,15 +291,15 @@ class AdminController extends MainController
 
                 if ($this->AdminModel->delete($admin_id)) {
 
-                    header('Location: ' . ROOT_URL);
+                    header('Location: ' . ROOT_URL . 'admin');
                     $_SESSION['AdminSuccMsg'] = 'User has been deleted properly';
 
                 } else {
-                    header('Location: ' . ROOT_URL);
-                    $_SESSION['AdminErrorMsg'] = 'Whoops! Post cannot be deleted.';
+                    header('Location: ' . ROOT_URL . 'admin');
+                    $_SESSION['AdminErrorMsg'] = 'Whoops! User cannot be deleted.';
                 }
             } else {
-                header('Location: ' . ROOT_URL);
+                header('Location: ' . ROOT_URL . 'admin');
 
                 $_SESSION['AdminErrorMsg'] = 'Whoops! You cant delete all users!!';
                 exit('Whoops! You cant delete all users!! or yourself!!');
@@ -311,28 +312,28 @@ class AdminController extends MainController
     /******************* Magics method zone******************
      * @param $name
      * @param $value
-
-
-
-    // Wykrycie ustawienie zmiennej członkowskiej
-    public function __set($name, $value) {
-       var_dump($name);
-        var_dump($value);
-    }
-   //Wykrycie odczyt zmiennej członkowskiej
-    public function __get($name) {
-        var_dump($name);
-    }
-
-    //Wykrycie sprawdzenie istnienia zmiennej członkowskiej
-    public function __isset($name) {
-        var_dump($name);
-    }
-
-    // Wykrycie niszczenie zmiennej członkowskiej
-    public function __unset($name) {
-        var_dump($name);
-    }  */
+     *
+     *
+     *
+     * // Wykrycie ustawienie zmiennej członkowskiej
+     * public function __set($name, $value) {
+     * var_dump($name);
+     * var_dump($value);
+     * }
+     * //Wykrycie odczyt zmiennej członkowskiej
+     * public function __get($name) {
+     * var_dump($name);
+     * }
+     *
+     * //Wykrycie sprawdzenie istnienia zmiennej członkowskiej
+     * public function __isset($name) {
+     * var_dump($name);
+     * }
+     *
+     * // Wykrycie niszczenie zmiennej członkowskiej
+     * public function __unset($name) {
+     * var_dump($name);
+     * }  */
 
 
 }
