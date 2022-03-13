@@ -1,4 +1,6 @@
 <?php require ROOT_PATH . 'View/components/header.php' ?>
+<br>
+<br>
 <?php require ROOT_PATH . 'View/components/admin-msg.php' ?>
 <body>
 <header>

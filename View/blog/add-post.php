@@ -1,4 +1,9 @@
 <?php require ROOT_PATH . 'View/components/header.php' ?>
+<br>
+<br>
+<br>
+<?php require ROOT_PATH .'View/components/msg.php' ?>
+<br>
 <body>
 <header>
     <!-- Intro settings -->

@@ -1,5 +1,12 @@
 <?php require ROOT_PATH . 'View/components/header.php' ?>
+<br>
+<br>
+<br>
 <?php require ROOT_PATH . 'View/components/comment-msg.php' ?>
+<br>
+<br>
+<br>
+<?php require ROOT_PATH .'View/components/msg.php' ?>
 <body>
 <header>
     <!-- Intro settings -->

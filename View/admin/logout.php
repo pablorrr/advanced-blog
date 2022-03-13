@@ -26,7 +26,7 @@
         </section>
     </div>
 </main>
-
+<?php require ROOT_PATH . 'View/components/footer-form.php' ?>
 
 
 

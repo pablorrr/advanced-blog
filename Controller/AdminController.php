@@ -143,7 +143,7 @@ class AdminController extends MainController
 
                     if ($flag == true) {
 
-                        header('Location: ' . ROOT_URL . 'register');
+                        header('Location: ' . ROOT_URL . 'admin/register');
 
                         $this->msg = 'Whoops! Email is already in use,please try  another one';
                         $_SESSION['AdminErrorMsg'] = $this->msg;
