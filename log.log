@@ -10,7 +10,7 @@
                     must contain at least  one leeter and one  digit.
 [06-Mar-2022 16:16:56 UTC] Whoops! Confirm Password doesnt  match or contain less than 6 char. The password 
                     must contain at least  one leeter and one  digit.
-[06-Mar-2022 16:25:18 UTC] PHP Warning:  Undefined array key "AdminErrorMsg" in D:\project\simple-blog-advanced\Controller\AdminController.php on line 106
+[06-Mar2022 16:25:18 UTC] PHP Warning:  Undefined array key "AdminErrorMsg" in D:\project\simple-blog-advanced\Controller\AdminController.php on line 106
 [06-Mar-2022 16:25:18 UTC] PHP Stack trace:
 [06-Mar-2022 16:25:18 UTC] PHP   1. {main}() D:\project\simple-blog-advanced\index.php:0
 [06-Mar-2022 16:25:18 UTC] PHP   2. Libs\Router->match() D:\project\simple-blog-advanced\index.php:178
